@@ -1,0 +1,82 @@
+name: Test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm run install:composer
+    - run: npm run build
+    - name: Cache dependencies & built assets
+      uses: actions/cache@v2
+      with:
+        path: |
+          node_modules
+          vendor
+          /home/runner/.cache/Cypress
+          theme/style.css
+          theme/asset/front.js
+        key: ${{ runner.os }}-${{ matrix.node-version }}-${{ github.sha }}
+  
+  cypress:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    needs: build
+    steps:
+    - uses: actions/checkout@v2
+    - name: Load cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          node_modules
+          vendor
+          /home/runner/.cache/Cypress
+          theme/style.css
+          theme/asset/front.js
+        key: ${{ runner.os }}-${{ matrix.node-version }}-${{ github.sha }}
+    - run: npx wp-env start
+    - run: npm run test-e2e:headless
+      env:
+        CI: true
+  
+  lint:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    needs: build
+    steps:
+    - uses: actions/checkout@v2
+    - name: Load cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          node_modules
+          vendor
+          /home/runner/.cache/Cypress
+          theme/style.css
+          theme/asset/front.js
+        key: ${{ runner.os }}-${{ matrix.node-version }}-${{ github.sha }}
+    - run: npm run lint:js
+      if: ${{ always() }}
+    - run: npm run lint:scss
+      if: ${{ always() }}
+    - run: npm run lint:php
+      if: ${{ always() }}

@@ -1,0 +1,15 @@
+{
+  "core": "https://wordpress.org/wordpress-5.4.1.zip",
+  "themes": [
+    "./theme",
+    "./buddyboss-theme"
+  ],
+  "plugins": [
+    "./dependent_plugins/elementor",
+    "./dependent_plugins/gamipress",
+    "./dependent_plugins/gamipress-learndash-integration",
+    "./dependent_plugins/gamipress-buddypress-integration",
+    "./dependent_plugins/buddyboss-platform",
+    "./dependent_plugins/learndash"
+  ]
+}
