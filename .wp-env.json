@@ -3,5 +3,6 @@
     "./theme"
   ],
   "plugins": [
+    "./data"
   ]
 }
