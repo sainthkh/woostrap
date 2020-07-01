@@ -4,151 +4,170 @@
  * Contains functionality to dynamically update the block editor
  * configuration and styling.
  */
-(function () {
-  /**
-   * Check if the main sidebar is active (has widgets).
-   *
-   * This uses a custom property `mainSidebarActive` added via the
-   * `block_editor_settings` filter.
-   *
-   * @return {boolean} Whether sidebar is active.
-   */
-  var sidebarIsActive = function sidebarIsActive() {
-    var settings = wp.data.select('core/editor').getEditorSettings();
+( function () {
+	/**
+	 * Check if the main sidebar is active (has widgets).
+	 *
+	 * This uses a custom property `mainSidebarActive` added via the
+	 * `block_editor_settings` filter.
+	 *
+	 * @return {boolean} Whether sidebar is active.
+	 */
+	const sidebarIsActive = function sidebarIsActive() {
+		const settings = wp.data.select( 'core/editor' ).getEditorSettings();
 
-    if (settings.hasOwnProperty('mainSidebarActive') && !!settings.mainSidebarActive) {
-      return true;
-    }
+		if (
+			Object.prototype.hasOwnProperty.call(
+				settings,
+				'mainSidebarActive'
+			) &&
+			!! settings.mainSidebarActive
+		) {
+			return true;
+		}
 
-    return false;
-  };
-  /**
-   * Get current page template name.
-   *
-   * @return {string} The page template name.
-   */
+		return false;
+	};
+	/**
+	 * Get current page template name.
+	 *
+	 * @return {string} The page template name.
+	 */
 
+	const getCurrentPageTemplate = function getCurrentPageTemplate() {
+		return wp.data
+			.select( 'core/editor' )
+			.getEditedPostAttribute( 'template' );
+	};
+	/**
+	 * Check if the active theme supports a wide layout.
+	 *
+	 * @return {boolean} Whether the theme supports wide layout.
+	 */
 
-  var getCurrentPageTemplate = function getCurrentPageTemplate() {
-    return wp.data.select('core/editor').getEditedPostAttribute('template');
-  };
-  /**
-   * Check if the active theme supports a wide layout.
-   *
-   * @return {boolean} Whether the theme supports wide layout.
-   */
+	const themeSupportsWide = function themeSupportsWide() {
+		const settings = wp.data.select( 'core/editor' ).getEditorSettings();
 
+		if (
+			Object.prototype.hasOwnProperty.call( settings, 'alignWide' ) &&
+			!! settings.alignWide
+		) {
+			return true;
+		}
 
-  var themeSupportsWide = function themeSupportsWide() {
-    var settings = wp.data.select('core/editor').getEditorSettings();
+		return false;
+	};
+	/**
+	 * Update editor wide support.
+	 *
+	 * @param {boolean} alignWide Whether the editor supports
+	 *                            alignWide support.
+	 *
+	 * @return {void}
+	 */
 
-    if (settings.hasOwnProperty('alignWide') && !!settings.alignWide) {
-      return true;
-    }
+	const updateWideSupport = function updateWideSupport( alignWide ) {
+		wp.data.dispatch( 'core/editor' ).updateEditorSettings( {
+			alignWide: !! alignWide,
+		} );
+	};
+	/**
+	 * Update `data-align` attribute on each block.
+	 *
+	 * @param {boolean} alignWide Whether alignWide is supported.
+	 *
+	 * @return {void}
+	 */
 
-    return false;
-  };
-  /**
-   * Update editor wide support.
-   *
-   * @param {boolean} alignWide Whether the editor supports
-   *                            alignWide support.
-   *
-   * @return {void}
-   */
+	const updateAlignAttribute = function updateAlignAttribute( alignWide ) {
+		const blocks = wp.data.select( 'core/editor' ).getBlocks();
+		blocks.forEach( function ( block ) {
+			if (
+				Object.prototype.hasOwnProperty.call(
+					block.attributes,
+					'align'
+				)
+			) {
+				const align = block.attributes.align;
 
+				if ( ! [ 'full', 'wide' ].includes( align ) ) {
+					return;
+				}
 
-  var updateWideSupport = function updateWideSupport(alignWide) {
-    wp.data.dispatch('core/editor').updateEditorSettings({
-      'alignWide': !!alignWide
-    });
-  };
-  /**
-   * Update `data-align` attribute on each block.
-   *
-   * @param {boolean} alignWide Whether alignWide is supported.
-   *
-   * @return {void}
-   */
+				const blockWrapper = document.getElementById(
+					'block-' + block.clientId
+				);
 
+				if ( blockWrapper ) {
+					blockWrapper.setAttribute(
+						'data-align',
+						alignWide ? align : ''
+					);
+				}
+			}
+		} );
+	};
+	/**
+	 * Add custom class to editor wrapper if main sidebar is active.
+	 *
+	 * @param {boolean} showSidebar Whether to add custom class.
+	 *
+	 * @return {void}
+	 */
 
-  var updateAlignAttribute = function updateAlignAttribute(alignWide) {
-    var blocks = wp.data.select('core/editor').getBlocks();
-    blocks.forEach(function (block) {
-      if (block.attributes.hasOwnProperty('align')) {
-        var align = block.attributes.align;
+	const toggleCustomSidebarClass = function toggleCustomSidebarClass(
+		showSidebar
+	) {
+		// First class for WP<=5.3 and second class for WP>=5.4.
+		const editorWrapper = document.querySelector(
+			'.editor-writing-flow, .block-editor-writing-flow'
+		);
 
-        if (!['full', 'wide'].includes(align)) {
-          return;
-        }
+		if ( ! editorWrapper ) {
+			return;
+		}
 
-        var blockWrapper = document.getElementById('block-' + block.clientId);
+		if ( showSidebar ) {
+			editorWrapper.classList.add( 'storefront-has-sidebar' );
+		} else {
+			editorWrapper.classList.remove( 'storefront-has-sidebar' );
+		}
+	};
+	/**
+	 * Update editor and blocks when layout changes.
+	 *
+	 * @return {void}
+	 */
 
-        if (blockWrapper) {
-          blockWrapper.setAttribute('data-align', alignWide ? align : '');
-        }
-      }
-    });
-  };
-  /**
-   * Add custom class to editor wrapper if main sidebar is active.
-   *
-   * @param {boolean} showSidebar Whether to add custom class.
-   *
-   * @return {void}
-   */
+	const maybeUpdateEditor = function maybeUpdateEditor() {
+		if ( 'template-fullwidth.php' === getCurrentPageTemplate() ) {
+			updateWideSupport( true );
+			toggleCustomSidebarClass( false );
+			updateAlignAttribute( true );
+		} else if ( sidebarIsActive() ) {
+			updateWideSupport( false );
+			toggleCustomSidebarClass( true );
+			updateAlignAttribute( false );
+		} else {
+			updateWideSupport( true );
+			toggleCustomSidebarClass( false );
+			updateAlignAttribute( true );
+		}
+	};
 
+	wp.domReady( function () {
+		// Don't do anything if the theme doesn't declare support for `align-wide`.
+		if ( ! themeSupportsWide() ) {
+			return;
+		}
 
-  var toggleCustomSidebarClass = function toggleCustomSidebarClass(showSidebar) {
-    // First class for WP<=5.3 and second class for WP>=5.4.
-    var editorWrapper = document.querySelector('.editor-writing-flow, .block-editor-writing-flow');
-
-    if (!editorWrapper) {
-      return;
-    }
-
-    if (!!showSidebar) {
-      editorWrapper.classList.add('storefront-has-sidebar');
-    } else {
-      editorWrapper.classList.remove('storefront-has-sidebar');
-    }
-  };
-  /**
-   * Update editor and blocks when layout changes.
-   *
-   * @return {void}
-   */
-
-
-  var maybeUpdateEditor = function maybeUpdateEditor() {
-    if ('template-fullwidth.php' === getCurrentPageTemplate()) {
-      updateWideSupport(true);
-      toggleCustomSidebarClass(false);
-      updateAlignAttribute(true);
-    } else if (sidebarIsActive()) {
-      updateWideSupport(false);
-      toggleCustomSidebarClass(true);
-      updateAlignAttribute(false);
-    } else {
-      updateWideSupport(true);
-      toggleCustomSidebarClass(false);
-      updateAlignAttribute(true);
-    }
-  };
-
-  wp.domReady(function () {
-    // Don't do anything if the theme doesn't declare support for `align-wide`.
-    if (!themeSupportsWide()) {
-      return;
-    }
-
-    maybeUpdateEditor();
-    var pageTemplate = getCurrentPageTemplate();
-    wp.data.subscribe(function () {
-      if (getCurrentPageTemplate() !== pageTemplate) {
-        pageTemplate = getCurrentPageTemplate();
-        maybeUpdateEditor();
-      }
-    });
-  });
-})();
+		maybeUpdateEditor();
+		let pageTemplate = getCurrentPageTemplate();
+		wp.data.subscribe( function () {
+			if ( getCurrentPageTemplate() !== pageTemplate ) {
+				pageTemplate = getCurrentPageTemplate();
+				maybeUpdateEditor();
+			}
+		} );
+	} );
+} )();

@@ -1,4 +1,4 @@
 /vendor
 /theme/asset
 /build
-/buddyboss-theme
+*.min.js
