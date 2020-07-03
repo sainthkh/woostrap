@@ -16,8 +16,22 @@ wp-content/themes/twenty*/
 
 # ignore node dependency directories
 node_modules/
+vendor/
+!/theme/assets/js/vendor
 
 # ignore log files and databases
 *.log
 *.sql
 *.sqlite
+
+# ignore generated files
+build/
+/theme/asset/front.js
+/theme/style.css
+
+# ignore debug-related plugins
+.wp-env.override.json
+debug_plugins/
+
+# include data.sql file.
+!/data/data.sql
