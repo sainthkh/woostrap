@@ -1,0 +1,30 @@
+/*!
+Theme Name:   WooStrap
+Theme URI:    https://github.com/sainthkh/woostrap
+Author:       K. Heo
+Author URI:   https://github.com/sainthkh
+Description:  For Bootstrap fans, WooStrap is forked from StoreFront 2.5.7.
+Version:      1.0.0
+License:      GNU General Public License v2 or later
+License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  woostrap
+Tags:         e-commerce, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready, rtl-language-support, footer-widgets, sticky-post, theme-options, editor-style
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+WooStrap is based on StoreFront.
+Storefront is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
+
+Resetting and rebuilding styles have been helped along thanks to the fine work of
+Eric Meyer https://meyerweb.com/eric/tools/css/reset/index.html
+along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+
+All sizing (typography, layout, padding/margins, etc) are inspired by a modular scale that uses 1em as a base size with a 1.618 ratio.
+You can read more about the calculator we use in our Sass here: https://github.com/modularscale/modularscale-sass
+
+FontAwesome License: SIL Open Font License - http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+Images License: GNU General Public License v2 or later
+*/
+
+@import './base.scss';

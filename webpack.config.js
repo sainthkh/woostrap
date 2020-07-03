@@ -6,7 +6,7 @@ const ShellPlugin = require( 'webpack-shell-plugin' );
 module.exports = {
 	...base,
 	entry: {
-		front: path.resolve( __dirname, 'theme/js/front.js' ),
+		front: path.resolve( __dirname, 'theme/assets/js/front.js' ),
 	},
 	plugins: [
 		...base.plugins,
