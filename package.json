@@ -10,7 +10,7 @@
     "compile:css": "node-sass theme/sass/ -o ./theme && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
     "compile:rtl": "rtlcss style.css style-rtl.css",
     "lint:scss": "wp-scripts lint-style theme/sass/**/*.scss",
-    "lint:js": "wp-scripts lint-js theme/js/**/*.js scripts/**/*.js",
+    "lint:js": "wp-scripts lint-js theme/assets/js/**/*.js scripts/**/*.js",
     "install:composer": "npm run wp-env run composer install",
     "install:woocommerce": "wp-env run cli wp plugin install woocommerce --activate --force",
     "install:plugins": "npm run install:woocommerce",
