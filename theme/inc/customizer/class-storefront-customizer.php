@@ -160,11 +160,11 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 			/**
 			 * Custom controls
 			 */
-			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-radio-image.php';
-			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-arbitrary.php';
+			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-radio-image.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-arbitrary.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 			if ( apply_filters( 'storefront_customizer_more', true ) ) {
-				require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-more.php';
+				require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-more.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 			}
 
 			/**

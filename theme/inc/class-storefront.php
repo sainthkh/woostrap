@@ -337,7 +337,7 @@ if ( ! class_exists( 'Storefront' ) ) :
 			/**
 			 * Fonts
 			 */
-			wp_enqueue_style( 'storefront-fonts', $this->google_fonts(), array(), null );
+			wp_enqueue_style( 'storefront-fonts', $this->google_fonts(), array(), $storefront->version );
 
 			/**
 			 * Scripts
@@ -531,7 +531,7 @@ if ( ! class_exists( 'Storefront' ) ) :
 		 * Add styles for embeds
 		 */
 		public function print_embed_styles() {
-			wp_enqueue_style( 'source-sans-pro', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,700,900' );
+			wp_enqueue_style( 'source-sans-pro', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,700,900', array(), $storefront->version );
 			$accent_color     = get_theme_mod( 'storefront_accent_color' );
 			$background_color = storefront_get_content_background_color();
 			?>

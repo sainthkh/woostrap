@@ -49,8 +49,8 @@ if ( ! function_exists( 'storefront_comment' ) ) {
 				<br />
 			<?php endif; ?>
 
-			<a href="<?php echo esc_url( htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ); ?>" class="comment-date">
-				<?php echo '<time datetime="' . get_comment_date( 'c' ) . '">' . get_comment_date() . '</time>'; ?>
+			<a href="<?php echo esc_url( htmlspecialchars( get_comment_link( $comment->comment_ID ), ENT_COMPAT | ENT_HTML401, 'UTF-8' ) ); ?>" class="comment-date">
+				<?php echo '<time datetime="' . get_comment_date( 'c' ) . '">' . get_comment_date() . '</time>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</a>
 		</div>
 		<?php if ( 'div' !== $args['style'] ) : ?>
@@ -225,7 +225,7 @@ if ( ! function_exists( 'storefront_site_title_or_logo' ) ) {
 			return $html;
 		}
 
-		echo $html; // WPCS: XSS ok.
+		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 
