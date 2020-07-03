@@ -8,7 +8,7 @@
 /**
  * Assign the Storefront version to a var
  */
-$theme              = wp_get_theme( 'storefront' );
+$theme              = wp_get_theme( 'woostrap' );
 $storefront_version = $theme['Version'];
 
 /**

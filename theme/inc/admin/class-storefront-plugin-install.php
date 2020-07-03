@@ -59,7 +59,7 @@ if ( ! class_exists( 'Storefront_Plugin_Install' ) ) :
 				if ( is_plugin_active( $plugin_slug . '/' . $plugin_file ) ) {
 					// The plugin is already active.
 					$button = array(
-						'message' => esc_attr__( 'Activated', 'storefront' ),
+						'message' => esc_attr__( 'Activated', 'woostrap' ),
 						'url'     => '#',
 						'classes' => array( 'storefront-button', 'disabled' ),
 					);
@@ -72,7 +72,7 @@ if ( ! class_exists( 'Storefront_Plugin_Install' ) ) :
 
 					// The plugin exists but isn't activated yet.
 					$button = array(
-						'message' => esc_attr__( 'Activate', 'storefront' ),
+						'message' => esc_attr__( 'Activate', 'woostrap' ),
 						'url'     => $url,
 						'classes' => array( 'activate-now' ),
 					);
@@ -93,7 +93,7 @@ if ( ! class_exists( 'Storefront_Plugin_Install' ) ) :
 						'install-plugin_' . $plugin_slug
 					);
 					$button = array(
-						'message' => esc_attr__( 'Install now', 'storefront' ),
+						'message' => esc_attr__( 'Install now', 'woostrap' ),
 						'url'     => $url,
 						'classes' => array( 'sf-install-now', 'install-now', 'install-' . $plugin_slug ),
 					);
@@ -112,8 +112,8 @@ if ( ! class_exists( 'Storefront_Plugin_Install' ) ) :
 				?>
 				<span class="plugin-card-<?php echo esc_attr( $plugin_slug ); ?>">
 					<a href="<?php echo esc_url( $button['url'] ); ?>" class="<?php echo esc_attr( $button['classes'] ); ?>" data-originaltext="<?php echo esc_attr( $button['message'] ); ?>" data-name="<?php echo esc_attr( $plugin_name ); ?>" data-slug="<?php echo esc_attr( $plugin_slug ); ?>" aria-label="<?php echo esc_attr( $button['message'] ); ?>"><?php echo esc_attr( $button['message'] ); ?></a>
-				</span> <?php echo /* translators: conjunction of two alternative options user can choose (in missing plugin admin notice). Example: "Activate WooCommerce or learn more" */ esc_html__( 'or', 'storefront' ); ?>
-				<a href="https://wordpress.org/plugins/<?php echo esc_attr( $plugin_slug ); ?>" target="_blank"><?php esc_attr_e( 'learn more', 'storefront' ); ?></a>
+				</span> <?php echo /* translators: conjunction of two alternative options user can choose (in missing plugin admin notice). Example: "Activate WooCommerce or learn more" */ esc_html__( 'or', 'woostrap' ); ?>
+				<a href="https://wordpress.org/plugins/<?php echo esc_attr( $plugin_slug ); ?>" target="_blank"><?php esc_attr_e( 'learn more', 'woostrap' ); ?></a>
 				<?php
 			}
 		}

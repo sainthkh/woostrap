@@ -16,13 +16,13 @@ get_header(); ?>
 				<div class="page-content">
 
 					<header class="page-header">
-						<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'storefront' ); ?></h1>
+						<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'woostrap' ); ?></h1>
 					</header><!-- .page-header -->
 
-					<p><?php esc_html_e( 'Nothing was found at this location. Try searching, or check out the links below.', 'storefront' ); ?></p>
+					<p><?php esc_html_e( 'Nothing was found at this location. Try searching, or check out the links below.', 'woostrap' ); ?></p>
 
 					<?php
-					echo '<section aria-label="' . esc_html__( 'Search', 'storefront' ) . '">';
+					echo '<section aria-label="' . esc_html__( 'Search', 'woostrap' ) . '">';
 
 					if ( storefront_is_woocommerce_activated() ) {
 						the_widget( 'WC_Widget_Product_Search' );
@@ -36,15 +36,15 @@ get_header(); ?>
 
 						echo '<div class="fourohfour-columns-2">';
 
-							echo '<section class="col-1" aria-label="' . esc_html__( 'Promoted Products', 'storefront' ) . '">';
+							echo '<section class="col-1" aria-label="' . esc_html__( 'Promoted Products', 'woostrap' ) . '">';
 
 								storefront_promoted_products();
 
 							echo '</section>';
 
-							echo '<nav class="col-2" aria-label="' . esc_html__( 'Product Categories', 'storefront' ) . '">';
+							echo '<nav class="col-2" aria-label="' . esc_html__( 'Product Categories', 'woostrap' ) . '">';
 
-								echo '<h2>' . esc_html__( 'Product Categories', 'storefront' ) . '</h2>';
+								echo '<h2>' . esc_html__( 'Product Categories', 'woostrap' ) . '</h2>';
 
 								the_widget(
 									'WC_Widget_Product_Categories',
@@ -57,9 +57,9 @@ get_header(); ?>
 
 						echo '</div>';
 
-						echo '<section aria-label="' . esc_html__( 'Popular Products', 'storefront' ) . '">';
+						echo '<section aria-label="' . esc_html__( 'Popular Products', 'woostrap' ) . '">';
 
-							echo '<h2>' . esc_html__( 'Popular Products', 'storefront' ) . '</h2>';
+							echo '<h2>' . esc_html__( 'Popular Products', 'woostrap' ) . '</h2>';
 
 							$shortcode_content = storefront_do_shortcode(
 								'best_selling_products',

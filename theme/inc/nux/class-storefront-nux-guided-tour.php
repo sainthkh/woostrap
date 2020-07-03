@@ -80,15 +80,15 @@ if ( ! class_exists( 'Storefront_NUX_Guided_Tour' ) ) :
 						<# if ( data.button_text ) { #>
 							{{ data.button_text }}
 						<# } else { #>
-							<?php esc_attr_e( 'Next', 'storefront' ); ?>
+							<?php esc_attr_e( 'Next', 'woostrap' ); ?>
 						<# } #>
 					</a>
 					<# if ( ! data.last_step ) { #>
 						<a class="sf-guided-tour-skip" href="#">
 						<# if ( data.first_step ) { #>
-							<?php esc_attr_e( 'No thanks, skip the tour', 'storefront' ); ?>
+							<?php esc_attr_e( 'No thanks, skip the tour', 'woostrap' ); ?>
 						<# } else { #>
-							<?php esc_attr_e( 'Skip this step', 'storefront' ); ?>
+							<?php esc_attr_e( 'Skip this step', 'woostrap' ); ?>
 						<# } #>
 						</a>
 					<# } #>
@@ -106,45 +106,45 @@ if ( ! class_exists( 'Storefront_NUX_Guided_Tour' ) ) :
 			$steps = array();
 
 			$steps[] = array(
-				'title'       => __( 'Welcome to the Customizer', 'storefront' ),
+				'title'       => __( 'Welcome to the Customizer', 'woostrap' ),
 				/* translators: %s: 'End Of Line' symbol */
-				'message'     => sprintf( __( 'Here you can control the overall look and feel of your store.%sTo get started, let\'s add your logo', 'storefront' ), PHP_EOL . PHP_EOL ),
-				'button_text' => __( 'Let\'s go!', 'storefront' ),
+				'message'     => sprintf( __( 'Here you can control the overall look and feel of your store.%sTo get started, let\'s add your logo', 'woostrap' ), PHP_EOL . PHP_EOL ),
+				'button_text' => __( 'Let\'s go!', 'woostrap' ),
 				'section'     => '#customize-info',
 			);
 
 			if ( ! has_custom_logo() ) {
 				$steps[] = array(
-					'title'   => __( 'Add your logo', 'storefront' ),
-					'message' => __( 'Open the Site Identity Panel, then click the \'Select Logo\' button to upload your logo.', 'storefront' ),
+					'title'   => __( 'Add your logo', 'woostrap' ),
+					'message' => __( 'Open the Site Identity Panel, then click the \'Select Logo\' button to upload your logo.', 'woostrap' ),
 					'section' => 'title_tagline',
 				);
 			}
 
 			$steps[] = array(
-				'title'   => __( 'Customize your navigation menus', 'storefront' ),
-				'message' => __( 'Organize your menus by adding Pages, Categories, Tags, and Custom Links.', 'storefront' ),
+				'title'   => __( 'Customize your navigation menus', 'woostrap' ),
+				'message' => __( 'Organize your menus by adding Pages, Categories, Tags, and Custom Links.', 'woostrap' ),
 				'section' => 'nav_menus',
 			);
 
 			$steps[] = array(
-				'title'   => __( 'Choose your accent color', 'storefront' ),
-				'message' => __( 'In the typography panel you can specify an accent color which will be applied to things like links and star ratings. We recommend using your brand color for this setting.', 'storefront' ),
+				'title'   => __( 'Choose your accent color', 'woostrap' ),
+				'message' => __( 'In the typography panel you can specify an accent color which will be applied to things like links and star ratings. We recommend using your brand color for this setting.', 'woostrap' ),
 				'section' => 'storefront_typography',
 			);
 
 			$steps[] = array(
-				'title'   => __( 'Color your buttons', 'storefront' ),
-				'message' => __( 'Choose colors for your button backgrounds and text. Once again, brand colors are good choices here.', 'storefront' ),
+				'title'   => __( 'Color your buttons', 'woostrap' ),
+				'message' => __( 'Choose colors for your button backgrounds and text. Once again, brand colors are good choices here.', 'woostrap' ),
 				'section' => 'storefront_buttons',
 			);
 
 			$steps[] = array(
 				'title'       => '',
 				/* translators: 1: open <strong> tag, 2: close <strong> tag, 3: 'End Of Line' symbol */
-				'message'     => sprintf( __( 'All set! Remember to %1$ssave & publish%2$s your changes when you\'re done.%3$sYou can return to your dashboard by clicking the X in the top left corner.', 'storefront' ), '<strong>', '</strong>', PHP_EOL . PHP_EOL ),
+				'message'     => sprintf( __( 'All set! Remember to %1$ssave & publish%2$s your changes when you\'re done.%3$sYou can return to your dashboard by clicking the X in the top left corner.', 'woostrap' ), '<strong>', '</strong>', PHP_EOL . PHP_EOL ),
 				'section'     => '#customize-header-actions .save',
-				'button_text' => __( 'Done', 'storefront' ),
+				'button_text' => __( 'Done', 'woostrap' ),
 			);
 
 			return $steps;

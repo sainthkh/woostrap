@@ -42,10 +42,10 @@ if ( ! function_exists( 'storefront_comment' ) ) {
 		<div class="comment-meta commentmetadata">
 			<div class="comment-author vcard">
 			<?php echo get_avatar( $comment, 128 ); ?>
-			<?php printf( wp_kses_post( '<cite class="fn">%s</cite>', 'storefront' ), get_comment_author_link() ); ?>
+			<?php printf( wp_kses_post( '<cite class="fn">%s</cite>', 'woostrap' ), get_comment_author_link() ); ?>
 			</div>
 			<?php if ( '0' === $comment->comment_approved ) : ?>
-				<em class="comment-awaiting-moderation"><?php esc_attr_e( 'Your comment is awaiting moderation.', 'storefront' ); ?></em>
+				<em class="comment-awaiting-moderation"><?php esc_attr_e( 'Your comment is awaiting moderation.', 'woostrap' ); ?></em>
 				<br />
 			<?php endif; ?>
 
@@ -72,7 +72,7 @@ if ( ! function_exists( 'storefront_comment' ) ) {
 			)
 		);
 		?>
-		<?php edit_comment_link( __( 'Edit', 'storefront' ), '  ', '' ); ?>
+		<?php edit_comment_link( __( 'Edit', 'woostrap' ), '  ', '' ); ?>
 		</div>
 		</div>
 		<?php if ( 'div' !== $args['style'] ) : ?>
@@ -139,9 +139,9 @@ if ( ! function_exists( 'storefront_credit' ) ) {
 
 		if ( apply_filters( 'storefront_credit_link', true ) ) {
 			if ( storefront_is_woocommerce_activated() ) {
-				$links_output .= '<a href="https://woocommerce.com" target="_blank" title="' . esc_attr__( 'WooCommerce - The Best eCommerce Platform for WordPress', 'storefront' ) . '" rel="noreferrer">' . esc_html__( 'Built with Storefront &amp; WooCommerce', 'storefront' ) . '</a>.';
+				$links_output .= '<a href="https://woocommerce.com" target="_blank" title="' . esc_attr__( 'WooCommerce - The Best eCommerce Platform for WordPress', 'woostrap' ) . '" rel="noreferrer">' . esc_html__( 'Built with Storefront &amp; WooCommerce', 'woostrap' ) . '</a>.';
 			} else {
-				$links_output .= '<a href="https://woocommerce.com/storefront/" target="_blank" title="' . esc_attr__( 'Storefront -  The perfect platform for your next WooCommerce project.', 'storefront' ) . '" rel="noreferrer">' . esc_html__( 'Built with Storefront', 'storefront' ) . '</a>.';
+				$links_output .= '<a href="https://woocommerce.com/storefront/" target="_blank" title="' . esc_attr__( 'Storefront -  The perfect platform for your next WooCommerce project.', 'woostrap' ) . '" rel="noreferrer">' . esc_html__( 'Built with Storefront', 'woostrap' ) . '</a>.';
 			}
 		}
 
@@ -238,8 +238,8 @@ if ( ! function_exists( 'storefront_primary_navigation' ) ) {
 	 */
 	function storefront_primary_navigation() {
 		?>
-		<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'storefront' ); ?>">
-		<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span><?php echo esc_attr( apply_filters( 'storefront_menu_toggle_text', __( 'Menu', 'storefront' ) ) ); ?></span></button>
+		<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'woostrap' ); ?>">
+		<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span><?php echo esc_attr( apply_filters( 'storefront_menu_toggle_text', __( 'Menu', 'woostrap' ) ) ); ?></span></button>
 			<?php
 			wp_nav_menu(
 				array(
@@ -270,7 +270,7 @@ if ( ! function_exists( 'storefront_secondary_navigation' ) ) {
 	function storefront_secondary_navigation() {
 		if ( has_nav_menu( 'secondary' ) ) {
 			?>
-			<nav class="secondary-navigation" role="navigation" aria-label="<?php esc_html_e( 'Secondary Navigation', 'storefront' ); ?>">
+			<nav class="secondary-navigation" role="navigation" aria-label="<?php esc_html_e( 'Secondary Navigation', 'woostrap' ); ?>">
 				<?php
 					wp_nav_menu(
 						array(
@@ -294,8 +294,8 @@ if ( ! function_exists( 'storefront_skip_links' ) ) {
 	 */
 	function storefront_skip_links() {
 		?>
-		<a class="skip-link screen-reader-text" href="#site-navigation"><?php esc_attr_e( 'Skip to navigation', 'storefront' ); ?></a>
-		<a class="skip-link screen-reader-text" href="#content"><?php esc_attr_e( 'Skip to content', 'storefront' ); ?></a>
+		<a class="skip-link screen-reader-text" href="#site-navigation"><?php esc_attr_e( 'Skip to navigation', 'woostrap' ); ?></a>
+		<a class="skip-link screen-reader-text" href="#content"><?php esc_attr_e( 'Skip to content', 'woostrap' ); ?></a>
 		<?php
 	}
 }
@@ -307,7 +307,7 @@ if ( ! function_exists( 'storefront_homepage_header' ) ) {
 	 * @since 1.0.0
 	 */
 	function storefront_homepage_header() {
-		edit_post_link( __( 'Edit this section', 'storefront' ), '', '', '', 'button storefront-hero__button-edit' );
+		edit_post_link( __( 'Edit this section', 'woostrap' ), '', '', '', 'button storefront-hero__button-edit' );
 		?>
 		<header class="entry-header">
 			<?php
@@ -353,7 +353,7 @@ if ( ! function_exists( 'storefront_page_content' ) ) {
 			<?php
 				wp_link_pages(
 					array(
-						'before' => '<div class="page-links">' . __( 'Pages:', 'storefront' ),
+						'before' => '<div class="page-links">' . __( 'Pages:', 'woostrap' ),
 						'after'  => '</div>',
 					)
 				);
@@ -415,7 +415,7 @@ if ( ! function_exists( 'storefront_post_content' ) ) {
 		the_content(
 			sprintf(
 				/* translators: %s: post title */
-				__( 'Continue reading %s', 'storefront' ),
+				__( 'Continue reading %s', 'woostrap' ),
 				'<span class="screen-reader-text">' . get_the_title() . '</span>'
 			)
 		);
@@ -424,7 +424,7 @@ if ( ! function_exists( 'storefront_post_content' ) ) {
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'storefront' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'woostrap' ),
 				'after'  => '</div>',
 			)
 		);
@@ -465,13 +465,13 @@ if ( ! function_exists( 'storefront_post_meta' ) ) {
 		$posted_on = '
 			<span class="posted-on">' .
 			/* translators: %s: post date */
-			sprintf( __( 'Posted on %s', 'storefront' ), $output_time_string ) .
+			sprintf( __( 'Posted on %s', 'woostrap' ), $output_time_string ) .
 			'</span>';
 
 		// Author.
 		$author = sprintf(
 			'<span class="post-author">%1$s <a href="%2$s" class="url fn" rel="author">%3$s</a></span>',
-			__( 'by', 'storefront' ),
+			__( 'by', 'woostrap' ),
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 			esc_html( get_the_author() )
 		);
@@ -480,7 +480,7 @@ if ( ! function_exists( 'storefront_post_meta' ) ) {
 		$comments = '';
 
 		if ( ! post_password_required() && ( comments_open() || 0 !== intval( get_comments_number() ) ) ) {
-			$comments_number = get_comments_number_text( __( 'Leave a comment', 'storefront' ), __( '1 Comment', 'storefront' ), __( '% Comments', 'storefront' ) );
+			$comments_number = get_comments_number_text( __( 'Leave a comment', 'woostrap' ), __( '1 Comment', 'woostrap' ), __( '% Comments', 'woostrap' ) );
 
 			$comments = sprintf(
 				'<span class="post-comments">&mdash; <a href="%1$s">%2$s</a></span>',
@@ -520,7 +520,7 @@ if ( ! function_exists( 'storefront_edit_post_link' ) ) {
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'storefront' ),
+					__( 'Edit <span class="screen-reader-text">%s</span>', 'woostrap' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -543,22 +543,22 @@ if ( ! function_exists( 'storefront_post_taxonomy' ) ) {
 	 */
 	function storefront_post_taxonomy() {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( __( ', ', 'storefront' ) );
+		$categories_list = get_the_category_list( __( ', ', 'woostrap' ) );
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', __( ', ', 'storefront' ) );
+		$tags_list = get_the_tag_list( '', __( ', ', 'woostrap' ) );
 		?>
 
 		<aside class="entry-taxonomy">
 			<?php if ( $categories_list ) : ?>
 			<div class="cat-links">
-				<?php echo esc_html( _n( 'Category:', 'Categories:', count( get_the_category() ), 'storefront' ) ); ?> <?php echo wp_kses_post( $categories_list ); ?>
+				<?php echo esc_html( _n( 'Category:', 'Categories:', count( get_the_category() ), 'woostrap' ) ); ?> <?php echo wp_kses_post( $categories_list ); ?>
 			</div>
 			<?php endif; ?>
 
 			<?php if ( $tags_list ) : ?>
 			<div class="tags-links">
-				<?php echo esc_html( _n( 'Tag:', 'Tags:', count( get_the_tags() ), 'storefront' ) ); ?> <?php echo wp_kses_post( $tags_list ); ?>
+				<?php echo esc_html( _n( 'Tag:', 'Tags:', count( get_the_tags() ), 'woostrap' ) ); ?> <?php echo wp_kses_post( $tags_list ); ?>
 			</div>
 			<?php endif; ?>
 		</aside>
@@ -576,8 +576,8 @@ if ( ! function_exists( 'storefront_paging_nav' ) ) {
 
 		$args = array(
 			'type'      => 'list',
-			'next_text' => _x( 'Next', 'Next post', 'storefront' ),
-			'prev_text' => _x( 'Previous', 'Previous post', 'storefront' ),
+			'next_text' => _x( 'Next', 'Next post', 'woostrap' ),
+			'prev_text' => _x( 'Previous', 'Previous post', 'woostrap' ),
 		);
 
 		the_posts_pagination( $args );
@@ -590,8 +590,8 @@ if ( ! function_exists( 'storefront_post_nav' ) ) {
 	 */
 	function storefront_post_nav() {
 		$args = array(
-			'next_text' => '<span class="screen-reader-text">' . esc_html__( 'Next post:', 'storefront' ) . ' </span>%title',
-			'prev_text' => '<span class="screen-reader-text">' . esc_html__( 'Previous post:', 'storefront' ) . ' </span>%title',
+			'next_text' => '<span class="screen-reader-text">' . esc_html__( 'Next post:', 'woostrap' ) . ' </span>%title',
+			'prev_text' => '<span class="screen-reader-text">' . esc_html__( 'Previous post:', 'woostrap' ) . ' </span>%title',
 		);
 		the_post_navigation( $args );
 	}

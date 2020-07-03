@@ -57,7 +57,7 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 			$wp_customize->add_section(
 				'storefront_single_product_page',
 				array(
-					'title'    => __( 'Product Page', 'storefront' ),
+					'title'    => __( 'Product Page', 'woostrap' ),
 					'priority' => 10,
 					'panel'    => 'woocommerce',
 				)
@@ -84,8 +84,8 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 				array(
 					'type'        => 'checkbox',
 					'section'     => 'storefront_single_product_page',
-					'label'       => __( 'Sticky Add-To-Cart', 'storefront' ),
-					'description' => __( 'A small content bar at the top of the browser window which includes relevant product information and an add-to-cart button. It slides into view once the standard add-to-cart button has scrolled out of view.', 'storefront' ),
+					'label'       => __( 'Sticky Add-To-Cart', 'woostrap' ),
+					'description' => __( 'A small content bar at the top of the browser window which includes relevant product information and an add-to-cart button. It slides into view once the standard add-to-cart button has scrolled out of view.', 'woostrap' ),
 					'priority'    => 10,
 				)
 			);
@@ -95,8 +95,8 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 				array(
 					'type'        => 'checkbox',
 					'section'     => 'storefront_single_product_page',
-					'label'       => __( 'Product Pagination', 'storefront' ),
-					'description' => __( 'Displays next and previous links on product pages. A product thumbnail is displayed with the title revealed on hover.', 'storefront' ),
+					'label'       => __( 'Product Pagination', 'woostrap' ),
+					'description' => __( 'Displays next and previous links on product pages. A product thumbnail is displayed with the title revealed on hover.', 'woostrap' ),
 					'priority'    => 20,
 				)
 			);

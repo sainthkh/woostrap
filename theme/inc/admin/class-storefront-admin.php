@@ -69,9 +69,9 @@ if ( ! class_exists( 'Storefront_Admin' ) ) :
 				<section class="storefront-welcome-nav">
 					<span class="storefront-welcome-nav__version">Storefront <?php echo esc_attr( $storefront_version ); ?></span>
 					<ul>
-						<li><a href="https://wordpress.org/support/theme/storefront" target="_blank"><?php esc_attr_e( 'Support', 'storefront' ); ?></a></li>
-						<li><a href="https://docs.woocommerce.com/documentation/themes/storefront/" target="_blank"><?php esc_attr_e( 'Documentation', 'storefront' ); ?></a></li>
-						<li><a href="https://woocommerce.wordpress.com/category/storefront/" target="_blank"><?php esc_attr_e( 'Development blog', 'storefront' ); ?></a></li>
+						<li><a href="https://wordpress.org/support/theme/storefront" target="_blank"><?php esc_attr_e( 'Support', 'woostrap' ); ?></a></li>
+						<li><a href="https://docs.woocommerce.com/documentation/themes/storefront/" target="_blank"><?php esc_attr_e( 'Documentation', 'woostrap' ); ?></a></li>
+						<li><a href="https://woocommerce.wordpress.com/category/storefront/" target="_blank"><?php esc_attr_e( 'Development blog', 'woostrap' ); ?></a></li>
 					</ul>
 				</section>
 
@@ -88,52 +88,52 @@ if ( ! class_exists( 'Storefront_Admin' ) ) :
 
 					if ( strpos( $referrer, 'sf_starter_content' ) !== false ) {
 						/* translators: 1: HTML, 2: HTML */
-						echo '<h1>' . sprintf( esc_attr__( 'Setup complete %1$sYour Storefront adventure begins now 🚀%2$s ', 'storefront' ), '<span>', '</span>' ) . '</h1>';
-						echo '<p>' . esc_attr__( 'One more thing... You might be interested in the following Storefront extensions and designs.', 'storefront' ) . '</p>';
+						echo '<h1>' . sprintf( esc_attr__( 'Setup complete %1$sYour Storefront adventure begins now 🚀%2$s ', 'woostrap' ), '<span>', '</span>' ) . '</h1>';
+						echo '<p>' . esc_attr__( 'One more thing... You might be interested in the following Storefront extensions and designs.', 'woostrap' ) . '</p>';
 					} else {
-						echo '<p>' . esc_attr__( 'Hello! You might be interested in the following Storefront extensions and designs.', 'storefront' ) . '</p>';
+						echo '<p>' . esc_attr__( 'Hello! You might be interested in the following Storefront extensions and designs.', 'woostrap' ) . '</p>';
 					}
 					?>
 				</div>
 
 				<div class="storefront-enhance">
 					<div class="storefront-enhance__column storefront-bundle">
-						<h3><?php esc_attr_e( 'Storefront Extensions Bundle', 'storefront' ); ?></h3>
+						<h3><?php esc_attr_e( 'Storefront Extensions Bundle', 'woostrap' ); ?></h3>
 						<span class="bundle-image">
 							<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/admin/welcome-screen/storefront-bundle-hero.png" alt="Storefront Extensions Hero" />
 						</span>
 
 						<p>
-							<?php esc_attr_e( 'All the tools you\'ll need to define your style and customize Storefront.', 'storefront' ); ?>
+							<?php esc_attr_e( 'All the tools you\'ll need to define your style and customize Storefront.', 'woostrap' ); ?>
 						</p>
 
 						<p>
-							<?php esc_attr_e( 'Make it yours without touching code with the Storefront Extensions bundle. Express yourself, optimize conversions, delight customers.', 'storefront' ); ?>
+							<?php esc_attr_e( 'Make it yours without touching code with the Storefront Extensions bundle. Express yourself, optimize conversions, delight customers.', 'woostrap' ); ?>
 						</p>
 
 
 						<p>
-							<a href="https://woocommerce.com/products/storefront-extensions-bundle/?utm_source=storefront&utm_medium=product&utm_campaign=storefrontaddons" class="storefront-button" target="_blank"><?php esc_attr_e( 'Read more and purchase', 'storefront' ); ?></a>
+							<a href="https://woocommerce.com/products/storefront-extensions-bundle/?utm_source=storefront&utm_medium=product&utm_campaign=storefrontaddons" class="storefront-button" target="_blank"><?php esc_attr_e( 'Read more and purchase', 'woostrap' ); ?></a>
 						</p>
 					</div>
 					<div class="storefront-enhance__column storefront-child-themes">
-						<h3><?php esc_attr_e( 'Alternate designs', 'storefront' ); ?></h3>
+						<h3><?php esc_attr_e( 'Alternate designs', 'woostrap' ); ?></h3>
 						<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/admin/welcome-screen/child-themes.jpg" alt="Storefront Powerpack" />
 
 						<p>
-							<?php esc_attr_e( 'Quickly and easily transform your shops appearance with Storefront child themes.', 'storefront' ); ?>
+							<?php esc_attr_e( 'Quickly and easily transform your shops appearance with Storefront child themes.', 'woostrap' ); ?>
 						</p>
 
 						<p>
-							<?php esc_attr_e( 'Each has been designed to serve a different industry - from fashion to food.', 'storefront' ); ?>
+							<?php esc_attr_e( 'Each has been designed to serve a different industry - from fashion to food.', 'woostrap' ); ?>
 						</p>
 
 						<p>
-							<?php esc_attr_e( 'Of course they are all fully compatible with each Storefront extension.', 'storefront' ); ?>
+							<?php esc_attr_e( 'Of course they are all fully compatible with each Storefront extension.', 'woostrap' ); ?>
 						</p>
 
 						<p>
-							<a href="https://woocommerce.com/product-category/themes/storefront-child-theme-themes/?utm_source=storefront&utm_medium=product&utm_campaign=storefrontaddons" class="storefront-button" target="_blank"><?php esc_attr_e( 'Check \'em out', 'storefront' ); ?></a>
+							<a href="https://woocommerce.com/product-category/themes/storefront-child-theme-themes/?utm_source=storefront&utm_medium=product&utm_campaign=storefrontaddons" class="storefront-button" target="_blank"><?php esc_attr_e( 'Check \'em out', 'woostrap' ); ?></a>
 						</p>
 					</div>
 				</div>
@@ -142,7 +142,7 @@ if ( ! class_exists( 'Storefront_Admin' ) ) :
 					<p>
 					<?php
 						/* translators: %s: Automattic branding */
-						printf( esc_html__( 'An %s project', 'storefront' ), '<a href="https://automattic.com/"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/admin/welcome-screen/automattic.png" alt="Automattic" /></a>' );
+						printf( esc_html__( 'An %s project', 'woostrap' ), '<a href="https://automattic.com/"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/admin/welcome-screen/automattic.png" alt="Automattic" /></a>' );
 					?>
 					</p>
 				</div>
@@ -171,7 +171,7 @@ if ( ! class_exists( 'Storefront_Admin' ) ) :
 				if ( is_plugin_active( $plugin_slug . '/' . $plugin_file ) ) {
 					// The plugin is already active.
 					$button = array(
-						'message' => esc_attr__( 'Activated', 'storefront' ),
+						'message' => esc_attr__( 'Activated', 'woostrap' ),
 						'url'     => '#',
 						'classes' => 'disabled',
 					);
@@ -180,7 +180,7 @@ if ( ! class_exists( 'Storefront_Admin' ) ) :
 
 					// The plugin exists but isn't activated yet.
 					$button = array(
-						'message' => esc_attr__( 'Activate', 'storefront' ),
+						'message' => esc_attr__( 'Activate', 'woostrap' ),
 						'url'     => $url,
 						'classes' => 'activate-now',
 					);
@@ -197,14 +197,14 @@ if ( ! class_exists( 'Storefront_Admin' ) ) :
 						'install-plugin_' . $plugin_slug
 					);
 					$button = array(
-						'message' => esc_attr__( 'Install now', 'storefront' ),
+						'message' => esc_attr__( 'Install now', 'woostrap' ),
 						'url'     => $url,
 						'classes' => ' install-now install-' . $plugin_slug,
 					);
 				}
 				?>
 				<a href="<?php echo esc_url( $button['url'] ); ?>" class="storefront-button <?php echo esc_attr( $button['classes'] ); ?>" data-originaltext="<?php echo esc_attr( $button['message'] ); ?>" data-slug="<?php echo esc_attr( $plugin_slug ); ?>" aria-label="<?php echo esc_attr( $button['message'] ); ?>"><?php echo esc_attr( $button['message'] ); ?></a>
-				<a href="https://wordpress.org/plugins/<?php echo esc_attr( $plugin_slug ); ?>" target="_blank"><?php esc_attr_e( 'Learn more', 'storefront' ); ?></a>
+				<a href="https://wordpress.org/plugins/<?php echo esc_attr( $plugin_slug ); ?>" target="_blank"><?php esc_attr_e( 'Learn more', 'woostrap' ); ?></a>
 				<?php
 			}
 		}
