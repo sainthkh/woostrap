@@ -63,7 +63,8 @@ if ( ! function_exists( 'storefront_comment' ) ) {
 		<?php
 		comment_reply_link(
 			array_merge(
-				$args, array(
+				$args,
+				array(
 					'add_below' => $add_below,
 					'depth'     => $depth,
 					'max_depth' => $args['max_depth'],
@@ -145,7 +146,7 @@ if ( ! function_exists( 'storefront_credit' ) ) {
 		}
 
 		if ( apply_filters( 'storefront_privacy_policy_link', true ) && function_exists( 'the_privacy_policy_link' ) ) {
-			$separator = '<span role="separator" aria-hidden="true"></span>';
+			$separator    = '<span role="separator" aria-hidden="true"></span>';
 			$links_output = get_the_privacy_policy_link( '', ( ! empty( $links_output ) ? $separator : '' ) ) . $links_output;
 		}
 		
@@ -489,7 +490,8 @@ if ( ! function_exists( 'storefront_post_meta' ) ) {
 		}
 
 		echo wp_kses(
-			sprintf( '%1$s %2$s %3$s', $posted_on, $author, $comments ), array(
+			sprintf( '%1$s %2$s %3$s', $posted_on, $author, $comments ),
+			array(
 				'span' => array(
 					'class' => array(),
 				),
