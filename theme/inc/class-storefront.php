@@ -337,7 +337,7 @@ if ( ! class_exists( 'Storefront' ) ) :
 			/**
 			 * Fonts
 			 */
-			wp_enqueue_style( 'storefront-fonts', $this->google_fonts(), array(), $storefront->version );
+			wp_enqueue_style( 'storefront-fonts', $this->google_fonts(), array(), $storefront_version );
 
 			/**
 			 * Scripts
