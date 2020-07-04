@@ -47,6 +47,23 @@ jobs:
           theme/asset/front.js
         key: ${{ runner.os }}-${{ matrix.node-version }}-${{ github.sha }}
 
+  e2e:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    needs: build
+    steps:
+    - uses: actions/checkout@v2
+    - name: Restore node_modules
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
+    - run: npm run test-e2e:headless
+
   lint:
     runs-on: ubuntu-latest
 
