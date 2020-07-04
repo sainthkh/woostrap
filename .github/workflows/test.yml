@@ -24,6 +24,11 @@ jobs:
       with:
         path: node_modules
         key: ${{ runner.os }}-${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
+    - name: Cache browsers
+      uses: actions/cache@v2
+      with:
+        path: /home/runner/.cache/ms-playwright/
+        key: ${{ runner.os }}-${{ matrix.node-version }}-browsers-${{ hashFiles('package-lock.json') }}
     - run: npm i
       if: steps.npm-cache.outputs.cache-hit != 'true'
     
@@ -62,6 +67,11 @@ jobs:
       with:
         path: node_modules
         key: ${{ runner.os }}-${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
+    - name: Restore browsers
+        uses: actions/cache@v2
+        with:
+          path: /home/runner/.cache/ms-playwright/
+          key: ${{ runner.os }}-${{ matrix.node-version }}-browsers-${{ hashFiles('package-lock.json') }}
     - run: npm run test-e2e:headless
 
   lint:
