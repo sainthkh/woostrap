@@ -18,6 +18,7 @@ module.exports = {
 		ajaxurl: 'readonly',
 		wp: 'readonly',
 		_: 'readonly', // underscorejs
+		page: 'readonly',
 	},
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
