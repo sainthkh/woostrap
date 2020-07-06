@@ -23,9 +23,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-e2e": "jest --config e2e.config.js",
     "test-e2e:headless": "cross-env HEADLESS=true npm run test-e2e",
-    "test-e2e:reset": "npx wp-env run tests-cli wp db reset",
+    "test-e2e:reset": "npx wp-env run tests-cli \"wp db reset --yes\"",
     "test-e2e:setup": "npx wp-env run tests-cli bash wp-content/plugins/data/tests/script.sh",
-    "test-e2e:install": "wp-env run tests-cli wp plugin install woocommerce --activate --force",
+    "test-e2e:install": "wp-env run tests-cli \"wp plugin install woocommerce --activate --force\"",
     "wp-env": "npx wp-env"
   },
   "repository": {

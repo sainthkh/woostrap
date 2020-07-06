@@ -72,10 +72,12 @@ jobs:
       with:
         path: /home/runner/.cache/ms-playwright/
         key: ${{ runner.os }}-${{ matrix.node-version }}-browsers-${{ hashFiles('package-lock.json') }}
-    - name: Install Plugins
-      run: npm run test-e2e:install
+    - name: Reset database
+      run: npm run test-e2e:reset
     - name: Set up database and files
       run: npm run test-e2e:setup
+    - name: Install Plugins
+      run: npm run test-e2e:install
     - run: npm run test-e2e:headless
 
   lint:
