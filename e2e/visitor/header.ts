@@ -51,11 +51,7 @@ describe( 'search', () => {
 } );
 
 const removeCartItems = async () => {
-	const buttons = await page.$$( '.remove_from_cart_button' );
-
-	await buttons.forEach( async ( button ) => {
-		await button.click( { force: true } );
-	} );
+	await page.goto( 'http://localhost:8889/?clear-cart' );
 };
 
 const getPriceAmount = async () => {
