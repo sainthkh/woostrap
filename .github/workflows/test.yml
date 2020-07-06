@@ -67,11 +67,23 @@ jobs:
       with:
         path: node_modules
         key: ${{ runner.os }}-${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
+    - name: Restore vendor
+      uses: actions/cache@v2
+      with: 
+        path: vendor
+        key: ${{ runner.os }}-${{ matrix.node-version }}-composer-${{ hashFiles('composer.lock') }}
     - name: Restore browsers
       uses: actions/cache@v2
       with:
         path: /home/runner/.cache/ms-playwright/
         key: ${{ runner.os }}-${{ matrix.node-version }}-browsers-${{ hashFiles('package-lock.json') }}
+    - name: Restore built assets
+      uses: actions/cache@v2
+      with:
+        path: |
+          theme/style.css
+          theme/asset/front.js
+        key: ${{ runner.os }}-${{ matrix.node-version }}-${{ github.sha }}
     - name: Start server
       run: npx wp-env start
     - name: Reset database
