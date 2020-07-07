@@ -1,0 +1,12 @@
+{
+  "name": "@woostrap/e2e-tests",
+  "version": "1.0.0",
+  "description": "e2e tests for WooStrap theme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified. Use project root command instead.\" && exit 1"
+  },
+  "keywords": [],
+  "author": "sainthkh",
+  "license": "ISC"
+}

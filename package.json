@@ -19,12 +19,12 @@
     "lint:php:wpcs:fix": "npm run wp-env run composer run-script lint:wpcs:fix",
     "lint:php:parallel": "npm run wp-env run composer run-script lint:php",
     "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map",
-    "setup:data": "npx wp-env run cli bash wp-content/plugins/data/env/script.sh",
+    "setup:data": "npx wp-env run cli bash wp-content/plugins/test-data/env/script.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-e2e": "jest --config e2e.config.js",
     "test-e2e:headless": "cross-env HEADLESS=true npm run test-e2e",
     "test-e2e:reset": "npx wp-env run tests-cli \"wp db reset --yes\"",
-    "test-e2e:setup": "npx wp-env run tests-cli bash wp-content/plugins/data/tests/script.sh",
+    "test-e2e:setup": "npx wp-env run tests-cli bash wp-content/plugins/test-data/tests/script.sh",
     "test-e2e:install": "wp-env run tests-cli \"wp plugin install woocommerce --activate --force\"",
     "wp-env": "npx wp-env"
   },
@@ -53,6 +53,8 @@
     "map": false
   },
   "dependencies": {
+    "@woostrap/playwright-utils": "file:packages/playwright-utils",
+    "@woostrap/test-data": "file:packages/test-data",
     "jquery": "3.5.1",
     "popper.js": "1.16.1"
   },
@@ -70,6 +72,7 @@
     "eslint-plugin-react": "^7.20.0",
     "expect-playwright": "0.2.4",
     "fs-extra": "9.0.1",
+    "lerna": "3.22.1",
     "jest": "26.1.0",
     "jest-playwright-preset": "1.2.1",
     "node-sass": "^4.14.0",

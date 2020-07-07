@@ -3,7 +3,7 @@
     "./theme"
   ],
   "plugins": [
-    "./data",
-    "./woo-playwright-utils"
+    "./packages/test-data",
+    "./packages/playwright-utils"
   ]
 }
