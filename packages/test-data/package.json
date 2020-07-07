@@ -1,0 +1,14 @@
+{
+  "name": "test-data",
+  "version": "1.0.0",
+  "description": "Test data for WooStrap theme",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

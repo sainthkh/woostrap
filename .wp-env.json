@@ -4,6 +4,6 @@
   ],
   "plugins": [
     "./packages/test-data",
-    "./packages/woo-playwright-utils"
+    "./packages/playwright-utils"
   ]
 }
