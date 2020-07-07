@@ -34,5 +34,5 @@ build/
 debug_plugins/
 
 # include data.sql file.
-!/data/env/data.sql
-!/data/tests/data.sql
+!/packages/test-data/env/data.sql
+!/packages/test-data/tests/data.sql
