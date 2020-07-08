@@ -2,7 +2,7 @@
 /**
  * Template used to display post content on single pages.
  *
- * @package storefront
+ * @package woostrap
  */
 
 ?>

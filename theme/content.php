@@ -2,7 +2,7 @@
 /**
  * Template used to display post content.
  *
- * @package storefront
+ * @package woostrap
  */
 
 ?>

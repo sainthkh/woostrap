@@ -2,7 +2,7 @@
 /**
  * Storefront functions.
  *
- * @package storefront
+ * @package woostrap
  */
 
 if ( ! function_exists( 'storefront_is_woocommerce_activated' ) ) {

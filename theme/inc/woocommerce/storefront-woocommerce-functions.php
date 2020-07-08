@@ -2,7 +2,7 @@
 /**
  * Storefront WooCommerce functions.
  *
- * @package storefront
+ * @package woostrap
  */
 
 /**

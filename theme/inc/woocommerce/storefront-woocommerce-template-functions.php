@@ -2,7 +2,7 @@
 /**
  * WooCommerce Template Functions.
  *
- * @package storefront
+ * @package woostrap
  */
 
 if ( ! function_exists( 'storefront_before_content' ) ) {

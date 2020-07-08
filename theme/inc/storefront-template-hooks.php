@@ -2,7 +2,7 @@
 /**
  * Storefront hooks
  *
- * @package storefront
+ * @package woostrap
  */
 
 /**

@@ -9,7 +9,7 @@
  *
  * Template name: Homepage
  *
- * @package storefront
+ * @package woostrap
  */
 
 get_header(); ?>

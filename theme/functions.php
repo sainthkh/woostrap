@@ -2,7 +2,7 @@
 /**
  * Storefront engine room
  *
- * @package storefront
+ * @package woostrap
  */
 
 /**

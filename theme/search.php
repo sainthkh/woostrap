@@ -2,7 +2,7 @@
 /**
  * The template for displaying search results pages.
  *
- * @package storefront
+ * @package woostrap
  */
 
 get_header(); ?>
