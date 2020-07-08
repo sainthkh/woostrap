@@ -51,7 +51,7 @@ if ( ! function_exists( 'storefront_cart_link_fragment' ) ) {
 		global $woocommerce;
 
 		ob_start();
-		storefront_cart_link();
+		woostrap_site_cart_link();
 		$fragments['a.cart-contents'] = ob_get_clean();
 
 		ob_start();
@@ -62,7 +62,7 @@ if ( ! function_exists( 'storefront_cart_link_fragment' ) ) {
 	}
 }
 
-if ( ! function_exists( 'storefront_cart_link' ) ) {
+if ( ! function_exists( 'woostrap_site_cart_link' ) ) {
 	/**
 	 * Cart Link
 	 * Displayed a link to the cart including the number of items present and the cart total
@@ -70,7 +70,7 @@ if ( ! function_exists( 'storefront_cart_link' ) ) {
 	 * @return void
 	 * @since  1.0.0
 	 */
-	function storefront_cart_link() {
+	function woostrap_site_cart_link() {
 		?>
 			<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'woostrap' ); ?>">
 				<?php /* translators: %d: number of items in cart */ ?>
@@ -117,7 +117,7 @@ if ( ! function_exists( 'storefront_header_cart' ) ) {
 			?>
 		<ul id="site-header-cart" class="site-header-cart menu">
 			<li class="<?php echo esc_attr( $class ); ?>">
-				<?php storefront_cart_link(); ?>
+				<?php woostrap_site_cart_link(); ?>
 			</li>
 			<li>
 				<?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>

@@ -183,23 +183,7 @@ if ( ! function_exists( 'storefront_header_widget_region' ) ) {
 	}
 }
 
-if ( ! function_exists( 'storefront_site_branding' ) ) {
-	/**
-	 * Site branding wrapper and display
-	 *
-	 * @since  1.0.0
-	 * @return void
-	 */
-	function storefront_site_branding() {
-		?>
-		<div class="site-branding">
-			<?php storefront_site_title_or_logo(); ?>
-		</div>
-		<?php
-	}
-}
-
-if ( ! function_exists( 'storefront_site_title_or_logo' ) ) {
+if ( ! function_exists( 'woostrap_site_title_or_logo' ) ) {
 	/**
 	 * Display the site title or logo
 	 *
@@ -207,56 +191,26 @@ if ( ! function_exists( 'storefront_site_title_or_logo' ) ) {
 	 * @param bool $echo Echo the string or return it.
 	 * @return string
 	 */
-	function storefront_site_title_or_logo( $echo = true ) {
-		if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
-			$logo = get_custom_logo();
-			$html = is_home() ? '<h1 class="logo">' . $logo . '</h1>' : $logo;
+	function woostrap_site_title_or_logo() {
+		if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) { ?>
+			<?php if (is_home()): ?>
+				<h1 class="logo"><?php get_custom_logo() ?></h1>
+			<?php else:
+				get_custom_logo();
+			endif;
 		} else {
-			$tag = is_home() ? 'h1' : 'div';
+			$tag = '<'. (is_home() ? 'h1' : 'div') .' class="beta site-title">';
+			$endtag = is_home() ? '</h1>' : '</div>' ?>
 
-			$html = '<' . esc_attr( $tag ) . ' class="beta site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a></' . esc_attr( $tag ) . '>';
+			<?php echo $tag // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<a href="<?php echo esc_url( home_url( '/' ) ) ?>" rel="home"><?php echo esc_html( get_bloginfo( 'name' ) ) ?></a>
+			<?php echo $endtag // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
-			if ( '' !== get_bloginfo( 'description' ) ) {
-				$html .= '<p class="site-description">' . esc_html( get_bloginfo( 'description', 'display' ) ) . '</p>';
+			<?php
+			if ( '' !== get_bloginfo( 'description' ) ) {?>
+				<p class="site-description"><?php echo esc_html( get_bloginfo( 'description', 'display' ) ) ?></p> <?php
 			}
 		}
-
-		if ( ! $echo ) {
-			return $html;
-		}
-
-		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}
-}
-
-if ( ! function_exists( 'storefront_primary_navigation' ) ) {
-	/**
-	 * Display Primary Navigation
-	 *
-	 * @since  1.0.0
-	 * @return void
-	 */
-	function storefront_primary_navigation() {
-		?>
-		<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'woostrap' ); ?>">
-		<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span><?php echo esc_attr( apply_filters( 'storefront_menu_toggle_text', __( 'Menu', 'woostrap' ) ) ); ?></span></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location'  => 'primary',
-					'container_class' => 'primary-navigation',
-				)
-			);
-
-			wp_nav_menu(
-				array(
-					'theme_location'  => 'handheld',
-					'container_class' => 'handheld-navigation',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-		<?php
 	}
 }
 
@@ -282,21 +236,6 @@ if ( ! function_exists( 'storefront_secondary_navigation' ) ) {
 			</nav><!-- #site-navigation -->
 			<?php
 		}
-	}
-}
-
-if ( ! function_exists( 'storefront_skip_links' ) ) {
-	/**
-	 * Skip links
-	 *
-	 * @since  1.4.1
-	 * @return void
-	 */
-	function storefront_skip_links() {
-		?>
-		<a class="skip-link screen-reader-text" href="#site-navigation"><?php esc_attr_e( 'Skip to navigation', 'woostrap' ); ?></a>
-		<a class="skip-link screen-reader-text" href="#content"><?php esc_attr_e( 'Skip to content', 'woostrap' ); ?></a>
-		<?php
 	}
 }
 
@@ -626,23 +565,6 @@ if ( ! function_exists( 'storefront_homepage_content' ) ) {
 	}
 }
 
-if ( ! function_exists( 'storefront_social_icons' ) ) {
-	/**
-	 * Display social icons
-	 * If the subscribe and connect plugin is active, display the icons.
-	 *
-	 * @link http://wordpress.org/plugins/subscribe-and-connect/
-	 * @since 1.0.0
-	 */
-	function storefront_social_icons() {
-		if ( class_exists( 'Subscribe_And_Connect' ) ) {
-			echo '<div class="subscribe-and-connect-connect">';
-			subscribe_and_connect_connect();
-			echo '</div>';
-		}
-	}
-}
-
 if ( ! function_exists( 'storefront_get_sidebar' ) ) {
 	/**
 	 * Display storefront sidebar
@@ -669,41 +591,5 @@ if ( ! function_exists( 'storefront_post_thumbnail' ) ) {
 		if ( has_post_thumbnail() ) {
 			the_post_thumbnail( $size );
 		}
-	}
-}
-
-if ( ! function_exists( 'storefront_primary_navigation_wrapper' ) ) {
-	/**
-	 * The primary navigation wrapper
-	 */
-	function storefront_primary_navigation_wrapper() {
-		echo '<div class="storefront-primary-navigation"><div class="col-full">';
-	}
-}
-
-if ( ! function_exists( 'storefront_primary_navigation_wrapper_close' ) ) {
-	/**
-	 * The primary navigation wrapper close
-	 */
-	function storefront_primary_navigation_wrapper_close() {
-		echo '</div></div>';
-	}
-}
-
-if ( ! function_exists( 'storefront_header_container' ) ) {
-	/**
-	 * The header container
-	 */
-	function storefront_header_container() {
-		echo '<div class="col-full">';
-	}
-}
-
-if ( ! function_exists( 'storefront_header_container_close' ) ) {
-	/**
-	 * The header container close
-	 */
-	function storefront_header_container_close() {
-		echo '</div>';
 	}
 }

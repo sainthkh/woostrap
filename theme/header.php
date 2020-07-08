@@ -29,24 +29,69 @@
 
 	<header id="masthead" class="site-header" role="banner" style="<?php storefront_header_styles(); ?>">
 
-		<?php
-		/**
-		 * Functions hooked into storefront_header action
-		 *
-		 * @hooked storefront_header_container                 - 0
-		 * @hooked storefront_skip_links                       - 5
-		 * @hooked storefront_social_icons                     - 10
-		 * @hooked storefront_site_branding                    - 20
-		 * @hooked storefront_secondary_navigation             - 30
-		 * @hooked storefront_product_search                   - 40
-		 * @hooked storefront_header_container_close           - 41
-		 * @hooked storefront_primary_navigation_wrapper       - 42
-		 * @hooked storefront_primary_navigation               - 50
-		 * @hooked storefront_header_cart                      - 60
-		 * @hooked storefront_primary_navigation_wrapper_close - 68
-		 */
-		do_action( 'storefront_header' );
-		?>
+		<div class="col-full">
+			<a class="skip-link screen-reader-text" href="#site-navigation"><?php esc_attr_e( 'Skip to navigation', 'woostrap' ); ?></a>
+			<a class="skip-link screen-reader-text" href="#content"><?php esc_attr_e( 'Skip to content', 'woostrap' ); ?></a>
+			<div class="site-branding">
+				<?php woostrap_site_title_or_logo(); ?>
+			</div>
+			<?php if ( has_nav_menu( 'secondary' ) ): ?>
+			<nav class="secondary-navigation" role="navigation" aria-label="<?php esc_html_e( 'Secondary Navigation', 'woostrap' ); ?>">
+				<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'secondary',
+							'fallback_cb'    => '',
+						)
+					);
+				?>
+			</nav><!-- #site-navigation -->
+			<?php endif; ?>
+			<?php if ( storefront_is_woocommerce_activated() ): ?>
+			<div class="site-search">
+				<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
+			</div>
+			<?php endif; ?>
+		</div>
+		<div class="storefront-primary-navigation">
+			<div class="col-full">
+				<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'woostrap' ); ?>">
+					<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span><?php echo esc_attr( apply_filters( 'storefront_menu_toggle_text', __( 'Menu', 'woostrap' ) ) ); ?></span></button>
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location'  => 'primary',
+							'container_class' => 'primary-navigation',
+						)
+					);
+
+					wp_nav_menu(
+						array(
+							'theme_location'  => 'handheld',
+							'container_class' => 'handheld-navigation',
+						)
+					);
+					?>
+				</nav><!-- #site-navigation -->
+				<?php 
+				if ( storefront_is_woocommerce_activated() ) {
+					if ( is_cart() ) {
+						$class = 'current-menu-item';
+					} else {
+						$class = '';
+					}
+				}
+				?>
+				<ul id="site-header-cart" class="site-header-cart menu">
+					<li class="<?php echo esc_attr( $class ); ?>">
+						<?php woostrap_site_cart_link(); ?>
+					</li>
+					<li>
+						<?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
+					</li>
+				</ul>
+			</div>
+		</div>
 
 	</header><!-- #masthead -->
 
