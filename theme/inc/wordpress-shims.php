@@ -2,7 +2,7 @@
 /**
  * WordPress shims.
  *
- * @package storefront
+ * @package woostrap
  */
 
 if ( ! function_exists( 'wp_body_open' ) ) {

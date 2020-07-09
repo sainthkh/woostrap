@@ -4,7 +4,7 @@
  *
  * Learn more: https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package storefront
+ * @package woostrap
  */
 
 get_header(); ?>

@@ -2,7 +2,7 @@
 /**
  * Storefront template functions.
  *
- * @package storefront
+ * @package woostrap
  */
 
 if ( ! function_exists( 'storefront_display_comments' ) ) {

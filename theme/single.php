@@ -2,7 +2,7 @@
 /**
  * The template for displaying all single posts.
  *
- * @package storefront
+ * @package woostrap
  */
 
 get_header(); ?>
