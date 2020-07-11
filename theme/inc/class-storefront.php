@@ -34,6 +34,7 @@ if ( ! class_exists( 'Storefront' ) ) :
 			add_filter( 'navigation_markup_template', array( $this, 'navigation_markup_template' ) );
 			add_action( 'enqueue_embed_scripts', array( $this, 'print_embed_styles' ) );
 			add_filter( 'block_editor_settings', array( $this, 'custom_editor_settings' ), 10, 2 );
+			add_action( 'wp_body_open', array( $this, 'skip_link' ), 0 ); // As soon as possible.
 		}
 
 		/**
@@ -570,6 +571,12 @@ if ( ! class_exists( 'Storefront' ) ) :
 					background-color: #60646c;
 				}
 			</style>
+			<?php
+		}
+
+		public function skip_link() {?>
+			<a class="skip-link screen-reader-text" href="#site-navigation"><?php esc_attr_e( 'Skip to navigation', 'woostrap' ); ?></a>
+			<a class="skip-link screen-reader-text" href="#content"><?php esc_attr_e( 'Skip to content', 'woostrap' ); ?></a>
 			<?php
 		}
 	}

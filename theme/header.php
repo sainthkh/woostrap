@@ -4,6 +4,8 @@
  *
  * Displays all of the <head> section and everything up till <div id="content">
  *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
  * @package woostrap
  */
 
@@ -12,6 +14,7 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
@@ -22,37 +25,43 @@
 
 <?php wp_body_open(); ?>
 
-<?php do_action( 'storefront_before_site' ); ?>
+<?php if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
 
-<div id="page" class="hfeed site">
-	<?php do_action( 'storefront_before_header' ); ?>
-
-	<header id="masthead" class="site-header" role="banner" style="<?php storefront_header_styles(); ?>">
-
-		<div class="col-full">
-			<a class="skip-link screen-reader-text" href="#site-navigation"><?php esc_attr_e( 'Skip to navigation', 'woostrap' ); ?></a>
-			<a class="skip-link screen-reader-text" href="#content"><?php esc_attr_e( 'Skip to content', 'woostrap' ); ?></a>
-			<div class="site-branding">
-				<?php woostrap_site_title_or_logo(); ?>
+	<header id="masthead" class="site-header" role="banner">
+		<nav class="navbar navbar-expand-xl p-3 navbar-light bg-light">
+		<div class="container">
+			<div class="navbar-brand">
+				<?php if ( get_theme_mod( 'wp_bootstrap_starter_logo' ) ): ?>
+					<a href="<?php echo esc_url( home_url( '/' )); ?>">
+						<img src="<?php echo esc_url(get_theme_mod( 'wp_bootstrap_starter_logo' )); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+					</a>
+				<?php else : ?>
+					<a class="site-title" href="<?php echo esc_url( home_url( '/' )); ?>"><?php esc_url(bloginfo('name')); ?></a>
+				<?php endif; ?>
 			</div>
-			<?php if ( has_nav_menu( 'secondary' ) ): ?>
-			<nav class="secondary-navigation" role="navigation" aria-label="<?php esc_html_e( 'Secondary Navigation', 'woostrap' ); ?>">
-				<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'secondary',
-							'fallback_cb'    => '',
-						)
-					);
-				?>
-			</nav><!-- #site-navigation -->
-			<?php endif; ?>
-			<?php if ( storefront_is_woocommerce_activated() ): ?>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<?php
+                wp_nav_menu(array(
+                'theme_location'    => 'primary',
+                'container'       => 'div',
+                'container_id'    => 'main-nav',
+                'container_class' => 'collapse navbar-collapse justify-content-end',
+                'menu_id'         => false,
+                'menu_class'      => 'navbar-nav',
+                'depth'           => 3,
+                'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
+                'walker'          => new wp_bootstrap_navwalker()
+				));
+			?>
+			<!-- <?php if ( storefront_is_woocommerce_activated() ): ?>
 			<div class="site-search">
-				<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
+			<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
 			</div>
-			<?php endif; ?>
+			<?php endif; ?> -->
 		</div>
+		</nav>
 		<div class="storefront-primary-navigation">
 			<div class="col-full">
 				<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'woostrap' ); ?>">
@@ -86,14 +95,13 @@
 					<li class="<?php echo esc_attr( $class ); ?>">
 						<?php woostrap_site_cart_link(); ?>
 					</li>
-					<li>
-						<?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
-					</li>
 				</ul>
 			</div>
 		</div>
 
 	</header><!-- #masthead -->
+
+<?php endif; ?>
 
 	<?php
 	/**
