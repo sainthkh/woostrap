@@ -615,26 +615,9 @@ body {
  * Header
  */
 .site-header {
-  background-color: #2c2d33;
-  padding-top: 1.618em;
-  padding-bottom: 1.618em;
-  color: #9aa0a7;
   background-position: center center;
   position: relative;
-  z-index: 999;
-  border-bottom: 1px solid transparent; }
-  .site-header .site-logo-anchor,
-  .site-header .site-logo-link,
-  .site-header .custom-logo-link {
-    display: block;
-    margin-bottom: 0; }
-    .site-header .site-logo-anchor img,
-    .site-header .site-logo-link img,
-    .site-header .custom-logo-link img {
-      width: 100%;
-      max-width: 210px; }
-  .site-header .widget {
-    margin-bottom: 0; }
+  z-index: 999; }
 
 .home.blog .site-header,
 .home.page:not(.page-template-template-homepage) .site-header,
@@ -1724,9 +1707,6 @@ button.menu-toggle {
   table.shop_table_responsive tbody tr td,
   table.shop_table_responsive tbody tr th {
     text-align: left; }
-  .site-header {
-    padding-top: 2.617924em;
-    padding-bottom: 0; }
     .site-header .site-branding {
       display: block;
       width: 100%;
