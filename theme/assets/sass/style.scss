@@ -27,5 +27,9 @@ FontAwesome License: SIL Open Font License - http://scripts.sil.org/cms/scripts/
 Images License: GNU General Public License v2 or later
 */
 
-@import './base.scss';
 @import '~bootstrap/scss/bootstrap';
+@import './base.scss';
+
+@import './global.scss';
+@import './typography.scss';
+@import './header.scss';
