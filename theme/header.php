@@ -37,19 +37,21 @@
 				<span class="navbar-toggler-icon"></span>
 				<span><?php echo __('menu', 'woostrap') ?></span>
 			</button>
+			<div id="site-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'woostrap' ); ?>">
 			<?php
-                wp_nav_menu(array(
-                'theme_location'    => 'primary',
-                'container'       => 'div',
-                'container_id'    => 'main-nav',
-                'container_class' => 'collapse navbar-collapse justify-content-end',
-                'menu_id'         => false,
-                'menu_class'      => 'navbar-nav',
-                'depth'           => 3,
-                'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
-                'walker'          => new wp_bootstrap_navwalker()
+				wp_nav_menu(array(
+				'theme_location'    => 'primary',
+				'container'       => 'div',
+				'container_id'    => 'main-nav',
+				'container_class' => 'collapse navbar-collapse justify-content-end',
+				'menu_id'         => false,
+				'menu_class'      => 'navbar-nav',
+				'depth'           => 3,
+				'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
+				'walker'          => new wp_bootstrap_navwalker()
 				));
 			?>
+			</div>
 			<!-- <?php if ( storefront_is_woocommerce_activated() ): ?>
 			<div class="site-search">
 			<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
@@ -59,24 +61,6 @@
 		</nav>
 		<div class="storefront-primary-navigation">
 			<div class="col-full">
-				<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'woostrap' ); ?>">
-					<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span><?php echo esc_attr( apply_filters( 'storefront_menu_toggle_text', __( 'Menu', 'woostrap' ) ) ); ?></span></button>
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location'  => 'primary',
-							'container_class' => 'primary-navigation',
-						)
-					);
-
-					wp_nav_menu(
-						array(
-							'theme_location'  => 'handheld',
-							'container_class' => 'handheld-navigation',
-						)
-					);
-					?>
-				</nav><!-- #site-navigation -->
 				<?php 
 				if ( storefront_is_woocommerce_activated() ) {
 					if ( is_cart() ) {
