@@ -30,7 +30,7 @@
 	<header id="masthead" class="site-header" role="banner">
 		<nav class="navbar navbar-expand-md p-3 navbar-light bg-light">
 		<div class="container">
-			<div class="navbar-brand">
+			<div class="navbar-brand site-branding">
 				<?php if ( get_theme_mod( 'wp_bootstrap_starter_logo' ) ): ?>
 					<a href="<?php echo esc_url( home_url( '/' )); ?>">
 						<img src="<?php echo esc_url(get_theme_mod( 'wp_bootstrap_starter_logo' )); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
