@@ -183,37 +183,6 @@ if ( ! function_exists( 'storefront_header_widget_region' ) ) {
 	}
 }
 
-if ( ! function_exists( 'woostrap_site_title_or_logo' ) ) {
-	/**
-	 * Display the site title or logo
-	 *
-	 * @since 2.1.0
-	 * @param bool $echo Echo the string or return it.
-	 * @return string
-	 */
-	function woostrap_site_title_or_logo() {
-		if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) { ?>
-			<?php if (is_home()): ?>
-				<h1 class="logo"><?php get_custom_logo() ?></h1>
-			<?php else:
-				get_custom_logo();
-			endif;
-		} else {
-			$tag = '<'. (is_home() ? 'h1' : 'div') .' class="beta site-title">';
-			$endtag = is_home() ? '</h1>' : '</div>' ?>
-
-			<?php echo $tag // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				<a href="<?php echo esc_url( home_url( '/' ) ) ?>" rel="home"><?php echo esc_html( get_bloginfo( 'name' ) ) ?></a>
-			<?php echo $endtag // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-
-			<?php
-			if ( '' !== get_bloginfo( 'description' ) ) {?>
-				<p class="site-description"><?php echo esc_html( get_bloginfo( 'description', 'display' ) ) ?></p> <?php
-			}
-		}
-	}
-}
-
 if ( ! function_exists( 'storefront_secondary_navigation' ) ) {
 	/**
 	 * Display Secondary Navigation

@@ -1116,21 +1116,6 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 		}
 
 		/**
-		 * Get site logo.
-		 *
-		 * @since 2.1.5
-		 * @return string
-		 */
-		public function get_site_logo() {
-			ob_start();
-			woostrap_site_title_or_logo();
-			$out = ob_get_contents();
-			ob_end_clean();
-
-			return $out;
-		}
-
-		/**
 		 * Get site name.
 		 *
 		 * @since 2.1.5
