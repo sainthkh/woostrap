@@ -163,6 +163,26 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 				)
 			);
 
+			$wp_customize->add_setting(
+				'retina_logo',
+				array(
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => 'woostrap_sanitize_checkbox',
+					'transport'         => 'postMessage',
+				)
+			);
+
+			$wp_customize->add_control(
+				'retina_logo',
+				array(
+					'type'        => 'checkbox',
+					'section'     => 'title_tagline',
+					'priority'    => 10,
+					'label'       => __( 'Retina logo', 'twentytwenty' ),
+					'description' => __( 'Scales the logo to half its uploaded size, making it sharp on high-res screens.', 'twentytwenty' ),
+				)
+			);
+
 			/**
 			 * Custom controls
 			 */
