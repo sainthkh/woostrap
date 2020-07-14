@@ -43,3 +43,15 @@
 	position: relative;
 	z-index: 99;
 }
+
+@include media-breakpoint-up(md) {
+	.site-branding {
+		display: block;
+
+		img {
+			height: auto;
+			max-width: 230px;
+			max-height: none;
+		}
+	}
+}

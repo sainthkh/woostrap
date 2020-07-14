@@ -18,45 +18,6 @@
  */
 
 /**
- * Header
- */
-.site-header {
-  background-position: center center;
-  position: relative;
-  z-index: 999; }
-
-.home.blog .site-header,
-.home.page:not(.page-template-template-homepage) .site-header,
-.home.post-type-archive-product .site-header {
-  margin-bottom: 4.235801032em; }
-
-.no-wc-breadcrumb .site-header {
-  margin-bottom: 4.235801032em; }
-
-.no-wc-breadcrumb.page-template-template-homepage .site-header {
-  margin-bottom: 0; }
-
-.header-widget-region {
-  position: relative;
-  z-index: 99; }
-
-.site-branding {
-  float: left;
-  margin-bottom: 0;
-  width: calc( 100% - 120px); }
-  .site-branding .site-title {
-    font-size: 2em;
-    letter-spacing: -1px;
-    margin: 0; }
-    .site-branding .site-title a {
-      font-weight: 700; }
-  .site-branding .site-description {
-    font-size: 0.875em;
-    display: none; }
-  .site-branding .logo {
-    margin: 0; }
-
-/**
  * Main content area
  */
 .site-main {
@@ -1113,36 +1074,6 @@ button.menu-toggle {
   table.shop_table_responsive tbody tr td,
   table.shop_table_responsive tbody tr th {
     text-align: left; }
-    .site-header .site-branding {
-      display: block;
-      width: 100%;
-      float: left;
-      margin-left: 0;
-      margin-right: 0;
-      clear: both; }
-      .site-header .site-branding img {
-        height: auto;
-        max-width: 230px;
-        max-height: none; }
-  .woocommerce-active .site-header .site-branding {
-    width: 73.9130434783%;
-    float: left;
-    margin-right: 4.347826087%; }
-  .woocommerce-active .site-header .site-search {
-    width: 21.7391304348%;
-    float: right;
-    margin-right: 0;
-    clear: none; }
-  .woocommerce-active .site-header .main-navigation {
-    width: 73.9130434783%;
-    float: left;
-    margin-right: 4.347826087%;
-    clear: both; }
-  .woocommerce-active .site-header .site-header-cart {
-    width: 21.7391304348%;
-    float: right;
-    margin-right: 0;
-    margin-bottom: 0; }
   .storefront-secondary-navigation .site-header .site-branding {
     width: 39.1304347826%;
     float: left;
@@ -1159,10 +1090,6 @@ button.menu-toggle {
     width: 47.8260869565%;
     float: left;
     margin-right: 4.347826087%; }
-  .site-branding .site-description {
-    margin-bottom: 0;
-    display: block; }
-  .site-branding,
   .site-search,
   .site-header-cart,
   .site-logo-anchor,
