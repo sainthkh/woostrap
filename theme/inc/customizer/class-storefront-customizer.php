@@ -128,34 +128,40 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 			$wp_customize->get_section( 'header_image' )->priority = 25;
 
 			// Selective refresh.
-			if ( function_exists( 'add_partial' ) ) {
-				$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
-				$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+			$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
+			$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 
-				$wp_customize->selective_refresh->add_partial(
-					'custom_logo',
-					array(
-						'selector'        => '.site-branding',
-						'render_callback' => array( $this, 'get_site_logo' ),
-					)
-				);
+			$wp_customize->selective_refresh->add_partial(
+				'custom_logo',
+				array(
+					'selector'        => '.site-branding [class*=site-]:not(.site-description)',
+					'render_callback' => array( $this, 'get_site_logo' ),
+				)
+			);
 
-				$wp_customize->selective_refresh->add_partial(
-					'blogname',
-					array(
-						'selector'        => '.site-title.beta a',
-						'render_callback' => array( $this, 'get_site_name' ),
-					)
-				);
+			$wp_customize->selective_refresh->add_partial(
+				'retina_logo',
+				array(
+					'selector'        => '.site-branding [class*=site-]:not(.site-description)',
+					'render_callback' => array( $this, 'get_site_logo' ),
+				)
+			);
 
-				$wp_customize->selective_refresh->add_partial(
-					'blogdescription',
-					array(
-						'selector'        => '.site-description',
-						'render_callback' => array( $this, 'get_site_description' ),
-					)
-				);
-			}
+			$wp_customize->selective_refresh->add_partial(
+				'blogname',
+				array(
+					'selector'        => '.site-title a',
+					'render_callback' => array( $this, 'get_site_name' ),
+				)
+			);
+
+			$wp_customize->selective_refresh->add_partial(
+				'blogdescription',
+				array(
+					'selector'        => '.site-description',
+					'render_callback' => array( $this, 'get_site_description' ),
+				)
+			);
 
 			/**
 			 * Custom controls
@@ -1116,13 +1122,20 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 		}
 
 		/**
+		 * Get site logo
+		 */
+		public function get_site_logo() {
+			woostrap_site_logo();
+		}
+
+		/**
 		 * Get site name.
 		 *
 		 * @since 2.1.5
 		 * @return string
 		 */
 		public function get_site_name() {
-			return get_bloginfo( 'name', 'display' );
+			bloginfo( 'name', 'display' );
 		}
 
 		/**
@@ -1132,7 +1145,7 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 		 * @return string
 		 */
 		public function get_site_description() {
-			return get_bloginfo( 'description', 'display' );
+			bloginfo( 'description', 'display' );
 		}
 
 		/**

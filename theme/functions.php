@@ -31,6 +31,7 @@ $storefront = (object) array(
 require 'inc/storefront-functions.php';
 require 'inc/storefront-template-hooks.php';
 require 'inc/storefront-template-functions.php';
+require 'inc/template-tags.php';
 require 'inc/wordpress-shims.php';
 /**
  * Load custom WordPress nav walker.
