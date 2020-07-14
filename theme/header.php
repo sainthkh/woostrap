@@ -31,13 +31,20 @@
 		<nav class="navbar navbar-expand-md p-3 navbar-light bg-light">
 		<div class="container">
 			<div class="navbar-brand site-branding">
-				<?php if ( get_theme_mod( 'wp_bootstrap_starter_logo' ) ): ?>
-					<a href="<?php echo esc_url( home_url( '/' )); ?>">
-						<img src="<?php echo esc_url(get_theme_mod( 'wp_bootstrap_starter_logo' )); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-					</a>
-				<?php else : ?>
-					<a class="site-title" href="<?php echo esc_url( home_url( '/' )); ?>"><?php esc_url(bloginfo('name')); ?></a>
-				<?php endif; ?>
+			<?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) { ?>
+				<?php if (is_home()): ?>
+					<h1 class="logo"><?php the_custom_logo() ?></h1>
+				<?php else:
+					the_custom_logo();
+				endif;
+			} else {
+				$tag = '<'. (is_home() ? 'h1' : 'div') .' class="site-title">';
+				$endtag = is_home() ? '</h1>' : '</div>' ?>
+
+				<?php echo $tag // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<a href="<?php echo esc_url( home_url( '/' ) ) ?>" rel="home"><?php echo esc_html( get_bloginfo( 'name' ) ) ?></a>
+				<?php echo $endtag // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php } ?>
 			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
