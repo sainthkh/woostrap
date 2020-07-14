@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const base = require( '@wordpress/scripts/config/webpack.config' );
 const path = require( 'path' );
-const ShellPlugin = require( 'webpack-shell-plugin' );
+const { exec } = require( 'child_process' );
 
 module.exports = {
 	...base,
@@ -10,8 +10,18 @@ module.exports = {
 	},
 	plugins: [
 		...base.plugins,
-		new ShellPlugin( {
-			onBuildEnd: [ 'node scripts/copy-built-assets.js' ],
-		} ),
+		{
+			apply: ( compiler ) => {
+				compiler.hooks.afterEmit.tap( 'AfterEmitPlugin', () => {
+					exec(
+						'node scripts/copy-built-assets.js',
+						( err, stdout, stderr ) => {
+							if ( stdout ) process.stdout.write( stdout );
+							if ( stderr ) process.stderr.write( stderr );
+						}
+					);
+				} );
+			},
+		},
 	],
 };
