@@ -103,15 +103,18 @@
 
 <?php endif; ?>
 
-	<?php
-	/**
-	 * Functions hooked in to storefront_before_content
-	 *
-	 * @hooked storefront_header_widget_region - 10
-	 * @hooked woocommerce_breadcrumb - 10
-	 */
-	do_action( 'storefront_before_content' );
-	?>
+	<?php if ( is_active_sidebar( 'header-1' ) ): ?>
+		<div class="header-widget-region" role="complementary">
+			<div class="col-full">
+				<?php dynamic_sidebar( 'header-1' ); ?>
+			</div>
+		</div>
+	<?php endif; ?>
+	<?php if ( storefront_is_woocommerce_activated() ) {
+		woocommerce_breadcrumb();
+	} ?>
+
+	<?php do_action( 'woostrap_before_content' );	?>
 
 	<div id="content" class="site-content" tabindex="-1">
 		<div class="col-full">
