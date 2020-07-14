@@ -33,16 +33,15 @@
 			<div class="navbar-brand site-branding">
 			<?php woostrap_site_logo(); ?>
 			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-navigation" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 				<span><?php echo __('menu', 'woostrap') ?></span>
 			</button>
-			<div id="site-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'woostrap' ); ?>">
 			<?php
 				wp_nav_menu(array(
-				'theme_location'    => 'primary',
+				'theme_location'  => 'primary',
 				'container'       => 'div',
-				'container_id'    => 'main-nav',
+				'container_id'    => 'site-navigation',
 				'container_class' => 'collapse navbar-collapse justify-content-end',
 				'menu_id'         => false,
 				'menu_class'      => 'navbar-nav',
@@ -51,7 +50,6 @@
 				'walker'          => new wp_bootstrap_navwalker()
 				));
 			?>
-			</div>
 			<!-- <?php if ( storefront_is_woocommerce_activated() ): ?>
 			<div class="site-search">
 			<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
