@@ -76,6 +76,7 @@
     "lerna": "3.22.1",
     "jest": "26.1.0",
     "jest-playwright-preset": "1.2.1",
+    "modularscale-sass": "3.0.10",
     "node-sass": "^4.14.0",
     "playwright": "1.1.1",
     "prettier": "2.0.5",
