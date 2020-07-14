@@ -28,7 +28,7 @@
 <?php if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
 
 	<header id="masthead" class="site-header" role="banner">
-		<nav class="navbar navbar-expand-xl p-3 navbar-light bg-light">
+		<nav class="navbar navbar-expand-md p-3 navbar-light bg-light">
 		<div class="container">
 			<div class="navbar-brand">
 				<?php if ( get_theme_mod( 'wp_bootstrap_starter_logo' ) ): ?>
