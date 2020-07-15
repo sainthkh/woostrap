@@ -73,6 +73,7 @@
 				</ul>
 			</div>
 		</div>
+		<i class="fas fa-search"></i>
 
 	</header><!-- #masthead -->
 
