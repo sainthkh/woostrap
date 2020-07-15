@@ -50,11 +50,9 @@
 				'walker'          => new wp_bootstrap_navwalker()
 				));
 			?>
-			<!-- <?php if ( storefront_is_woocommerce_activated() ): ?>
-			<div class="site-search">
-			<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
-			</div>
-			<?php endif; ?> -->
+			<?php if ( storefront_is_woocommerce_activated() ){
+				woostrap_search_form();
+			} ?>
 		</div>
 		</nav>
 		<div class="storefront-primary-navigation">

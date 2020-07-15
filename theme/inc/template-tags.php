@@ -69,3 +69,16 @@ function woostrap_site_logo( $args = array(), $echo = true ) {
 	echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 }
+
+/**
+ * Search form for products.
+ */
+function woostrap_search_form() { ?>
+	<form role="search" method="get" class="form-inline my-2 my-lg-0 woocommerce-product-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<label class="screen-reader-text" for="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>"><?php esc_html_e( 'Search for:', 'woocommerce' ); ?></label>
+		<input type="search" id="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>" class="form-control mr-sm-2 search-field" placeholder="<?php echo esc_attr__( 'Search products&hellip;', 'woocommerce' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+		<button type="submit" class="btn btn-outline-success my-2 my-sm-0" value="<?php echo esc_attr_x( 'Search', 'submit button', 'woocommerce' ); ?>"><?php echo esc_html_x( 'Search', 'submit button', 'woocommerce' ); ?></button>
+		<input type="hidden" name="post_type" value="product" />
+	</form>
+	<?php
+}
