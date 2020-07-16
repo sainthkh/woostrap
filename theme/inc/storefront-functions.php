@@ -5,11 +5,11 @@
  * @package woostrap
  */
 
-if ( ! function_exists( 'storefront_is_woocommerce_activated' ) ) {
+if ( ! function_exists( 'woostrap_is_woocommerce_activated' ) ) {
 	/**
 	 * Query WooCommerce activation
 	 */
-	function storefront_is_woocommerce_activated() {
+	function woostrap_is_woocommerce_activated() {
 		return class_exists( 'WooCommerce' ) ? true : false;
 	}
 }

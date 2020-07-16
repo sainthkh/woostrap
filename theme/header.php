@@ -50,7 +50,7 @@
 				'walker'          => new wp_bootstrap_navwalker()
 				));
 			?>
-			<?php if ( storefront_is_woocommerce_activated() ){
+			<?php if ( woostrap_is_woocommerce_activated() ){
 				woostrap_search_form();
 			} ?>
 		</div>
@@ -66,7 +66,7 @@
 			</div>
 		</div>
 	<?php endif; ?>
-	<?php if ( storefront_is_woocommerce_activated() ) {
+	<?php if ( woostrap_is_woocommerce_activated() ) {
 		woocommerce_breadcrumb();
 	} ?>
 

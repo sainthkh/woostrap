@@ -374,7 +374,7 @@ Privacy Policy for the Google Fonts API: https://developers.google.com/fonts/faq
 * Fix - Consistent spacing in site title.
 * Dev - Refactored `storefront_get_content_background_color()` to account for and give priority (over Storefront Designer) to Storefront Powerpack.
 * Dev - Deprecated `is_woocommerce_activated()` and made it pluggable.
-* Dev - Added `storefront_is_woocommerce_activated()`.
+* Dev - Added `woostrap_is_woocommerce_activated()`.
 
 = 2.1.5 - 2016-10-24 =
 * Tweak - Jetpack infinite scroll now works on product archives as well as posts.

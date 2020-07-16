@@ -85,11 +85,11 @@ if ( ! function_exists( 'storefront_product_search' ) ) {
 	 * Display Product Search
 	 *
 	 * @since  1.0.0
-	 * @uses  storefront_is_woocommerce_activated() check if WooCommerce is activated
+	 * @uses  woostrap_is_woocommerce_activated() check if WooCommerce is activated
 	 * @return void
 	 */
 	function storefront_product_search() {
-		if ( storefront_is_woocommerce_activated() ) {
+		if ( woostrap_is_woocommerce_activated() ) {
 			?>
 			<div class="site-search">
 				<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
@@ -555,14 +555,14 @@ if ( ! function_exists( 'storefront_promoted_products' ) ) {
 	 * @param integer $per_page total products to display.
 	 * @param integer $columns columns to arrange products in to.
 	 * @param boolean $recent_fallback Should the function display recent products as a fallback when there are no featured or on-sale products?.
-	 * @uses  storefront_is_woocommerce_activated()
+	 * @uses  woostrap_is_woocommerce_activated()
 	 * @uses  wc_get_featured_product_ids()
 	 * @uses  wc_get_product_ids_on_sale()
 	 * @uses  storefront_do_shortcode()
 	 * @return void
 	 */
 	function storefront_promoted_products( $per_page = '2', $columns = '2', $recent_fallback = true ) {
-		if ( storefront_is_woocommerce_activated() ) {
+		if ( woostrap_is_woocommerce_activated() ) {
 
 			if ( wc_get_featured_product_ids() ) {
 

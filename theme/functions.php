@@ -44,7 +44,7 @@ if ( class_exists( 'Jetpack' ) ) {
 	$storefront->jetpack = require 'inc/jetpack/class-storefront-jetpack.php';
 }
 
-if ( storefront_is_woocommerce_activated() ) {
+if ( woostrap_is_woocommerce_activated() ) {
 	$storefront->woocommerce            = require 'inc/woocommerce/class-storefront-woocommerce.php';
 	$storefront->woocommerce_customizer = require 'inc/woocommerce/class-storefront-woocommerce-customizer.php';
 
