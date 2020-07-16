@@ -51,10 +51,6 @@ if ( ! function_exists( 'storefront_cart_link_fragment' ) ) {
 		global $woocommerce;
 
 		ob_start();
-		woostrap_site_cart_link();
-		$fragments['a.cart-contents'] = ob_get_clean();
-
-		ob_start();
 		storefront_handheld_footer_bar_cart_link();
 		$fragments['a.footer-cart-contents'] = ob_get_clean();
 
