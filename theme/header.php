@@ -55,25 +55,6 @@
 			} ?>
 		</div>
 		</nav>
-		<div class="storefront-primary-navigation">
-			<div class="col-full">
-				<?php 
-				if ( storefront_is_woocommerce_activated() ) {
-					if ( is_cart() ) {
-						$class = 'current-menu-item';
-					} else {
-						$class = '';
-					}
-				}
-				?>
-				<ul id="site-header-cart" class="site-header-cart menu">
-					<li class="<?php echo esc_attr( $class ); ?>">
-						<?php woostrap_site_cart_link(); ?>
-					</li>
-				</ul>
-			</div>
-		</div>
-
 	</header><!-- #masthead -->
 
 <?php endif; ?>
