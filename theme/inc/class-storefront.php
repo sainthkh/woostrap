@@ -347,7 +347,7 @@ if ( ! class_exists( 'Storefront' ) ) :
 
 			// deregister jquery because we'll use 3.x.
 			wp_deregister_script( 'jquery' );
-			wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.5.1.slim.min.js', array(), $storefront_version, true);
+			wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.5.1.min.js', array(), $storefront_version, true);
 			wp_enqueue_script( 'popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', array(), $storefront_version, true);
 			wp_enqueue_script( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js', array(), $storefront_version, true);
 			wp_enqueue_script( 'woostrap', get_template_directory_uri() . '/asset/front' . $suffix . '.js', array(), $storefront_version, true);
