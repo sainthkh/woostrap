@@ -630,6 +630,26 @@ if ( ! function_exists( 'storefront_handheld_footer_bar_search' ) ) {
 	}
 }
 
+if ( ! function_exists( 'storefront_product_search' ) ) {
+	/**
+	 * Display Product Search
+	 *
+	 * @since  1.0.0
+	 * @uses  storefront_is_woocommerce_activated() check if WooCommerce is activated
+	 * @return void
+	 */
+	function storefront_product_search() {
+		if ( woostrap_is_woocommerce_activated() ) {
+			?>
+			<div class="site-search">
+				<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
+			</div>
+			<?php
+		}
+	}
+}
+
+
 if ( ! function_exists( 'storefront_handheld_footer_bar_cart_link' ) ) {
 	/**
 	 * The cart callback function for the handheld footer bar
