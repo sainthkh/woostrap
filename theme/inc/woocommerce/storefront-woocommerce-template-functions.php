@@ -39,7 +39,7 @@ if ( ! function_exists( 'storefront_after_content' ) ) {
 	}
 }
 
-if ( ! function_exists( 'storefront_cart_link_fragment' ) ) {
+if ( ! function_exists( 'woostrap_cart_link_fragment' ) ) {
 	/**
 	 * Cart Fragments
 	 * Ensure cart contents update when products are added to the cart via AJAX
@@ -47,8 +47,12 @@ if ( ! function_exists( 'storefront_cart_link_fragment' ) ) {
 	 * @param  array $fragments Fragments to refresh via AJAX.
 	 * @return array            Fragments to refresh via AJAX
 	 */
-	function storefront_cart_link_fragment( $fragments ) {
+	function woostrap_cart_link_fragment( $fragments ) {
 		global $woocommerce;
+
+		ob_start();
+		woostrap_cart_button();
+		$fragments['div.shopping-cart'] = ob_get_clean();
 
 		ob_start();
 		storefront_handheld_footer_bar_cart_link();

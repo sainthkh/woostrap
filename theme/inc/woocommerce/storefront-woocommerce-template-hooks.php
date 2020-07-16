@@ -83,12 +83,12 @@ add_action( 'storefront_after_footer', 'storefront_sticky_single_add_to_cart', 9
 /**
  * Cart fragment
  *
- * @see storefront_cart_link_fragment()
+ * @see woostrap_cart_link_fragment()
  */
 if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '2.3', '>=' ) ) {
-	add_filter( 'woocommerce_add_to_cart_fragments', 'storefront_cart_link_fragment' );
+	add_filter( 'woocommerce_add_to_cart_fragments', 'woostrap_cart_link_fragment' );
 } else {
-	add_filter( 'add_to_cart_fragments', 'storefront_cart_link_fragment' );
+	add_filter( 'add_to_cart_fragments', 'woostrap_cart_link_fragment' );
 }
 
 /**
