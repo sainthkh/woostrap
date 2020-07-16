@@ -31,13 +31,20 @@ $storefront = (object) array(
 require 'inc/storefront-functions.php';
 require 'inc/storefront-template-hooks.php';
 require 'inc/storefront-template-functions.php';
+require 'inc/template-tags.php';
 require 'inc/wordpress-shims.php';
+/**
+ * Load custom WordPress nav walker.
+ */
+if ( ! class_exists( 'wp_bootstrap_navwalker' ) ) {
+	require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+}
 
 if ( class_exists( 'Jetpack' ) ) {
 	$storefront->jetpack = require 'inc/jetpack/class-storefront-jetpack.php';
 }
 
-if ( storefront_is_woocommerce_activated() ) {
+if ( woostrap_is_woocommerce_activated() ) {
 	$storefront->woocommerce            = require 'inc/woocommerce/class-storefront-woocommerce.php';
 	$storefront->woocommerce_customizer = require 'inc/woocommerce/class-storefront-woocommerce-customizer.php';
 

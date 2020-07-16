@@ -5589,22 +5589,6 @@ a#variations_clear::before {
     vertical-align: baseline;
     content: "\f057";
     margin-right: 0.3342343017em; }
-  .site-header-cart .cart-contents::after {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: normal;
-    line-height: 1;
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    line-height: inherit;
-    vertical-align: baseline;
-    content: "\f291";
-    height: 1em;
-    float: right;
-    line-height: 1.618; }
   .addresses header.title a {
     display: block;
     width: 1em;

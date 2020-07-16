@@ -26,7 +26,7 @@ if ( ! class_exists( 'Storefront_Jetpack' ) ) :
 			add_action( 'init', array( $this, 'jetpack_setup' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'jetpack_scripts' ), 10 );
 
-			if ( storefront_is_woocommerce_activated() ) {
+			if ( woostrap_is_woocommerce_activated() ) {
 				add_action( 'init', array( $this, 'jetpack_infinite_scroll_wrapper_columns' ) );
 			}
 		}

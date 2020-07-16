@@ -1,0 +1,115 @@
+/**
+ * Header
+ */
+.site-header {
+	background-position: center center;
+	position: relative;
+	z-index: 999; 
+
+	.site-logo-anchor,
+	.site-logo-link,
+	.custom-logo-link {
+		display: block;
+		margin-bottom: 0;
+
+		img {
+			width: 100%;
+			max-width: 210px;
+		}
+	}
+}
+
+.home.blog,
+.home.page:not( .page-template-template-homepage ),
+.home.post-type-archive-product {
+	.site-header {
+		margin-bottom: ms(7);
+	}
+}
+
+.no-wc-breadcrumb {
+	.site-header {
+		margin-bottom: ms(7);
+	}
+
+	&.page-template-template-homepage {
+		.site-header {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.header-widget-region {
+	position: relative;
+	z-index: 99;
+}
+
+.woocommerce-product-search {
+	input[type=submit],
+	button[type=submit] {
+		@include screen-reader-text();
+		top: 0;
+		left: 0;
+	}
+
+	.search-field {
+		width: 0;
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		transition: all .5s ease;
+
+		&:focus {
+			width: 250px;
+			@extend .form-control:focus;
+		}
+	}
+}
+
+// Credits to https://codepen.io/gungorbudak/pen/ooKNpz
+.has-search .form-control {
+	padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+	position: absolute;
+	z-index: 2;
+	display: block;
+	width: 2.375rem;
+	height: 2.375rem;
+	line-height: 2.375rem;
+	text-align: center;
+	pointer-events: none;
+}
+
+.shopping-cart {
+	position: relative;
+
+	a {
+		color: $navbar-light-active-color;
+
+		&:hover {
+			color: $navbar-light-hover-color;
+		}
+	}
+
+	.badge {
+		position: absolute;
+		top: -3px;
+		right: -10px;
+		font-size: 65%;
+		@extend .bg-info;
+	}
+}
+
+@include media-breakpoint-up(md) {
+	.site-branding {
+		display: block;
+
+		img {
+			height: auto;
+			max-width: 230px;
+			max-height: none;
+		}
+	}
+}

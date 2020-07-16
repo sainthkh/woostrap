@@ -128,34 +128,60 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 			$wp_customize->get_section( 'header_image' )->priority = 25;
 
 			// Selective refresh.
-			if ( function_exists( 'add_partial' ) ) {
-				$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
-				$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+			$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
+			$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 
-				$wp_customize->selective_refresh->add_partial(
-					'custom_logo',
-					array(
-						'selector'        => '.site-branding',
-						'render_callback' => array( $this, 'get_site_logo' ),
-					)
-				);
+			$wp_customize->selective_refresh->add_partial(
+				'custom_logo',
+				array(
+					'selector'        => '.site-branding [class*=site-]:not(.site-description)',
+					'render_callback' => array( $this, 'get_site_logo' ),
+				)
+			);
 
-				$wp_customize->selective_refresh->add_partial(
-					'blogname',
-					array(
-						'selector'        => '.site-title.beta a',
-						'render_callback' => array( $this, 'get_site_name' ),
-					)
-				);
+			$wp_customize->selective_refresh->add_partial(
+				'retina_logo',
+				array(
+					'selector'        => '.site-branding [class*=site-]:not(.site-description)',
+					'render_callback' => array( $this, 'get_site_logo' ),
+				)
+			);
 
-				$wp_customize->selective_refresh->add_partial(
-					'blogdescription',
-					array(
-						'selector'        => '.site-description',
-						'render_callback' => array( $this, 'get_site_description' ),
-					)
-				);
-			}
+			$wp_customize->selective_refresh->add_partial(
+				'blogname',
+				array(
+					'selector'        => '.site-title a',
+					'render_callback' => array( $this, 'get_site_name' ),
+				)
+			);
+
+			$wp_customize->selective_refresh->add_partial(
+				'blogdescription',
+				array(
+					'selector'        => '.site-description',
+					'render_callback' => array( $this, 'get_site_description' ),
+				)
+			);
+
+			$wp_customize->add_setting(
+				'retina_logo',
+				array(
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => 'woostrap_sanitize_checkbox',
+					'transport'         => 'postMessage',
+				)
+			);
+
+			$wp_customize->add_control(
+				'retina_logo',
+				array(
+					'type'        => 'checkbox',
+					'section'     => 'title_tagline',
+					'priority'    => 10,
+					'label'       => __( 'Retina logo', 'woostrap' ),
+					'description' => __( 'Scales the logo to half its uploaded size, making it sharp on high-res screens.', 'woostrap' ),
+				)
+			);
 
 			/**
 			 * Custom controls
@@ -1116,33 +1142,24 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 		}
 
 		/**
-		 * Get site logo.
-		 *
-		 * @since 2.1.5
-		 * @return string
+		 * Get site logo
 		 */
 		public function get_site_logo() {
-			return storefront_site_title_or_logo( false );
+			woostrap_site_logo();
 		}
 
 		/**
 		 * Get site name.
-		 *
-		 * @since 2.1.5
-		 * @return string
 		 */
 		public function get_site_name() {
-			return get_bloginfo( 'name', 'display' );
+			bloginfo( 'name', 'display' );
 		}
 
 		/**
 		 * Get site description.
-		 *
-		 * @since 2.1.5
-		 * @return string
 		 */
 		public function get_site_description() {
-			return get_bloginfo( 'description', 'display' );
+			bloginfo( 'description', 'display' );
 		}
 
 		/**

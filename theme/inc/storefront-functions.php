@@ -5,11 +5,11 @@
  * @package woostrap
  */
 
-if ( ! function_exists( 'storefront_is_woocommerce_activated' ) ) {
+if ( ! function_exists( 'woostrap_is_woocommerce_activated' ) ) {
 	/**
 	 * Query WooCommerce activation
 	 */
-	function storefront_is_woocommerce_activated() {
+	function woostrap_is_woocommerce_activated() {
 		return class_exists( 'WooCommerce' ) ? true : false;
 	}
 }
@@ -184,27 +184,6 @@ function storefront_sanitize_choices( $input, $setting ) {
  * @return bool Whether the checkbox is checked.
  * @since  1.5.0
  */
-function storefront_sanitize_checkbox( $checked ) {
+function woostrap_sanitize_checkbox( $checked ) {
 	return ( ( isset( $checked ) && true === $checked ) ? true : false );
-}
-
-/**
- * Storefront Sanitize Hex Color
- *
- * @param string $color The color as a hex.
- * @todo remove in 2.1.
- */
-function storefront_sanitize_hex_color( $color ) {
-	_deprecated_function( 'storefront_sanitize_hex_color', '2.0', 'sanitize_hex_color' );
-
-	if ( '' === $color ) {
-		return '';
-	}
-
-	// 3 or 6 hex digits, or the empty string.
-	if ( preg_match( '|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) ) {
-		return $color;
-	}
-
-	return null;
 }

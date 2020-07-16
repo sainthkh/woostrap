@@ -56,20 +56,6 @@
 .woocommerce-active .site-branding {
   float: left; }
 
-.site-header-cart {
-  list-style-type: none;
-  margin-left: 0;
-  padding: 0;
-  margin-bottom: 0; }
-  .site-header-cart .cart-contents {
-    display: none; }
-  .site-header-cart .widget_shopping_cart {
-    display: none; }
-    .site-header-cart .widget_shopping_cart .woocommerce-mini-cart__empty-message {
-      margin: 1.41575em; }
-    .site-header-cart .widget_shopping_cart .product_list_widget img {
-      margin-left: 1em; }
-
 .site-search {
   font-size: 0.875em;
   clear: both;
@@ -1496,57 +1482,6 @@ dl.variation {
     display: table-cell; }
     table.shop_table_responsive tr td::before {
       display: none; }
-  /**
-	 * Header Elements
-	 */
-  .site-header-cart {
-    position: relative; }
-    .site-header-cart .cart-contents {
-      padding: 1.618em 0;
-      display: block;
-      position: relative;
-      background-color: transparent;
-      height: auto;
-      width: auto;
-      text-indent: 0; }
-      .site-header-cart .cart-contents .amount {
-        margin-right: 0.327em; }
-      .site-header-cart .cart-contents .count {
-        font-weight: 400;
-        opacity: 0.5;
-        font-size: 0.875em; }
-      .site-header-cart .cart-contents span {
-        display: inline; }
-    .site-header-cart .widget_shopping_cart {
-      position: absolute;
-      top: 100%;
-      width: 100%;
-      z-index: 999999;
-      font-size: 0.875em;
-      left: -999em;
-      display: block; }
-      .site-header-cart .widget_shopping_cart.sub-menu--is-touch-device {
-        display: none;
-        left: 0; }
-      .site-header-cart .widget_shopping_cart h2.widgettitle {
-        display: none; }
-      .site-header-cart .widget_shopping_cart .product_list_widget {
-        height: 0; }
-        .site-header-cart .widget_shopping_cart .product_list_widget li a.remove {
-          position: relative;
-          float: left;
-          top: auto; }
-          .site-header-cart .widget_shopping_cart .product_list_widget li a.remove::before {
-            text-align: left; }
-    .site-header-cart:hover .widget_shopping_cart, .site-header-cart.focus .widget_shopping_cart {
-      left: 0;
-      display: block; }
-      .site-header-cart:hover .widget_shopping_cart .product_list_widget, .site-header-cart.focus .widget_shopping_cart .product_list_widget {
-        height: auto; }
-  .site-search {
-    display: block; }
-    .site-search form {
-      margin: 0; }
   /**
 	 * Reset mobile product styles
 	 */

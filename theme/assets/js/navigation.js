@@ -108,7 +108,7 @@
 		// Add focus class to parents of sub-menu anchors.
 		[].forEach.call(
 			document.querySelectorAll(
-				'.site-header .menu-item > a, .site-header .page_item > a, .site-header-cart a'
+				'.site-header .menu-item > a, .site-header .page_item > a'
 			),
 			function ( anchor ) {
 				anchor.addEventListener( 'focus', function () {
@@ -141,9 +141,7 @@
 			window.innerWidth > 767
 		) {
 			[].forEach.call(
-				document.querySelectorAll(
-					'.site-header ul ul, .site-header-cart .widget_shopping_cart'
-				),
+				document.querySelectorAll( '.site-header ul ul' ),
 				function ( element ) {
 					element.classList.add( 'sub-menu--is-touch-device' );
 				}
@@ -154,7 +152,7 @@
 
 			[].forEach.call(
 				document.querySelectorAll(
-					'.site-header .menu-item > a, .site-header .page_item > a, .site-header-cart a'
+					'.site-header .menu-item > a, .site-header .page_item > a'
 				),
 				function ( anchor ) {
 					anchor.addEventListener( 'click', function ( event ) {

@@ -6,8 +6,12 @@ const path = require( 'path' );
 const frontDest = path.join( __dirname, '../theme/asset/front.js' );
 fs.ensureDirSync( path.dirname( frontDest ) );
 fs.copyFileSync( path.join( __dirname, '../build/front.js' ), frontDest );
+/* eslint-disable-next-line no-console */
+console.log( 'copied front.js' );
 
 // copy style.css
 const styleDest = path.join( __dirname, '../theme/style.css' );
 fs.ensureDirSync( path.dirname( styleDest ) );
 fs.copyFileSync( path.join( __dirname, '../build/style.css' ), styleDest );
+/* eslint-disable-next-line no-console */
+console.log( 'copied style.css' );

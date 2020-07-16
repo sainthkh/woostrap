@@ -3,14 +3,8 @@ beforeAll( async () => {
 } );
 
 describe( 'navbar links', () => {
-	it( 'cart', async () => {
-		await page.click( `//a[contains(text(), 'Cart')]` );
-
-		expect( page.url() ).toBe( 'http://localhost:8889/cart/' );
-	} );
-
 	it( 'cart icon', async () => {
-		await page.click( '.cart-contents' );
+		await page.click( '.shopping-cart-link' );
 
 		expect( page.url() ).toBe( 'http://localhost:8889/cart/' );
 	} );
@@ -54,42 +48,23 @@ const removeCartItems = async () => {
 	await page.goto( 'http://localhost:8889/?clear-cart' );
 };
 
-const getPriceAmount = async () => {
-	return await page.innerText( '.woocommerce-Price-amount' );
-};
-
-const getItemCount = async () => {
-	return await page.innerText( 'span.count' );
-};
-
 describe( 'cart', () => {
 	afterEach( async () => {
 		await removeCartItems();
 	} );
 
 	it( 'initial state', async () => {
-		const price = await getPriceAmount();
+		const badge = await page.$( '.shopping-cart .badge' );
 
-		expect( price ).toBe( '$0.00' );
-
-		const count = await getItemCount();
-
-		expect( count ).toBe( '0 items' );
+		expect( badge ).toBe( null );
 	} );
 
-	it( 'add', async () => {
-		// Add Beanie
+	it( 'add an item', async () => {
+		// Add Beanie to cart
 		await page.click( '[data-product_id="14"]' );
-		await page.waitForResponse(
-			'http://localhost:8889/?wc-ajax=add_to_cart'
-		);
 
-		const price = await getPriceAmount();
+		const badgeCount = await page.innerText( '.shopping-cart .badge' );
 
-		expect( price ).toBe( '$18.00' );
-
-		const count = await getItemCount();
-
-		expect( count ).toBe( '1 item' );
+		expect( badgeCount ).toBe( '1' );
 	} );
 } );

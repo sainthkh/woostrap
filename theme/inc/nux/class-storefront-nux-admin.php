@@ -80,13 +80,13 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 				</span>
 
 				<div class="notice-content">
-					<?php if ( ! storefront_is_woocommerce_activated() && current_user_can( 'install_plugins' ) && current_user_can( 'activate_plugins' ) ) : ?>
+					<?php if ( ! woostrap_is_woocommerce_activated() && current_user_can( 'install_plugins' ) && current_user_can( 'activate_plugins' ) ) : ?>
 						<h2><?php esc_html_e( 'Thanks for installing Storefront, you rock! 🤘', 'woostrap' ); ?></h2>
 						<p><?php esc_html_e( 'To enable eCommerce features you need to install the WooCommerce plugin.', 'woostrap' ); ?></p>
 						<p><?php Storefront_Plugin_Install::install_plugin_button( 'woocommerce', 'woocommerce.php', 'WooCommerce', array(), __( 'WooCommerce activated', 'woostrap' ), __( 'Activate WooCommerce', 'woostrap' ), __( 'Install WooCommerce', 'woostrap' ) ); ?></p>
 					<?php endif; ?>
 
-					<?php if ( storefront_is_woocommerce_activated() ) : ?>
+					<?php if ( woostrap_is_woocommerce_activated() ) : ?>
 						<h2><?php esc_html_e( 'Design your store 🎨', 'woostrap' ); ?></h2>
 						<p>
 							<?php

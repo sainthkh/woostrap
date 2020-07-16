@@ -27,4 +27,17 @@ FontAwesome License: SIL Open Font License - http://scripts.sil.org/cms/scripts/
 Images License: GNU General Public License v2 or later
 */
 
+@import '~bootstrap/scss/bootstrap';
 @import './base.scss';
+
+@import '~modularscale-sass/stylesheets/modularscale';
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+$fa-font-path: "../fonts";
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+
+@import './utils/mixins';
+
+@import './global.scss';
+@import './typography.scss';
+@import './header.scss';

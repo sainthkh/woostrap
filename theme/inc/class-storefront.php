@@ -34,6 +34,7 @@ if ( ! class_exists( 'Storefront' ) ) :
 			add_filter( 'navigation_markup_template', array( $this, 'navigation_markup_template' ) );
 			add_action( 'enqueue_embed_scripts', array( $this, 'print_embed_styles' ) );
 			add_filter( 'block_editor_settings', array( $this, 'custom_editor_settings' ), 10, 2 );
+			add_action( 'wp_body_open', array( $this, 'skip_link' ), 0 ); // As soon as possible.
 		}
 
 		/**
@@ -344,6 +345,9 @@ if ( ! class_exists( 'Storefront' ) ) :
 			 */
 			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
+			wp_enqueue_script( 'popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', array(), $storefront_version, true );
+			wp_enqueue_script( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js', array(), $storefront_version, true );
+			wp_enqueue_script( 'woostrap', get_template_directory_uri() . '/asset/front' . $suffix . '.js', array(), $storefront_version, true );
 			wp_enqueue_script( 'storefront-navigation', get_template_directory_uri() . '/assets/js/navigation' . $suffix . '.js', array(), $storefront_version, true );
 			wp_enqueue_script( 'storefront-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix' . $suffix . '.js', array(), '20130115', true );
 
@@ -570,6 +574,16 @@ if ( ! class_exists( 'Storefront' ) ) :
 					background-color: #60646c;
 				}
 			</style>
+			<?php
+		}
+
+		/**
+		 * Screen reader links.
+		 */
+		public function skip_link() {
+			?>
+			<a class="skip-link screen-reader-text" href="#site-navigation"><?php esc_attr_e( 'Skip to navigation', 'woostrap' ); ?></a>
+			<a class="skip-link screen-reader-text" href="#content"><?php esc_attr_e( 'Skip to content', 'woostrap' ); ?></a>
 			<?php
 		}
 	}
