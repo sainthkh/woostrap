@@ -960,32 +960,6 @@ button.menu-toggle {
   padding: 1em 0;
   font-size: 0.875em; }
 
-.widget_search form,
-.widget_product_search form {
-  position: relative; }
-  .widget_search form input[type=text],
-  .widget_search form input[type=search],
-  .widget_product_search form input[type=text],
-  .widget_product_search form input[type=search] {
-    width: 100%; }
-  .widget_search form input[type=submit],
-  .widget_search form button[type=submit],
-  .widget_product_search form input[type=submit],
-  .widget_product_search form button[type=submit] {
-    border: 0;
-    clip: rect(1px, 1px, 1px, 1px);
-    -webkit-clip-path: inset(50%);
-    clip-path: inset(50%);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    word-wrap: normal !important;
-    top: 0;
-    left: 0; }
-
 .widget_recent_entries ul,
 .widget_pages ul,
 .widget_categories ul,

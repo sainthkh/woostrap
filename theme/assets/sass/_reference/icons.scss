@@ -29,17 +29,6 @@
 	vertical-align: baseline;
 }
 
-.site-search {
-	.widget_product_search {
-		form {
-			input[type=search],
-			input[type=text] {
-				padding-left: ms(5);
-			}
-		}
-	}
-}
-
 #comments {
 	.comment-list {
 		.bypostauthor {
@@ -155,25 +144,6 @@ input[type='submit'],
 					margin-left: ms(-3);
 				}
 			}
-		}
-	}
-}
-
-.widget_search,
-.widget_product_search {
-	form {
-		&::before {
-			@include sf-fa-icon;
-			content: fa-content( $fa-var-search );
-			position: absolute;
-			top: 1em;
-			left: 1em;
-			line-height: 1;
-		}
-
-		input[type=text],
-		input[type=search] {
-			padding-left: ms(5);
 		}
 	}
 }

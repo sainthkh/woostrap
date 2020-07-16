@@ -85,31 +85,6 @@
 	}
 }
 
-.site-search {
-	font-size: ms(-1);
-	clear: both;
-	display: none;
-
-	.widget_product_search {
-		input[type=text],
-		input[type=search] {
-			padding: ms(1) ms(2);
-			line-height: 1;
-		}
-
-		form {
-			&::before {
-				top: 1.15em;
-				left: 1.15em;
-			}
-		}
-
-		#searchsubmit {
-			@include screen-reader-text();
-		}
-	}
-}
-
 /**
  * Handheld footer bar
  */
