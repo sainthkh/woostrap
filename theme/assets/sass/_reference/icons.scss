@@ -926,18 +926,6 @@ a#variations_clear {
 		}
 	}
 
-	.site-header-cart {
-		.cart-contents {
-			&::after {
-				@include sf-fa-icon;
-				content: fa-content( $fa-var-shopping-basket );
-				height: 1em;
-				float: right;
-				line-height: 1.618;
-			}
-		}
-	}
-
 	.addresses {
 		header.title {
 			a {

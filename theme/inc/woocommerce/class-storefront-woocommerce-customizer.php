@@ -115,17 +115,6 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 			$darken_factor         = apply_filters( 'storefront_darken_factor', -25 );
 
 			$styles = '
-			a.cart-contents,
-			.site-header-cart .widget_shopping_cart a {
-				color: ' . $storefront_theme_mods['header_link_color'] . ';
-			}
-
-			a.cart-contents:hover,
-			.site-header-cart .widget_shopping_cart a:hover,
-			.site-header-cart:hover > li > a {
-				color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['header_link_color'], 65 ) . ';
-			}
-
 			table.cart td.product-remove,
 			table.cart td.actions {
 				border-top-color: ' . $storefront_theme_mods['background_color'] . ';
@@ -242,7 +231,6 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 			}
 
 			.added_to_cart,
-			.site-header-cart .widget_shopping_cart a.button,
 			.wc-block-grid__products .wc-block-grid__product .wp-block-button__link {
 				background-color: ' . $storefront_theme_mods['button_background_color'] . ';
 				border-color: ' . $storefront_theme_mods['button_background_color'] . ';
@@ -250,7 +238,6 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 			}
 
 			.added_to_cart:hover,
-			.site-header-cart .widget_shopping_cart a.button:hover,
 			.wc-block-grid__products .wc-block-grid__product .wp-block-button__link:hover {
 				background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_background_color'], $darken_factor ) . ';
 				border-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_background_color'], $darken_factor ) . ';
@@ -279,22 +266,6 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 
 			.button.loading:after {
 				color: ' . $storefront_theme_mods['button_text_color'] . ';
-			}
-
-			@media screen and ( min-width: 768px ) {
-				.site-header-cart .widget_shopping_cart,
-				.site-header .product_list_widget li .quantity {
-					color: ' . $storefront_theme_mods['header_text_color'] . ';
-				}
-
-				.site-header-cart .widget_shopping_cart .buttons,
-				.site-header-cart .widget_shopping_cart .total {
-					background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['header_background_color'], -10 ) . ';
-				}
-
-				.site-header-cart .widget_shopping_cart {
-					background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['header_background_color'], -15 ) . ';
-				}
 			}';
 
 			if ( ! class_exists( 'Storefront_Product_Pagination' ) ) {
