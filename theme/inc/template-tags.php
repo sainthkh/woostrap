@@ -74,7 +74,7 @@ function woostrap_site_logo( $args = array(), $echo = true ) {
  * Search form for products.
  */
 function woostrap_search_form() { ?>
-	<form role="search" method="get" class="form-inline my-2 my-lg-0 woocommerce-product-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+	<form role="search" method="get" class="d-none d-md-block form-inline my-2 my-lg-0 woocommerce-product-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 		<label class="screen-reader-text" for="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>"><?php esc_html_e( 'Search for:', 'woocommerce' ); ?></label>
 		<div class="form-group has-search">
 			<i class="fas fa-search form-control-feedback"></i>
@@ -87,7 +87,7 @@ function woostrap_search_form() { ?>
 }
 
 function woostrap_cart_button() { ?>
-	<div class="shopping-cart">
+	<div class="d-none d-md-block shopping-cart">
 		<a class="shopping-cart-link" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'woostrap' ); ?>">
 			<i class="fas fa-shopping-cart"></i>
 		</a>
