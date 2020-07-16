@@ -62,43 +62,6 @@ if ( ! function_exists( 'storefront_cart_link_fragment' ) ) {
 	}
 }
 
-if ( ! function_exists( 'woostrap_site_cart_link' ) ) {
-	/**
-	 * Cart Link
-	 * Displayed a link to the cart including the number of items present and the cart total
-	 *
-	 * @return void
-	 * @since  1.0.0
-	 */
-	function woostrap_site_cart_link() {
-		?>
-			<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'woostrap' ); ?>">
-				<?php /* translators: %d: number of items in cart */ ?>
-				<?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'woostrap' ), WC()->cart->get_cart_contents_count() ) ); ?></span>
-			</a>
-		<?php
-	}
-}
-
-if ( ! function_exists( 'storefront_product_search' ) ) {
-	/**
-	 * Display Product Search
-	 *
-	 * @since  1.0.0
-	 * @uses  woostrap_is_woocommerce_activated() check if WooCommerce is activated
-	 * @return void
-	 */
-	function storefront_product_search() {
-		if ( woostrap_is_woocommerce_activated() ) {
-			?>
-			<div class="site-search">
-				<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
-			</div>
-			<?php
-		}
-	}
-}
-
 if ( ! function_exists( 'storefront_upsell_display' ) ) {
 	/**
 	 * Upsells
