@@ -51,6 +51,19 @@
 		top: 0;
 		left: 0;
 	}
+
+	.search-field {
+		width: 0;
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		transition: all .5s ease;
+
+		&:focus {
+			width: 250px;
+			@extend .form-control:focus;
+		}
+	}
 }
 
 // Credits to https://codepen.io/gungorbudak/pen/ooKNpz
@@ -67,7 +80,6 @@
 	line-height: 2.375rem;
 	text-align: center;
 	pointer-events: none;
-	color: #aaa;
 }
 
 @include media-breakpoint-up(md) {
