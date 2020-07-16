@@ -75,18 +75,22 @@ function woostrap_site_logo( $args = array(), $echo = true ) {
  */
 function woostrap_search_form() { ?>
 	<form role="search" method="get" class="d-none d-md-block ml-auto my-2 my-lg-0 form-inline woocommerce-product-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-		<label class="screen-reader-text" for="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>"><?php esc_html_e( 'Search for:', 'woocommerce' ); ?></label>
+		<label class="screen-reader-text" for="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>"><?php esc_html_e( 'Search for:', 'woostrap' ); ?></label>
 		<div class="form-group has-search">
 			<i class="fas fa-search form-control-feedback"></i>
-			<input type="search" id="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>" class="form-control mr-sm-2 search-field" placeholder="<?php echo esc_attr__( 'Search products&hellip;', 'woocommerce' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+			<input type="search" id="woocommerce-product-search-field-<?php echo isset( $index ) ? absint( $index ) : 0; ?>" class="form-control mr-sm-2 search-field" placeholder="<?php echo esc_attr__( 'Search products&hellip;', 'woostrap' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
 		</div>
-		<button type="submit" class="btn btn-outline-success my-2 my-sm-0" value="<?php echo esc_attr_x( 'Search', 'submit button', 'woocommerce' ); ?>"><?php echo esc_html_x( 'Search', 'submit button', 'woocommerce' ); ?></button>
+		<button type="submit" class="btn btn-outline-success my-2 my-sm-0" value="<?php echo esc_attr_x( 'Search', 'submit button', 'woostrap' ); ?>"><?php echo esc_html_x( 'Search', 'submit button', 'woostrap' ); ?></button>
 		<input type="hidden" name="post_type" value="product" />
 	</form>
 	<?php
 }
 
-function woostrap_cart_button() { ?>
+/**
+ * Cart button in the navbar.
+ */
+function woostrap_cart_button() { 
+	?>
 	<div class="d-none d-md-block shopping-cart">
 		<a class="shopping-cart-link" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'woostrap' ); ?>">
 			<i class="fas fa-shopping-cart"></i>
@@ -95,8 +99,9 @@ function woostrap_cart_button() { ?>
 
 		$item_count = WC()->cart->get_cart_contents_count();
 
-		if ($item_count > 0): ?>
-			<span class="badge badge-dark"><?php echo wp_kses_data( $item_count ) ?></span>
+		if ( $item_count > 0 ) : 
+			?>
+			<span class="badge badge-dark"><?php echo wp_kses_data( $item_count ); ?></span>
 		<?php endif; ?>
 	</div>
 	<?php

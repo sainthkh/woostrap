@@ -25,7 +25,7 @@
 
 <?php wp_body_open(); ?>
 
-<?php if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
+<?php if ( ! is_page_template( 'blank-page.php' ) && ! is_page_template( 'blank-page-with-container.php' ) ) : ?>
 
 	<header id="masthead" class="site-header" role="banner">
 		<nav class="navbar navbar-expand-md p-3 navbar-light bg-light">
@@ -35,43 +35,49 @@
 			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#site-navigation" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
-				<span><?php echo __('menu', 'woostrap') ?></span>
+				<span><?php esc_html_e( 'menu', 'woostrap' ); ?></span>
 			</button>
 			<?php
-				wp_nav_menu(array(
-				'theme_location'  => 'primary',
-				'container'       => 'div',
-				'container_id'    => 'site-navigation',
-				'container_class' => 'collapse navbar-collapse justify-content-end',
-				'menu_id'         => false,
-				'menu_class'      => 'navbar-nav',
-				'depth'           => 3,
-				'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
-				'walker'          => new wp_bootstrap_navwalker()
-				));
+				wp_nav_menu(
+					array(
+						'theme_location'  => 'primary',
+						'container'       => 'div',
+						'container_id'    => 'site-navigation',
+						'container_class' => 'collapse navbar-collapse justify-content-end',
+						'menu_id'         => false,
+						'menu_class'      => 'navbar-nav',
+						'depth'           => 3,
+						'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
+						'walker'          => new wp_bootstrap_navwalker(),
+					)
+				);
 			?>
-			<?php if ( woostrap_is_woocommerce_activated() ){
+			<?php 
+			if ( woostrap_is_woocommerce_activated() ) {
 				woostrap_search_form();
 				woostrap_cart_button();
-			} ?>
+			} 
+			?>
 		</div>
 		</nav>
 	</header><!-- #masthead -->
 
 <?php endif; ?>
 
-	<?php if ( is_active_sidebar( 'header-1' ) ): ?>
+	<?php if ( is_active_sidebar( 'header-1' ) ) : ?>
 		<div class="header-widget-region" role="complementary">
 			<div class="col-full">
 				<?php dynamic_sidebar( 'header-1' ); ?>
 			</div>
 		</div>
 	<?php endif; ?>
-	<?php if ( woostrap_is_woocommerce_activated() ) {
+	<?php 
+	if ( woostrap_is_woocommerce_activated() ) {
 		woocommerce_breadcrumb();
-	} ?>
+	} 
+	?>
 
-	<?php do_action( 'woostrap_before_content' );	?>
+	<?php do_action( 'woostrap_before_content' ); ?>
 
 	<div id="content" class="site-content" tabindex="-1">
 		<div class="col-full">

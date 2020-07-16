@@ -36,8 +36,8 @@ require 'inc/wordpress-shims.php';
 /**
  * Load custom WordPress nav walker.
  */
-if ( ! class_exists( 'wp_bootstrap_navwalker' )) {
-    require_once(get_template_directory() . '/inc/wp_bootstrap_navwalker.php');
+if ( ! class_exists( 'wp_bootstrap_navwalker' ) ) {
+	require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
 }
 
 if ( class_exists( 'Jetpack' ) ) {

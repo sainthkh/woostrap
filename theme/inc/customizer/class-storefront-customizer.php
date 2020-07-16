@@ -178,8 +178,8 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 					'type'        => 'checkbox',
 					'section'     => 'title_tagline',
 					'priority'    => 10,
-					'label'       => __( 'Retina logo', 'twentytwenty' ),
-					'description' => __( 'Scales the logo to half its uploaded size, making it sharp on high-res screens.', 'twentytwenty' ),
+					'label'       => __( 'Retina logo', 'woostrap' ),
+					'description' => __( 'Scales the logo to half its uploaded size, making it sharp on high-res screens.', 'woostrap' ),
 				)
 			);
 
@@ -1150,9 +1150,6 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 
 		/**
 		 * Get site name.
-		 *
-		 * @since 2.1.5
-		 * @return string
 		 */
 		public function get_site_name() {
 			bloginfo( 'name', 'display' );
@@ -1160,9 +1157,6 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 
 		/**
 		 * Get site description.
-		 *
-		 * @since 2.1.5
-		 * @return string
 		 */
 		public function get_site_description() {
 			bloginfo( 'description', 'display' );
