@@ -52,6 +52,7 @@
 			?>
 			<?php if ( woostrap_is_woocommerce_activated() ){
 				woostrap_search_form();
+				woostrap_cart_button();
 			} ?>
 		</div>
 		</nav>

@@ -85,3 +85,19 @@ function woostrap_search_form() { ?>
 	</form>
 	<?php
 }
+
+function woostrap_cart_button() { ?>
+	<div class="shopping-cart">
+		<a class="shopping-cart-link" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'woostrap' ); ?>">
+			<i class="fas fa-shopping-cart"></i>
+		</a>
+		<?php
+
+		$item_count = WC()->cart->get_cart_contents_count();
+
+		if ($item_count > 0): ?>
+			<span class="badge badge-dark"><?php echo wp_kses_data( $item_count ) ?></span>
+		<?php endif; ?>
+	</div>
+	<?php
+}
