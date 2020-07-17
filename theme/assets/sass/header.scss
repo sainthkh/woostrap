@@ -102,6 +102,10 @@
 	}
 }
 
+.hero-area-title {
+	text-align: center;
+}
+
 @include media-breakpoint-up(md) {
 	.site-branding {
 		display: block;
