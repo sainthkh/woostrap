@@ -60,6 +60,30 @@
 			?>
 		</div>
 		</nav>
+		<?php if ( is_front_page() && ! get_theme_mod( 'hero_area_visibility' ) ) : ?>
+		<div id="hero-area" class="jumbotron">
+			<div class="container">
+				<h1 class="hero-area-title display-4">
+					<?php
+					if ( get_theme_mod( 'hero_area_title_setting' ) ) {
+						echo esc_html( get_theme_mod( 'hero_area_title_setting' ) );
+					} else {
+						echo 'WooCommerce + Bootstrap';
+					}
+					?>
+				</h1>
+				<p class="hero-area-tagline lead">
+					<?php
+					if ( get_theme_mod( 'hero_area_tagline_setting' ) ) {
+						echo esc_html( get_theme_mod( 'hero_area_tagline_setting' ) );
+					} else {
+						esc_html_e( 'To customize the contents of this header banner and other elements of your site, go to Dashboard > Appearance > Customize', 'woostrap' );
+					}
+					?>
+				</p>
+			</div>
+		</div>
+		<?php endif; ?>
 	</header><!-- #masthead -->
 
 <?php endif; ?>
