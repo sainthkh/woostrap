@@ -10,12 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Storefront_Customizer' ) ) :
+if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 
 	/**
 	 * The Storefront Customizer class
 	 */
-	class Storefront_Customizer {
+	class Woostrap_Customizer {
 
 		/**
 		 * Setup class.
@@ -1223,4 +1223,4 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 
 endif;
 
-return new Storefront_Customizer();
+return new Woostrap_Customizer();
