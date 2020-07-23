@@ -25,7 +25,7 @@ $storefront = (object) array(
 	 * Initialize all the things.
 	 */
 	'main'       => require 'inc/class-storefront.php',
-	'customizer' => require 'inc/customizer/class-storefront-customizer.php',
+	'customizer' => require 'inc/customizer/class-woostrap-customizer.php',
 );
 
 require 'inc/storefront-functions.php';

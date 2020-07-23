@@ -15,7 +15,7 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 	/**
 	 * The Storefront Customizer class
 	 */
-	class Storefront_WooCommerce_Customizer extends Storefront_Customizer {
+	class Storefront_WooCommerce_Customizer extends Woostrap_Customizer {
 
 		/**
 		 * Setup class.
