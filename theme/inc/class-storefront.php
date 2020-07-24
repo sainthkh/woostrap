@@ -72,6 +72,14 @@ if ( ! class_exists( 'Storefront' ) ) :
 			 */
 			add_theme_support( 'post-thumbnails' );
 
+			$logo_width = 120;
+			$logo_height = 90;
+
+			if ( get_theme_mod( 'retina_logo', false ) ) {
+				$logo_width  = floor( $logo_width * 2 );
+				$logo_height = floor( $logo_height * 2 );
+			}
+
 			/**
 			 * Enable support for site logo.
 			 */
@@ -80,8 +88,8 @@ if ( ! class_exists( 'Storefront' ) ) :
 				apply_filters(
 					'storefront_custom_logo_args',
 					array(
-						'height'      => 110,
-						'width'       => 470,
+						'width'       => $logo_width,
+						'height'      => $logo_height,
 						'flex-width'  => true,
 						'flex-height' => true,
 					)
