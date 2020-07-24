@@ -189,10 +189,6 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-radio-image.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-arbitrary.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
-			if ( apply_filters( 'storefront_customizer_more', true ) ) {
-				require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-more.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-			}
-
 			/**
 			 * Add the typography section
 			 */
@@ -660,40 +656,6 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 					)
 				)
 			);
-
-			/**
-			 * More
-			 */
-			if ( apply_filters( 'storefront_customizer_more', true ) ) {
-				$wp_customize->add_section(
-					'storefront_more',
-					array(
-						'title'    => __( 'More', 'woostrap' ),
-						'priority' => 999,
-					)
-				);
-
-				$wp_customize->add_setting(
-					'storefront_more',
-					array(
-						'default'           => null,
-						'sanitize_callback' => 'sanitize_text_field',
-					)
-				);
-
-				$wp_customize->add_control(
-					new More_Storefront_Control(
-						$wp_customize,
-						'storefront_more',
-						array(
-							'label'    => __( 'Looking for more options?', 'woostrap' ),
-							'section'  => 'storefront_more',
-							'settings' => 'storefront_more',
-							'priority' => 1,
-						)
-					)
-				);
-			}
 		}
 
 		/**
