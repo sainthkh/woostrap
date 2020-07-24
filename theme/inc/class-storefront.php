@@ -72,7 +72,7 @@ if ( ! class_exists( 'Storefront' ) ) :
 			 */
 			add_theme_support( 'post-thumbnails' );
 
-			$logo_width = 120;
+			$logo_width  = 120;
 			$logo_height = 90;
 
 			if ( get_theme_mod( 'retina_logo', false ) ) {

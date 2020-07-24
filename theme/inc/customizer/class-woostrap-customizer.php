@@ -104,10 +104,10 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 		 * @since  1.0.0
 		 */
 		public function customize_register( $wp_customize ) {
-			/* -------------------------------------------------------------------------- */
-
-			/* Modify default sections and controls.	
-			/* -------------------------------------------------------------------------- */
+			/**
+			 * Modify default sections and controls.    
+			 * -------------------------------------------------------------------------- 
+			 */
 			
 			// Move background color setting alongside background image.
 			$wp_customize->get_control( 'background_color' )->section  = 'background_image';
@@ -186,10 +186,10 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-arbitrary.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 
-			/* -------------------------------------------------------------------------- */
-
-			/* Header Section
-			/* -------------------------------------------------------------------------- */
+			/**
+			 * Header Section
+			 * -------------------------------------------------------------------------- 
+			 */
 
 			/**
 			 * Header Background
@@ -263,10 +263,10 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				)
 			);
 
-			/* -------------------------------------------------------------------------- */
-
-			/* Footer Section
-			/* -------------------------------------------------------------------------- */
+			/**
+			 * Footer Section
+			 * -------------------------------------------------------------------------- 
+			 */
 
 			/**
 			 * Add footer section
