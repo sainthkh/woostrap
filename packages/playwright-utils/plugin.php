@@ -17,3 +17,14 @@ function woocommerce_clear_cart_url() {
 		WC()->cart->empty_cart();
 	}
 }
+
+add_action('init', 'reset_customize');
+
+/**
+ * Reset wp_customize 
+ */
+function reset_customize() {
+	if ( isset( $_GET['reset-customize'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		remove_theme_mods();
+	}
+}
