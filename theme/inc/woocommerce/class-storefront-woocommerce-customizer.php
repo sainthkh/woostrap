@@ -126,40 +126,6 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 				border-color: ' . $storefront_theme_mods['header_background_color'] . ';
 			}
 
-			.woocommerce-tabs ul.tabs li.active a,
-			ul.products li.product .price,
-			.onsale,
-			.wc-block-grid__product-onsale,
-			.widget_search form:before,
-			.widget_product_search form:before {
-				color: ' . $storefront_theme_mods['text_color'] . ';
-			}
-
-			.woocommerce-breadcrumb a,
-			a.woocommerce-review-link,
-			.product_meta a {
-				color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['text_color'], 5 ) . ';
-			}
-
-			.wc-block-grid__product-onsale,
-			.onsale {
-				border-color: ' . $storefront_theme_mods['text_color'] . ';
-			}
-
-			.star-rating span:before,
-			.quantity .plus, .quantity .minus,
-			p.stars a:hover:after,
-			p.stars a:after,
-			.star-rating span:before,
-			#payment .payment_methods li input[type=radio]:first-child:checked+label:before {
-				color: ' . $storefront_theme_mods['accent_color'] . ';
-			}
-
-			.widget_price_filter .ui-slider .ui-slider-range,
-			.widget_price_filter .ui-slider .ui-slider-handle {
-				background-color: ' . $storefront_theme_mods['accent_color'] . ';
-			}
-
 			.order_details {
 				background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['background_color'], -7 ) . ';
 			}
@@ -192,86 +158,11 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 
 			.woocommerce-pagination .page-numbers li .page-numbers.current {
 				background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['background_color'], $darken_factor ) . ';
-				color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['text_color'], -10 ) . ';
-			}
-
-			.wc-block-grid__product-onsale,
-			.onsale,
-			.woocommerce-pagination .page-numbers li .page-numbers:not(.current) {
-				color: ' . $storefront_theme_mods['text_color'] . ';
-			}
-
-			p.stars a:before,
-			p.stars a:hover~a:before,
-			p.stars.selected a.active~a:before {
-				color: ' . $storefront_theme_mods['text_color'] . ';
-			}
-
-			p.stars.selected a.active:before,
-			p.stars:hover a:before,
-			p.stars.selected a:not(.active):before,
-			p.stars.selected a.active:before {
-				color: ' . $storefront_theme_mods['accent_color'] . ';
-			}
-
-			.single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger {
-				background-color: ' . $storefront_theme_mods['button_background_color'] . ';
-				color: ' . $storefront_theme_mods['button_text_color'] . ';
-			}
-
-			.single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger:hover {
-				background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_background_color'], $darken_factor ) . ';
-				border-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_background_color'], $darken_factor ) . ';
-				color: ' . $storefront_theme_mods['button_text_color'] . ';
-			}
-
-			.button.added_to_cart:focus,
-			.button.wc-forward:focus {
-				outline-color: ' . $storefront_theme_mods['accent_color'] . ';
-			}
-
-			.added_to_cart,
-			.wc-block-grid__products .wc-block-grid__product .wp-block-button__link {
-				background-color: ' . $storefront_theme_mods['button_background_color'] . ';
-				border-color: ' . $storefront_theme_mods['button_background_color'] . ';
-				color: ' . $storefront_theme_mods['button_text_color'] . ';
-			}
-
-			.added_to_cart:hover,
-			.wc-block-grid__products .wc-block-grid__product .wp-block-button__link:hover {
-				background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_background_color'], $darken_factor ) . ';
-				border-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_background_color'], $darken_factor ) . ';
-				color: ' . $storefront_theme_mods['button_text_color'] . ';
-			}
-
-			.added_to_cart.alt, .added_to_cart, .widget a.button.checkout {
-				background-color: ' . $storefront_theme_mods['button_alt_background_color'] . ';
-				border-color: ' . $storefront_theme_mods['button_alt_background_color'] . ';
-				color: ' . $storefront_theme_mods['button_alt_text_color'] . ';
-			}
-
-			.added_to_cart.alt:hover, .added_to_cart:hover, .widget a.button.checkout:hover {
-				background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_alt_background_color'], $darken_factor ) . ';
-				border-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_alt_background_color'], $darken_factor ) . ';
-				color: ' . $storefront_theme_mods['button_alt_text_color'] . ';
-			}
-
-			.button.loading {
-				color: ' . $storefront_theme_mods['button_background_color'] . ';
-			}
-
-			.button.loading:hover {
-				background-color: ' . $storefront_theme_mods['button_background_color'] . ';
-			}
-
-			.button.loading:after {
-				color: ' . $storefront_theme_mods['button_text_color'] . ';
 			}';
 
 			if ( ! class_exists( 'Storefront_Product_Pagination' ) ) {
 				$styles .= '
 				.storefront-product-pagination a {
-					color: ' . $storefront_theme_mods['text_color'] . ';
 					background-color: ' . $storefront_theme_mods['background_color'] . ';
 				}';
 			}
@@ -279,7 +170,6 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 			if ( ! class_exists( 'Storefront_Sticky_Add_to_Cart' ) ) {
 				$styles .= '
 				.storefront-sticky-add-to-cart {
-					color: ' . $storefront_theme_mods['text_color'] . ';
 					background-color: ' . $storefront_theme_mods['background_color'] . ';
 				}
 

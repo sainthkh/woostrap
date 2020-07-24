@@ -41,11 +41,6 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			return apply_filters(
 				'storefront_setting_default_values',
 				$args = array(
-					'storefront_heading_color'           => '#333333',
-					'storefront_text_color'              => '#6d6d6d',
-					'storefront_accent_color'            => '#96588a',
-					'storefront_hero_heading_color'      => '#000000',
-					'storefront_hero_text_color'         => '#000000',
 					'storefront_header_background_color' => '#ffffff',
 					'storefront_header_text_color'       => '#404040',
 					'storefront_header_link_color'       => '#333333',
@@ -53,11 +48,6 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 					'storefront_footer_heading_color'    => '#333333',
 					'storefront_footer_text_color'       => '#6d6d6d',
 					'storefront_footer_link_color'       => '#333333',
-					'storefront_button_background_color' => '#eeeeee',
-					'storefront_button_text_color'       => '#333333',
-					'storefront_button_alt_background_color' => '#333333',
-					'storefront_button_alt_text_color'   => '#ffffff',
-					'storefront_layout'                  => 'right',
 					'background_color'                   => 'ffffff',
 				)
 			);
@@ -114,7 +104,11 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 		 * @since  1.0.0
 		 */
 		public function customize_register( $wp_customize ) {
+			/* -------------------------------------------------------------------------- */
 
+			/* Modify default sections and controls.	
+			/* -------------------------------------------------------------------------- */
+			
 			// Move background color setting alongside background image.
 			$wp_customize->get_control( 'background_color' )->section  = 'background_image';
 			$wp_customize->get_control( 'background_color' )->priority = 20;
@@ -127,7 +121,9 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			$wp_customize->get_section( 'header_image' )->title    = __( 'Header', 'woostrap' );
 			$wp_customize->get_section( 'header_image' )->priority = 25;
 
-			// Selective refresh.
+			/**
+			 * Selective refresh.
+			 */ 
 			$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
 			$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 
@@ -184,154 +180,16 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			);
 
 			/**
-			 * Custom controls
+			 * Load custom controls
 			 */
 			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-radio-image.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-arbitrary.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
-			/**
-			 * Add the typography section
-			 */
-			$wp_customize->add_section(
-				'storefront_typography',
-				array(
-					'title'    => __( 'Typography', 'woostrap' ),
-					'priority' => 45,
-				)
-			);
 
-			/**
-			 * Heading color
-			 */
-			$wp_customize->add_setting(
-				'storefront_heading_color',
-				array(
-					'default'           => apply_filters( 'storefront_default_heading_color', '#484c51' ),
-					'sanitize_callback' => 'sanitize_hex_color',
-				)
-			);
+			/* -------------------------------------------------------------------------- */
 
-			$wp_customize->add_control(
-				new WP_Customize_Color_Control(
-					$wp_customize,
-					'storefront_heading_color',
-					array(
-						'label'    => __( 'Heading color', 'woostrap' ),
-						'section'  => 'storefront_typography',
-						'settings' => 'storefront_heading_color',
-						'priority' => 20,
-					)
-				)
-			);
-
-			/**
-			 * Text Color
-			 */
-			$wp_customize->add_setting(
-				'storefront_text_color',
-				array(
-					'default'           => apply_filters( 'storefront_default_text_color', '#43454b' ),
-					'sanitize_callback' => 'sanitize_hex_color',
-				)
-			);
-
-			$wp_customize->add_control(
-				new WP_Customize_Color_Control(
-					$wp_customize,
-					'storefront_text_color',
-					array(
-						'label'    => __( 'Text color', 'woostrap' ),
-						'section'  => 'storefront_typography',
-						'settings' => 'storefront_text_color',
-						'priority' => 30,
-					)
-				)
-			);
-
-			/**
-			 * Accent Color
-			 */
-			$wp_customize->add_setting(
-				'storefront_accent_color',
-				array(
-					'default'           => apply_filters( 'storefront_default_accent_color', '#96588a' ),
-					'sanitize_callback' => 'sanitize_hex_color',
-				)
-			);
-
-			$wp_customize->add_control(
-				new WP_Customize_Color_Control(
-					$wp_customize,
-					'storefront_accent_color',
-					array(
-						'label'    => __( 'Link / accent color', 'woostrap' ),
-						'section'  => 'storefront_typography',
-						'settings' => 'storefront_accent_color',
-						'priority' => 40,
-					)
-				)
-			);
-
-			/**
-			 * Hero Heading Color
-			 */
-			$wp_customize->add_setting(
-				'storefront_hero_heading_color',
-				array(
-					'default'           => apply_filters( 'storefront_default_hero_heading_color', '#000000' ),
-					'sanitize_callback' => 'sanitize_hex_color',
-				)
-			);
-
-			$wp_customize->add_control(
-				new WP_Customize_Color_Control(
-					$wp_customize,
-					'storefront_hero_heading_color',
-					array(
-						'label'           => __( 'Hero heading color', 'woostrap' ),
-						'section'         => 'storefront_typography',
-						'settings'        => 'storefront_hero_heading_color',
-						'priority'        => 50,
-					)
-				)
-			);
-
-			/**
-			 * Hero Text Color
-			 */
-			$wp_customize->add_setting(
-				'storefront_hero_text_color',
-				array(
-					'default'           => apply_filters( 'storefront_default_hero_text_color', '#000000' ),
-					'sanitize_callback' => 'sanitize_hex_color',
-				)
-			);
-
-			$wp_customize->add_control(
-				new WP_Customize_Color_Control(
-					$wp_customize,
-					'storefront_hero_text_color',
-					array(
-						'label'           => __( 'Hero text color', 'woostrap' ),
-						'section'         => 'storefront_typography',
-						'settings'        => 'storefront_hero_text_color',
-						'priority'        => 60,
-					)
-				)
-			);
-
-			$wp_customize->add_control(
-				new Arbitrary_Storefront_Control(
-					$wp_customize,
-					'storefront_header_image_heading',
-					array(
-						'section'  => 'header_image',
-						'type'     => 'heading',
-						'label'    => __( 'Header background image', 'woostrap' ),
-						'priority' => 6,
-					)
-				)
-			);
+			/* Header Section
+			/* -------------------------------------------------------------------------- */
 
 			/**
 			 * Header Background
@@ -405,8 +263,13 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				)
 			);
 
+			/* -------------------------------------------------------------------------- */
+
+			/* Footer Section
+			/* -------------------------------------------------------------------------- */
+
 			/**
-			 * Footer section
+			 * Add footer section
 			 */
 			$wp_customize->add_section(
 				'storefront_footer',
@@ -522,9 +385,6 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 		public function get_storefront_theme_mods() {
 			$storefront_theme_mods = array(
 				'background_color'            => storefront_get_content_background_color(),
-				'accent_color'                => get_theme_mod( 'storefront_accent_color' ),
-				'hero_heading_color'          => get_theme_mod( 'storefront_hero_heading_color' ),
-				'hero_text_color'             => get_theme_mod( 'storefront_hero_text_color' ),
 				'header_background_color'     => get_theme_mod( 'storefront_header_background_color' ),
 				'header_link_color'           => get_theme_mod( 'storefront_header_link_color' ),
 				'header_text_color'           => get_theme_mod( 'storefront_header_text_color' ),
@@ -532,12 +392,6 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				'footer_link_color'           => get_theme_mod( 'storefront_footer_link_color' ),
 				'footer_heading_color'        => get_theme_mod( 'storefront_footer_heading_color' ),
 				'footer_text_color'           => get_theme_mod( 'storefront_footer_text_color' ),
-				'text_color'                  => get_theme_mod( 'storefront_text_color' ),
-				'heading_color'               => get_theme_mod( 'storefront_heading_color' ),
-				'button_background_color'     => get_theme_mod( 'storefront_button_background_color' ),
-				'button_text_color'           => get_theme_mod( 'storefront_button_text_color' ),
-				'button_alt_background_color' => get_theme_mod( 'storefront_button_alt_background_color' ),
-				'button_alt_text_color'       => get_theme_mod( 'storefront_button_alt_text_color' ),
 			);
 
 			return apply_filters( 'storefront_theme_mods', $storefront_theme_mods );
@@ -615,74 +469,8 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				background-color: ' . $storefront_theme_mods['header_link_color'] . ';
 			}
 
-			h1, h2, h3, h4, h5, h6, .wc-block-grid__product-title {
-				color: ' . $storefront_theme_mods['heading_color'] . ';
-			}
-
-			.widget h1 {
-				border-bottom-color: ' . $storefront_theme_mods['heading_color'] . ';
-			}
-
-			body,
-			.secondary-navigation a {
-				color: ' . $storefront_theme_mods['text_color'] . ';
-			}
-
-			.widget-area .widget a,
-			.hentry .entry-header .posted-on a,
-			.hentry .entry-header .post-author a,
-			.hentry .entry-header .post-comments a,
-			.hentry .entry-header .byline a {
-				color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['text_color'], 5 ) . ';
-			}
-
-			a {
-				color: ' . $storefront_theme_mods['accent_color'] . ';
-			}
-
-			a:focus,
-			button:focus,
-			.button.alt:focus,
-			input:focus,
-			textarea:focus,
-			input[type="button"]:focus,
-			input[type="reset"]:focus,
-			input[type="submit"]:focus,
-			input[type="email"]:focus,
-			input[type="tel"]:focus,
-			input[type="url"]:focus,
-			input[type="password"]:focus,
-			input[type="search"]:focus {
-				outline-color: ' . $storefront_theme_mods['accent_color'] . ';
-			}
-
-			button, input[type="button"], input[type="reset"], input[type="submit"], .button, .widget a.button {
-				background-color: ' . $storefront_theme_mods['button_background_color'] . ';
-				border-color: ' . $storefront_theme_mods['button_background_color'] . ';
-				color: ' . $storefront_theme_mods['button_text_color'] . ';
-			}
-
-			button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover, .button:hover, .widget a.button:hover {
-				background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_background_color'], $darken_factor ) . ';
-				border-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_background_color'], $darken_factor ) . ';
-				color: ' . $storefront_theme_mods['button_text_color'] . ';
-			}
-
-			button.alt, input[type="button"].alt, input[type="reset"].alt, input[type="submit"].alt, .button.alt, .widget-area .widget a.button.alt {
-				background-color: ' . $storefront_theme_mods['button_alt_background_color'] . ';
-				border-color: ' . $storefront_theme_mods['button_alt_background_color'] . ';
-				color: ' . $storefront_theme_mods['button_alt_text_color'] . ';
-			}
-
-			button.alt:hover, input[type="button"].alt:hover, input[type="reset"].alt:hover, input[type="submit"].alt:hover, .button.alt:hover, .widget-area .widget a.button.alt:hover {
-				background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_alt_background_color'], $darken_factor ) . ';
-				border-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_alt_background_color'], $darken_factor ) . ';
-				color: ' . $storefront_theme_mods['button_alt_text_color'] . ';
-			}
-
 			.pagination .page-numbers li .page-numbers.current {
 				background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['background_color'], $darken_factor ) . ';
-				color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['text_color'], -10 ) . ';
 			}
 
 			#comments .comment-list .comment-content .comment-text {
@@ -704,14 +492,6 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 
 			.site-footer h1, .site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5, .site-footer h6, .site-footer .widget .widget-title, .site-footer .widget .widgettitle {
 				color: ' . $storefront_theme_mods['footer_heading_color'] . ';
-			}
-
-			.page-template-template-homepage.has-post-thumbnail .type-page.has-post-thumbnail .entry-title {
-				color: ' . $storefront_theme_mods['hero_heading_color'] . ';
-			}
-
-			.page-template-template-homepage.has-post-thumbnail .type-page.has-post-thumbnail .entry-content {
-				color: ' . $storefront_theme_mods['hero_text_color'] . ';
 			}
 
 			@media screen and ( min-width: 768px ) {
@@ -748,76 +528,8 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 
 			// Gutenberg.
 			$styles = '
-				.wp-block-button__link:not(.has-text-color) {
-					color: ' . $storefront_theme_mods['button_text_color'] . ';
-				}
-
-				.wp-block-button__link:not(.has-text-color):hover,
-				.wp-block-button__link:not(.has-text-color):focus,
-				.wp-block-button__link:not(.has-text-color):active {
-					color: ' . $storefront_theme_mods['button_text_color'] . ';
-				}
-
-				.wp-block-button__link:not(.has-background) {
-					background-color: ' . $storefront_theme_mods['button_background_color'] . ';
-				}
-
-				.wp-block-button__link:not(.has-background):hover,
-				.wp-block-button__link:not(.has-background):focus,
-				.wp-block-button__link:not(.has-background):active {
-					border-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_background_color'], $darken_factor ) . ';
-					background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_background_color'], $darken_factor ) . ';
-				}
-
-				.wp-block-quote footer,
-				.wp-block-quote cite,
-				.wp-block-quote__citation {
-					color: ' . $storefront_theme_mods['text_color'] . ';
-				}
-
-				.wp-block-pullquote cite,
-				.wp-block-pullquote footer,
-				.wp-block-pullquote__citation {
-					color: ' . $storefront_theme_mods['text_color'] . ';
-				}
-
-				.wp-block-image figcaption {
-					color: ' . $storefront_theme_mods['text_color'] . ';
-				}
-
-				.wp-block-separator.is-style-dots::before {
-					color: ' . $storefront_theme_mods['heading_color'] . ';
-				}
-
-				.wp-block-file a.wp-block-file__button {
-					color: ' . $storefront_theme_mods['button_text_color'] . ';
-					background-color: ' . $storefront_theme_mods['button_background_color'] . ';
-					border-color: ' . $storefront_theme_mods['button_background_color'] . ';
-				}
-
-				.wp-block-file a.wp-block-file__button:hover,
-				.wp-block-file a.wp-block-file__button:focus,
-				.wp-block-file a.wp-block-file__button:active {
-					color: ' . $storefront_theme_mods['button_text_color'] . ';
-					background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['button_background_color'], $darken_factor ) . ';
-				}
-
-				.wp-block-code,
-				.wp-block-preformatted pre {
-					color: ' . $storefront_theme_mods['text_color'] . ';
-				}
-
 				.wp-block-table:not( .has-background ):not( .is-style-stripes ) tbody tr:nth-child(2n) td {
 					background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['background_color'], -2 ) . ';
-				}
-
-				.wp-block-cover .wp-block-cover__inner-container h1,
-				.wp-block-cover .wp-block-cover__inner-container h2,
-				.wp-block-cover .wp-block-cover__inner-container h3,
-				.wp-block-cover .wp-block-cover__inner-container h4,
-				.wp-block-cover .wp-block-cover__inner-container h5,
-				.wp-block-cover .wp-block-cover__inner-container h6 {
-					color: ' . $storefront_theme_mods['hero_heading_color'] . ';
 				}
 			';
 
@@ -852,33 +564,6 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				.editor-styles-wrapper fieldset,
 				.editor-styles-wrapper fieldset legend {
 					background-color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['background_color'], -4 ) . ';
-				}
-
-				.editor-post-title__block .editor-post-title__input,
-				.editor-styles-wrapper h1,
-				.editor-styles-wrapper h2,
-				.editor-styles-wrapper h3,
-				.editor-styles-wrapper h4,
-				.editor-styles-wrapper h5,
-				.editor-styles-wrapper h6 {
-					color: ' . $storefront_theme_mods['heading_color'] . ';
-				}
-
-				/* WP <=5.3 */
-				.editor-styles-wrapper .editor-block-list__block,
-				/* WP >=5.4 */
-				.editor-styles-wrapper .block-editor-block-list__block {
-					color: ' . $storefront_theme_mods['text_color'] . ';
-				}
-
-				.editor-styles-wrapper a,
-				.wp-block-freeform.block-library-rich-text__tinymce a {
-					color: ' . $storefront_theme_mods['accent_color'] . ';
-				}
-
-				.editor-styles-wrapper a:focus,
-				.wp-block-freeform.block-library-rich-text__tinymce a:focus {
-					outline-color: ' . $storefront_theme_mods['accent_color'] . ';
 				}
 
 				body.post-type-post .editor-post-title__block::after {
