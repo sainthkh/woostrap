@@ -14,8 +14,6 @@ const getBrowsers = () => {
 	return [ 'chromium' ];
 };
 
-jest.setTimeout( 60000 );
-
 module.exports = {
 	launchOptions: {
 		headless: env.HEADLESS === 'true',

@@ -7,6 +7,9 @@ module.exports = {
 		'/vendor',
 		'index.d.ts',
 	],
+	setupFilesAfterEnv: [
+		'<rootDir>/packages/e2e-tests/config/setup-test-framework.js',
+	],
 	transform: {
 		'^.+\\.ts$': 'ts-jest',
 	},
