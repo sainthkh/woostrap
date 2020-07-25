@@ -1,9 +1,9 @@
 beforeAll( async () => {
-	await page.goto( 'http://localhost:8889?login=admin' );
+	await page.goto( 'http://localhost:8889/?login=admin' );
 } );
 
 beforeEach( async () => {
-	await page.goto( 'http://localhost:8889?reset-customize' );
+	await page.goto( 'http://localhost:8889/?reset-customize' );
 	await page.goto( 'http://localhost:8889/wp-admin/customize.php' );
 } );
 
