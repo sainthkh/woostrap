@@ -1,5 +1,6 @@
 beforeAll( async () => {
 	await page.goto( 'http://localhost:8889/?login=admin' );
+	await page.waitForSelector( '#wpadminbar' );
 } );
 
 beforeEach( async () => {
