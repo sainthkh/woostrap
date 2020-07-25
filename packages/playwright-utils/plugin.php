@@ -28,3 +28,29 @@ function e2e_util_reset_customize() {
 		remove_theme_mods();
 	}
 }
+
+add_action('init', 'e2e_util_logout');
+
+function e2e_util_logout() {
+	if ( isset( $_GET['logout'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		wp_logout();
+	}
+}
+
+add_action('init', 'e2e_util_login');
+
+function e2e_util_login() {
+	if ( isset( $_GET['login'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$username = $_GET['login'];
+
+		$user = get_user_by('login', $username );
+
+		// Redirect URL //
+		if ( !is_wp_error( $user ) )
+		{
+			wp_clear_auth_cookie();
+			wp_set_current_user ( $user->ID );
+			wp_set_auth_cookie  ( $user->ID );
+		}
+	}
+}
