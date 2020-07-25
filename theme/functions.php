@@ -25,7 +25,7 @@ $storefront = (object) array(
 	 * Initialize all the things.
 	 */
 	'main'       => require 'inc/class-storefront.php',
-	'customizer' => require 'inc/customizer/class-storefront-customizer.php',
+	'customizer' => require 'inc/customizer/class-woostrap-customizer.php',
 );
 
 require 'inc/storefront-functions.php';
@@ -56,8 +56,6 @@ if ( woostrap_is_woocommerce_activated() ) {
 }
 
 if ( is_admin() ) {
-	$storefront->admin = require 'inc/admin/class-storefront-admin.php';
-
 	require 'inc/admin/class-storefront-plugin-install.php';
 }
 
