@@ -9,7 +9,9 @@ beforeEach( async () => {
 
 describe( 'site identity', () => {
 	it( 'retina logo', async () => {
-		await page.click( '#accordion-section-title_tagline' );
+		await page.click( '#accordion-section-title_tagline', {
+			timeout: 0,
+		} );
 		await page.click( '//button[text()="Select logo"]' );
 		await page.click( '//button[text()="Media Library"]' );
 		await page.click( 'ul.attachments li' );
