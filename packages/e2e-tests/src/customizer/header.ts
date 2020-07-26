@@ -1,6 +1,7 @@
+import { login } from '@woostrap/playwright-utils';
+
 beforeAll( async () => {
-	await page.goto( 'http://localhost:8889/?login=admin' );
-	await page.waitForSelector( '#wpadminbar' );
+	await login( 'admin', 'password' );
 } );
 
 beforeEach( async () => {
