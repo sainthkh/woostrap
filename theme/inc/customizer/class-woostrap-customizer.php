@@ -180,13 +180,6 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			);
 
 			/**
-			 * Load custom controls
-			 */
-			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-radio-image.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-arbitrary.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-
-
-			/**
 			 * Header Section
 			 * -------------------------------------------------------------------------- 
 			 */
