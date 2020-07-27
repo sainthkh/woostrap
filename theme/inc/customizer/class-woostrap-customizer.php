@@ -179,11 +179,11 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				)
 			);
 
-			/**
-			 * Header Section
-			 * -------------------------------------------------------------------------- 
-			 */
+			$this->register_header_settings($wp_customize);
+			$this->register_footer_settings($wp_customize);
+		}
 
+		private function register_header_settings($wp_customize) {
 			/**
 			 * Header Background
 			 */
@@ -255,12 +255,10 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 					)
 				)
 			);
+		}
 
-			/**
-			 * Footer Section
-			 * -------------------------------------------------------------------------- 
-			 */
-
+		private function register_footer_settings($wp_customize) {
+			
 			/**
 			 * Add footer section
 			 */
