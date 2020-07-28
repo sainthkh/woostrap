@@ -2,12 +2,16 @@
 const fs = require( 'fs-extra' );
 const path = require( 'path' );
 
-// copy front.js
-const frontDest = path.join( __dirname, '../theme/asset/front.js' );
-fs.ensureDirSync( path.dirname( frontDest ) );
-fs.copyFileSync( path.join( __dirname, '../build/front.js' ), frontDest );
-/* eslint-disable-next-line no-console */
-console.log( 'copied front.js' );
+function copy( name ) {
+	const dest = path.join( __dirname, `../theme/asset/${ name }` );
+	fs.ensureDirSync( path.dirname( dest ) );
+	fs.copyFileSync( path.join( __dirname, `../build/${ name }` ), dest );
+	/* eslint-disable-next-line no-console */
+	console.log( `copied ${ name }` );
+}
+
+const jsFiles = [ 'front.js', 'customizer.js', 'customizer.css' ];
+jsFiles.forEach( ( file ) => copy( file ) );
 
 // copy style.css
 const styleDest = path.join( __dirname, '../theme/style.css' );
