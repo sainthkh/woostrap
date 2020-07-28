@@ -10,11 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Storefront_Plugin_Install' ) ) :
+if ( ! class_exists( 'Woostrap_Plugin_Install' ) ) :
 	/**
 	 * The Storefront plugin install class
 	 */
-	class Storefront_Plugin_Install {
+	class Woostrap_Plugin_Install {
 
 		/**
 		 * Setup class.
@@ -148,4 +148,4 @@ if ( ! class_exists( 'Storefront_Plugin_Install' ) ) :
 
 endif;
 
-return new Storefront_Plugin_Install();
+return new Woostrap_Plugin_Install();

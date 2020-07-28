@@ -179,18 +179,16 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				)
 			);
 
-			/**
-			 * Load custom controls
-			 */
-			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-radio-image.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-			require_once dirname( __FILE__ ) . '/class-storefront-customizer-control-arbitrary.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+			$this->register_header_settings( $wp_customize );
+			$this->register_footer_settings( $wp_customize );
+		}
 
-
-			/**
-			 * Header Section
-			 * -------------------------------------------------------------------------- 
-			 */
-
+		/**
+		 * Register header customizer settings
+		 * 
+		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+		 */
+		private function register_header_settings( $wp_customize ) {
 			/**
 			 * Header Background
 			 */
@@ -262,12 +260,15 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 					)
 				)
 			);
+		}
 
-			/**
-			 * Footer Section
-			 * -------------------------------------------------------------------------- 
-			 */
-
+		/**
+		 * Register footer customizer settings
+		 * 
+		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+		 */
+		private function register_footer_settings( $wp_customize ) {
+			
 			/**
 			 * Add footer section
 			 */
