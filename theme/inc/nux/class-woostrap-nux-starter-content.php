@@ -10,12 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Storefront_NUX_Starter_Content' ) ) :
+if ( ! class_exists( 'Woostrap_NUX_Starter_Content' ) ) :
 
 	/**
 	 * The Storefront NUX Starter Content class
 	 */
-	class Storefront_NUX_Starter_Content {
+	class Woostrap_NUX_Starter_Content {
 		/**
 		 * Setup class.
 		 *
@@ -238,7 +238,7 @@ if ( ! class_exists( 'Storefront_NUX_Starter_Content' ) ) :
 
 			// Add WooCommerce pages.
 			$starter_content_wc_pages = array();
-			$woocommerce_pages        = Storefront_NUX_Admin::get_woocommerce_pages();
+			$woocommerce_pages        = Woostrap_NUX_Admin::get_woocommerce_pages();
 
 			foreach ( $woocommerce_pages as $option => $page_id ) {
 				$page = get_post( $page_id );
@@ -1283,4 +1283,4 @@ if ( ! class_exists( 'Storefront_NUX_Starter_Content' ) ) :
 
 endif;
 
-return new Storefront_NUX_Starter_Content();
+return new Woostrap_NUX_Starter_Content();

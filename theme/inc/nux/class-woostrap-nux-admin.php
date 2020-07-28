@@ -10,12 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
+if ( ! class_exists( 'Woostrap_NUX_Admin' ) ) :
 
 	/**
 	 * The Storefront NUX Admin class
 	 */
-	class Storefront_NUX_Admin {
+	class Woostrap_NUX_Admin {
 		/**
 		 * Setup class.
 		 *
@@ -83,7 +83,7 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 					<?php if ( ! woostrap_is_woocommerce_activated() && current_user_can( 'install_plugins' ) && current_user_can( 'activate_plugins' ) ) : ?>
 						<h2><?php esc_html_e( 'Thanks for installing Storefront, you rock! 🤘', 'woostrap' ); ?></h2>
 						<p><?php esc_html_e( 'To enable eCommerce features you need to install the WooCommerce plugin.', 'woostrap' ); ?></p>
-						<p><?php Storefront_Plugin_Install::install_plugin_button( 'woocommerce', 'woocommerce.php', 'WooCommerce', array(), __( 'WooCommerce activated', 'woostrap' ), __( 'Activate WooCommerce', 'woostrap' ), __( 'Install WooCommerce', 'woostrap' ) ); ?></p>
+						<p><?php Woostrap_Plugin_Install::install_plugin_button( 'woocommerce', 'woocommerce.php', 'WooCommerce', array(), __( 'WooCommerce activated', 'woostrap' ), __( 'Activate WooCommerce', 'woostrap' ), __( 'Install WooCommerce', 'woostrap' ) ); ?></p>
 					<?php endif; ?>
 
 					<?php if ( woostrap_is_woocommerce_activated() ) : ?>
@@ -312,4 +312,4 @@ if ( ! class_exists( 'Storefront_NUX_Admin' ) ) :
 
 endif;
 
-return new Storefront_NUX_Admin();
+return new Woostrap_NUX_Admin();

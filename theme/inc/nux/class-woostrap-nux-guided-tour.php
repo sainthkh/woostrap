@@ -10,12 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Storefront_NUX_Guided_Tour' ) ) :
+if ( ! class_exists( 'Woostrap_NUX_Guided_Tour' ) ) :
 
 	/**
 	 * The Storefront NUX Guided Tour class
 	 */
-	class Storefront_NUX_Guided_Tour {
+	class Woostrap_NUX_Guided_Tour {
 		/**
 		 * Setup class.
 		 *
@@ -33,14 +33,14 @@ if ( ! class_exists( 'Storefront_NUX_Guided_Tour' ) ) :
 		public function customizer() {
 			global $pagenow;
 
-			if ( 'customize.php' === $pagenow && false === (bool) get_option( 'storefront_nux_guided_tour', false ) ) {
+			if ( 'customize.php' === $pagenow && false === (bool) get_option( 'Woostrap_NUX_Guided_Tour', false ) ) {
 				add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_scripts' ) );
 				add_action( 'customize_controls_print_footer_scripts', array( $this, 'print_templates' ) );
 
 				if ( current_user_can( 'manage_options' ) ) {
 
 					// Set Guided Tour flag so it doesn't show up again.
-					update_option( 'storefront_nux_guided_tour', true );
+					update_option( 'Woostrap_NUX_Guided_Tour', true );
 				}
 			}
 		}
@@ -153,4 +153,4 @@ if ( ! class_exists( 'Storefront_NUX_Guided_Tour' ) ) :
 
 endif;
 
-return new Storefront_NUX_Guided_Tour();
+return new Woostrap_NUX_Guided_Tour();
