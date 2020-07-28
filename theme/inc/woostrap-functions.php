@@ -125,7 +125,6 @@ function storefront_homepage_content_styles() {
  * @param  strong  $hex   hex color e.g. #111111.
  * @param  integer $steps factor by which to brighten/darken ranging from -255 (darken) to 255 (brighten).
  * @return string        brightened/darkened hex color
- * @since  1.0.0
  */
 function storefront_adjust_color_brightness( $hex, $steps ) {
 	// Steps should be between -255 and 255. Negative = darker, positive = lighter.
@@ -182,7 +181,6 @@ function storefront_sanitize_choices( $input, $setting ) {
  *
  * @param bool $checked Whether the checkbox is checked.
  * @return bool Whether the checkbox is checked.
- * @since  1.5.0
  */
 function woostrap_sanitize_checkbox( $checked ) {
 	return ( ( isset( $checked ) && true === $checked ) ? true : false );
