@@ -244,3 +244,21 @@ function woostrap_get_custom_logo( $html ) {
 }
 
 add_filter( 'get_custom_logo', 'woostrap_get_custom_logo' );
+
+function woostrap_navbar_styles() {
+	$bg_color = get_theme_mod('woostrap_navbar_background_color');
+
+	if ($bg_color) {
+		echo 'style="background:' . $bg_color . ';"';
+	}
+}
+
+function woostrap_navbar_classes() {
+	$text_style = get_theme_mod('woostrap_navbar_text_style');
+
+	if ($text_style === 'light') {
+		echo 'navbar-dark ';
+	} else {
+		echo 'navbar-light';
+	}
+}

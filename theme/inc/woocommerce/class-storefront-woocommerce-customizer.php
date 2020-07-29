@@ -26,7 +26,7 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 		public function __construct() {
 			add_action( 'customize_register', array( $this, 'customize_register' ), 10 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_customizer_css' ), 130 );
-			add_filter( 'storefront_setting_default_values', array( $this, 'setting_default_values' ) );
+			add_filter( 'woostrap_setting_default_values', array( $this, 'setting_default_values' ) );
 		}
 
 		/**
@@ -121,7 +121,7 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 			}
 
 			.storefront-handheld-footer-bar ul li.cart .count {
-				background-color: ' . $storefront_theme_mods['header_link_color'] . ';
+				background-color: ' . $storefront_theme_mods['navbar_text_color'] . ';
 				color: ' . $storefront_theme_mods['header_background_color'] . ';
 				border-color: ' . $storefront_theme_mods['header_background_color'] . ';
 			}
@@ -174,7 +174,7 @@ if ( ! class_exists( 'Storefront_WooCommerce_Customizer' ) ) :
 				}
 
 				.storefront-sticky-add-to-cart a:not(.button) {
-					color: ' . $storefront_theme_mods['header_link_color'] . ';
+					color: ' . $storefront_theme_mods['navbar_text_color'] . ';
 				}';
 			}
 

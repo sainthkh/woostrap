@@ -28,7 +28,7 @@
 <?php if ( ! is_page_template( 'blank-page.php' ) && ! is_page_template( 'blank-page-with-container.php' ) ) : ?>
 
 	<header id="masthead" class="site-header" role="banner">
-		<nav class="navbar navbar-expand-md p-3 navbar-light bg-light">
+		<nav class="navbar navbar-expand-md p-3 <?php woostrap_navbar_classes() ?>" <?php woostrap_navbar_styles() ?>>
 		<div class="container">
 			<div class="navbar-brand site-branding">
 			<?php woostrap_site_logo(); ?>
