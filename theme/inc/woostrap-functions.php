@@ -36,62 +36,6 @@ function storefront_do_shortcode( $tag, array $atts = array(), $content = null )
 }
 
 /**
- * Get the content background color
- * Accounts for the Storefront Designer and Storefront Powerpack content background option.
- *
- * @since  1.6.0
- * @return string the background color
- */
-function storefront_get_content_background_color() {
-	if ( class_exists( 'Storefront_Designer' ) ) {
-		$content_bg_color = get_theme_mod( 'sd_content_background_color' );
-		$content_frame    = get_theme_mod( 'sd_fixed_width' );
-	}
-
-	if ( class_exists( 'Storefront_Powerpack' ) ) {
-		$content_bg_color = get_theme_mod( 'sp_content_frame_background' );
-		$content_frame    = get_theme_mod( 'sp_content_frame' );
-	}
-
-	$bg_color = str_replace( '#', '', get_theme_mod( 'background_color' ) );
-
-	if ( class_exists( 'Storefront_Powerpack' ) || class_exists( 'Storefront_Designer' ) ) {
-		if ( $content_bg_color && ( 'true' === $content_frame || 'frame' === $content_frame ) ) {
-			$bg_color = str_replace( '#', '', $content_bg_color );
-		}
-	}
-
-	return '#' . $bg_color;
-}
-
-/**
- * Apply inline style to the Storefront header.
- *
- * @uses  get_header_image()
- * @since  2.0.0
- */
-function storefront_header_styles() {
-	$is_header_image = get_header_image();
-	$header_bg_image = '';
-
-	if ( $is_header_image ) {
-		$header_bg_image = 'url(' . esc_url( $is_header_image ) . ')';
-	}
-
-	$styles = array();
-
-	if ( '' !== $header_bg_image ) {
-		$styles['background-image'] = $header_bg_image;
-	}
-
-	$styles = apply_filters( 'storefront_header_styles', $styles );
-
-	foreach ( $styles as $style => $value ) {
-		echo esc_attr( $style . ': ' . $value . '; ' );
-	}
-}
-
-/**
  * Apply inline style to the Storefront homepage content.
  *
  * @uses  get_the_post_thumbnail_url()

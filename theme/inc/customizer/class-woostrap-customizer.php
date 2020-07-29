@@ -410,7 +410,7 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 		 */
 		public function get_storefront_theme_mods() {
 			$storefront_theme_mods = array(
-				'background_color'            => storefront_get_content_background_color(),
+				'background_color'            => get_theme_mod( 'background_color' ),
 				'header_background_color'     => get_theme_mod( 'storefront_header_background_color' ),
 				'navbar_text_color'           => get_theme_mod('woostrap_navbar_text_color'),
 				'header_text_color' => get_theme_mod('storefront_header_text_color'),
