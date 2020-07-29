@@ -10,7 +10,7 @@ function copy( name ) {
 	console.log( `copied ${ name }` );
 }
 
-const jsFiles = [ 'front.js', 'customizer.js', 'customizer.css' ];
+const jsFiles = [ 'front.js', 'customizer.js', 'nux-customizer.css' ];
 jsFiles.forEach( ( file ) => copy( file ) );
 
 // copy style.css
