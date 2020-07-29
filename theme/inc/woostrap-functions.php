@@ -186,6 +186,14 @@ function woostrap_sanitize_checkbox( $checked ) {
 	return ( ( isset( $checked ) && true === $checked ) ? true : false );
 }
 
+function woostrap_sanitize_navbar_text_style( $value ) {
+	if ($value === 'dark' || $value === 'light') {
+		return $value;
+	}
+
+	return 'light';
+}
+
 /**
  * Get the information about the logo.
  * 

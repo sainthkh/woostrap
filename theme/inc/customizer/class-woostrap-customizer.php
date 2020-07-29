@@ -42,9 +42,7 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				'woostrap_setting_default_values',
 				$args = array(
 					'woostrap_navbar_background_color'   => '#7952b3',
-					'woostrap_navbar_text_color'         => '#ffffff',
 					'woostrap_navbar_text_style'         => 'light',
-					'storefront_header_text_color'       => '#404040',
 					'storefront_footer_background_color' => '#f0f0f0',
 					'storefront_footer_heading_color'    => '#333333',
 					'storefront_footer_text_color'       => '#6d6d6d',
@@ -245,8 +243,8 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			$wp_customize->add_setting(
 				'woostrap_navbar_text_style',
 				array(
-					'default'           => '#ffffff',
-					'sanitize_callback' => array( __CLASS__, 'sanitize_select' ),
+					'default'           => 'light',
+					'sanitize_callback' => 'woostrap_sanitize_navbar_text_style',
 				)
 			);
 
