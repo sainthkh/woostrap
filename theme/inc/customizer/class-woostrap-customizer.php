@@ -1,6 +1,6 @@
 <?php
 /**
- * Storefront Customizer Class
+ * Woostrap Customizer Class
  *
  * @package  storefront
  * @since    2.0.0
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 
 	/**
-	 * The Storefront Customizer class
+	 * The Woostrap Customizer class
 	 */
 	class Woostrap_Customizer {
 
@@ -33,7 +33,7 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 		}
 
 		/**
-		 * Returns an array of the desired default Storefront Options
+		 * Returns an array of the desired default Woostrap Options
 		 *
 		 * @return array
 		 */
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 		}
 
 		/**
-		 * Adds a value to each Storefront setting if one isn't already present.
+		 * Adds a value to each Woostrap setting if one isn't already present.
 		 *
 		 * @uses get_woostrap_default_setting_values()
 		 */
@@ -404,9 +404,9 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 		}
 
 		/**
-		 * Get all of the Storefront theme mods.
+		 * Get all of the Woostrap theme mods.
 		 *
-		 * @return array $storefront_theme_mods The Storefront Theme Mods.
+		 * @return array $storefront_theme_mods The Woostrap Theme Mods.
 		 */
 		public function get_storefront_theme_mods() {
 			$storefront_theme_mods = array(
