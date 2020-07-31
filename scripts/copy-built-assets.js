@@ -16,6 +16,9 @@ jsFiles.forEach( ( file ) => copy( file ) );
 // copy style.css
 const styleDest = path.join( __dirname, '../theme/style.css' );
 fs.ensureDirSync( path.dirname( styleDest ) );
-fs.copyFileSync( path.join( __dirname, '../build/style.css' ), styleDest );
+fs.copyFileSync(
+	path.join( __dirname, '../build/style-front.css' ),
+	styleDest
+);
 /* eslint-disable-next-line no-console */
 console.log( 'copied style.css' );
