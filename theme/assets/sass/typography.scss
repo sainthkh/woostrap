@@ -8,7 +8,7 @@ button,
 input,
 textarea {
 	color: #43454b;
-	font-family: "Source Sans Pro", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-family: "Source Sans Pro", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	line-height: 1.618;
 	text-rendering: optimizeLegibility;
 	font-weight: 400;
@@ -16,7 +16,7 @@ textarea {
 
 select {
 	color: initial;
-	font-family: "Source Sans Pro", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-family: "Source Sans Pro", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	max-width: 100%;
 }
 
@@ -54,8 +54,8 @@ h2,
 	line-height: 1.214;
 }
 
-h2+h3,
-.beta+h3 {
+h2 + h3,
+.beta + h3 {
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
 	padding-top: 0.5407911001em;
 }
@@ -77,30 +77,30 @@ h4,
 	display: block;
 }
 
-p+h2,
-p+header h2,
-p+h3,
-p+h4,
-ul+h2,
-ul+header h2,
-ul+h3,
-ul+h4,
-ol+h2,
-ol+header h2,
-ol+h3,
-ol+h4,
-table+h2,
-table+header h2,
-table+h3,
-table+h4,
-blockquote+h2,
-blockquote+header h2,
-blockquote+h3,
-blockquote+h4,
-form+h2,
-form+header h2,
-form+h3,
-form+h4 {
+p + h2,
+p + header h2,
+p + h3,
+p + h4,
+ul + h2,
+ul + header h2,
+ul + h3,
+ul + h4,
+ol + h2,
+ol + header h2,
+ol + h3,
+ol + h4,
+table + h2,
+table + header h2,
+table + h3,
+table + h4,
+blockquote + h2,
+blockquote + header h2,
+blockquote + h3,
+blockquote + h4,
+form + h2,
+form + header h2,
+form + h3,
+form + h4 {
 	margin-top: 2.2906835em;
 }
 
@@ -129,8 +129,8 @@ ol {
 	list-style: decimal;
 }
 
-li>ul,
-li>ol {
+li > ul,
+li > ol {
 	margin-bottom: 0;
 	margin-left: 1em;
 }
@@ -167,7 +167,7 @@ address {
 
 pre {
 	background: rgba(0, 0, 0, 0.1);
-	font-family: 'Courier 10 Pitch', Courier, monospace;
+	font-family: "Courier 10 Pitch", Courier, monospace;
 	margin-bottom: 1.618em;
 	padding: 1.618em;
 	overflow: auto;
@@ -178,7 +178,7 @@ code,
 kbd,
 tt,
 var {
-	font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 	background-color: rgba(0, 0, 0, 0.05);
 	padding: 0.202em 0.5407911001em;
 }
@@ -249,5 +249,5 @@ button:focus {
 }
 
 .storefront-cute * {
-	font-family: 'Comic Sans MS', sans-serif;
+	font-family: "Comic Sans MS", sans-serif;
 }
