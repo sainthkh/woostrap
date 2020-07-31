@@ -82,6 +82,7 @@
     "modularscale-sass": "3.0.10",
     "node-sass": "^4.14.0",
     "playwright": "1.2.1",
+    "prettier": "npm:wp-prettier@2.0.5",
     "rtlcss": "^2.5.0",
     "ts-jest": "26.1.1",
     "typescript": "^3.9.5",
