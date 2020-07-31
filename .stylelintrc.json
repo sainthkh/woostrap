@@ -4,13 +4,17 @@
     ],
     "ignoreFiles": [
         "sass/_normalize.scss",
-        "theme/sass/bootstrap/**/*.scss"
+        "theme/assets/sass/_reference/**/*.scss",
+        "theme/assets/sass/base.scss"
     ],
     "rules": {
         "font-family-no-missing-generic-family-keyword": null,
         "no-descending-specificity": null,
         "block-no-empty": null,
         "no-duplicate-selectors": null,
-        "font-family-no-duplicate-names": null
+        "font-family-no-duplicate-names": null,
+        "declaration-property-unit-whitelist": {
+            "line-height": ["rem", "px"]
+        }
     }
 }
