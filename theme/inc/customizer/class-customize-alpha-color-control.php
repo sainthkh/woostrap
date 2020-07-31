@@ -52,7 +52,7 @@ class Customize_Alpha_Color_Control extends WP_Customize_Control {
 
 		wp_enqueue_script(
 			'alpha-color-picker',
-			get_template_directory_uri() . '/assets/js/vendor/alpha-color-picker' . $suffix . '.js',
+			get_template_directory_uri() . '/assets/js/admin/alpha-color-picker' . $suffix . '.js',
 			array( 'jquery', 'wp-color-picker' ),
 			'1.0.0',
 			true
