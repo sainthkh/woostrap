@@ -138,6 +138,16 @@ function woostrap_sanitize_navbar_text_style( $value ) {
 	return 'light';
 }
 
+function woostrap_sanitize_alpha_color( $color ) {
+	if (sanitize_hex_color($color)) {
+		return $color;
+	} else {
+		if (preg_match('/rgba\(\s*\d{1,3},\s*\d{1,3},\s*\d{1,3},\s*(0|1|0?\.\d+)\s*\)/', $color)) {
+			return $color;
+		}
+	}
+}
+
 /**
  * Get the information about the logo.
  * 

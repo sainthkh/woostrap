@@ -1,4 +1,5 @@
 /vendor
 /theme/asset
+/theme/assets/js/vendor
 /build
 *.min.js

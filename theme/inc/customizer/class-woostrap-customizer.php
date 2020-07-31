@@ -180,6 +180,9 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 
 			require_once dirname( __FILE__ ) . '/class-woostrap-heading-control.php';
 			require_once dirname( __FILE__ ) . '/class-woostrap-separator-control.php';
+			require_once dirname( __FILE__ ) . '/class-customize-alpha-color-control.php';
+
+			$wp_customize->register_control_type( 'Customize_Alpha_Color_Control' );
 
 			$this->register_header_settings( $wp_customize );
 			$this->register_footer_settings( $wp_customize );
@@ -220,18 +223,25 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				'woostrap_navbar_background_color',
 				array(
 					'default'           => apply_filters( 'woostrap_default_navbar_background_color', '#7952b3' ),
-					'sanitize_callback' => 'sanitize_hex_color',
+					'sanitize_callback' => 'woostrap_sanitize_alpha_color',
 				)
 			);
 
 			$wp_customize->add_control(
-				new WP_Customize_Color_Control(
+				new Customize_Alpha_Color_Control(
 					$wp_customize,
 					'woostrap_navbar_background_color',
 					array(
-						'label'    => __( 'Background color', 'woostrap' ),
-						'section'  => 'header_image',
-						'settings' => 'woostrap_navbar_background_color',
+						'label'         => __( 'Navbar Background Color', 'woostrap' ),
+						'section'       => 'header_image',
+						'settings'      => 'woostrap_navbar_background_color',
+						'show_opacity'  => true, // Optional.
+						'palette'	=> array(
+							'rgb(150, 50, 220)', // RGB, RGBa, and hex values supported
+							'rgba(50,50,50,0.8)',
+							'rgba( 255, 255, 255, 0.2 )', // Different spacing = no problem
+							'#00CC99' // Mix of color types = no problem
+						),
 						'priority' => 5,
 					)
 				)
