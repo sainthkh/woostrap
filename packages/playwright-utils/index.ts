@@ -8,6 +8,7 @@ export async function login(
 	if ( ! loggedManually.includes( username ) ) {
 		await page.goto( 'http://localhost:8889/wp-login.php' );
 		await page.waitForSelector( '#user_login' );
+		await page.click( '#user_login' );
 		await page.type( '#user_login', username );
 		await page.type( '#user_pass', password );
 
