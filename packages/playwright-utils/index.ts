@@ -10,10 +10,16 @@ export async function login(
 		await page.waitForSelector( '#user_login' );
 		await page.type( '#user_login', username );
 		await page.type( '#user_pass', password );
+
+		const name = await page.$eval(
+			'#user_login',
+			( el: HTMLInputElement ) => el.value
+		);
+
+		expect( name ).toBe( username );
+
 		await page.click( '#wp-submit' );
-		await page.waitForNavigation( {
-			waitUntil: 'networkidle',
-		} );
+		await page.waitForNavigation();
 
 		loggedManually.push( username );
 	} else {
