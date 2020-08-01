@@ -57,10 +57,10 @@ jobs:
     
     # Upload artifact for check.
     - name: Upload built files
-    uses: actions/upload-artifact@v2
-    with:
-      name: built-css-file
-      path: theme/style.css
+      uses: actions/upload-artifact@v2
+      with:
+        name: built-css-file
+        path: theme/style.css
 
   e2e:
     runs-on: ubuntu-latest
