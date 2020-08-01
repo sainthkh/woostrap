@@ -178,9 +178,9 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				)
 			);
 
-			require_once dirname( __FILE__ ) . '/class-woostrap-heading-control.php';
-			require_once dirname( __FILE__ ) . '/class-woostrap-separator-control.php';
-			require_once dirname( __FILE__ ) . '/class-customize-alpha-color-control.php';
+			require_once dirname( __FILE__ ) . '/class-woostrap-heading-control.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+			require_once dirname( __FILE__ ) . '/class-woostrap-separator-control.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+			require_once dirname( __FILE__ ) . '/class-customize-alpha-color-control.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 
 			$wp_customize->register_control_type( 'Customize_Alpha_Color_Control' );
 
@@ -209,8 +209,8 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 					$wp_customize,
 					'woostrap_header_heading_0',
 					array(
-						'section' => 'header_image',
-						'label' => __( 'Navbar', 'woostrap' ),
+						'section'  => 'header_image',
+						'label'    => __( 'Navbar', 'woostrap' ),
 						'priority' => 0,
 					)
 				)
@@ -236,13 +236,13 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 						'section'       => 'header_image',
 						'settings'      => 'woostrap_navbar_background_color',
 						'show_opacity'  => true, // Optional.
-						'palette'	=> array(
-							'rgb(150, 50, 220)', // RGB, RGBa, and hex values supported
+						'palette'       => array(
+							'rgb(150, 50, 220)', // RGB, RGBa, and hex values supported.
 							'rgba(50,50,50,0.8)',
-							'rgba( 255, 255, 255, 0.2 )', // Different spacing = no problem
-							'#00CC99' // Mix of color types = no problem
+							'rgba( 255, 255, 255, 0.2 )', // Different spacing = no problem.
+							'#00CC99', // Mix of color types = no problem.
 						),
-						'priority' => 5,
+						'priority'      => 5,
 					)
 				)
 			);
@@ -286,14 +286,14 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 					$wp_customize,
 					'woostrap_header_heading_1',
 					array(
-						'section' => 'header_image',
-						'label' => 'Hero',
+						'section'  => 'header_image',
+						'label'    => 'Hero',
 						'priority' => 20,
 					)
 				)
 			);
 
-			$wp_customize->get_control('header_image')->priority = 25;
+			$wp_customize->get_control( 'header_image' )->priority = 25;
 
 		}
 
@@ -422,8 +422,8 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			$storefront_theme_mods = array(
 				'background_color'            => get_theme_mod( 'background_color' ),
 				'header_background_color'     => get_theme_mod( 'storefront_header_background_color' ),
-				'navbar_text_color'           => get_theme_mod('woostrap_navbar_text_color'),
-				'header_text_color' => get_theme_mod('storefront_header_text_color'),
+				'navbar_text_color'           => get_theme_mod( 'woostrap_navbar_text_color' ),
+				'header_text_color'           => get_theme_mod( 'storefront_header_text_color' ),
 				'footer_background_color'     => get_theme_mod( 'storefront_footer_background_color' ),
 				'footer_link_color'           => get_theme_mod( 'storefront_footer_link_color' ),
 				'footer_heading_color'        => get_theme_mod( 'storefront_footer_heading_color' ),

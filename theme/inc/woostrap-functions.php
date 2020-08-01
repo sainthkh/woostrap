@@ -130,19 +130,29 @@ function woostrap_sanitize_checkbox( $checked ) {
 	return ( ( isset( $checked ) && true === $checked ) ? true : false );
 }
 
+/**
+ * Sanitize navbar text style.
+ * 
+ * @param string $value Should be 'dark' or 'light'.
+ */
 function woostrap_sanitize_navbar_text_style( $value ) {
-	if ($value === 'dark' || $value === 'light') {
+	if ( 'dark' === $value || 'light' === $value ) {
 		return $value;
 	}
 
 	return 'light';
 }
 
+/**
+ * Sanitize color. Allow hex style (#12abcd) or rgba function (rgba(1, 2, 3, 0.4))
+ * 
+ * @param string $color 
+ */
 function woostrap_sanitize_alpha_color( $color ) {
-	if (sanitize_hex_color($color)) {
+	if ( sanitize_hex_color( $color ) ) {
 		return $color;
 	} else {
-		if (preg_match('/rgba\(\s*\d{1,3},\s*\d{1,3},\s*\d{1,3},\s*(0|1|0?\.\d+)\s*\)/', $color)) {
+		if ( preg_match( '/rgba\(\s*\d{1,3},\s*\d{1,3},\s*\d{1,3},\s*(0|1|0?\.\d+)\s*\)/', $color ) ) {
 			return $color;
 		}
 	}
@@ -207,18 +217,24 @@ function woostrap_get_custom_logo( $html ) {
 
 add_filter( 'get_custom_logo', 'woostrap_get_custom_logo' );
 
+/**
+ * Echo correct navbar style based on theme_mod
+ */
 function woostrap_navbar_styles() {
-	$bg_color = get_theme_mod('woostrap_navbar_background_color');
+	$bg_color = get_theme_mod( 'woostrap_navbar_background_color' );
 
-	if ($bg_color) {
-		echo 'style="background:' . $bg_color . ';"';
+	if ( $bg_color ) {
+		echo 'style="background:' . $bg_color . ';"'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 
+/**
+ * Echo correct navbar classes based on theme_mod
+ */
 function woostrap_navbar_classes() {
-	$text_style = get_theme_mod('woostrap_navbar_text_style');
+	$text_style = get_theme_mod( 'woostrap_navbar_text_style' );
 
-	if ($text_style === 'light') {
+	if ( 'light' === $text_style ) {
 		echo 'navbar-dark ';
 	} else {
 		echo 'navbar-light';

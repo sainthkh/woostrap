@@ -20,11 +20,19 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this Alpha Color Picker. If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * @package Woostrap
+ */
+
+/**
+ * Alpha Color Picker Customizer Control
  */
 class Customize_Alpha_Color_Control extends WP_Customize_Control {
 
 	/**
 	 * Official control name.
+	 * 
+	 * @var string
 	 */
 	public $type = 'alpha-color';
 
@@ -32,11 +40,15 @@ class Customize_Alpha_Color_Control extends WP_Customize_Control {
 	 * Add support for palettes to be passed in.
 	 *
 	 * Supported palette values are true, false, or an array of RGBa and Hex colors.
+	 * 
+	 * @var array
 	 */
 	public $palette;
 
 	/**
 	 * Add support for showing the opacity value on the slider handle.
+	 * 
+	 * @var bool
 	 */
 	public $show_opacity;
 
@@ -48,7 +60,7 @@ class Customize_Alpha_Color_Control extends WP_Customize_Control {
 	 * stand alone class we'll register and enqueue them here.
 	 */
 	public function enqueue() {
-        $suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 		wp_enqueue_script(
 			'alpha-color-picker',
@@ -63,9 +75,9 @@ class Customize_Alpha_Color_Control extends WP_Customize_Control {
 			array( 'wp-color-picker' ),
 			'1.0.0'
 		);
-    }
-    
-    /**
+	}
+	
+	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 */
 	public function to_json() {
@@ -77,12 +89,12 @@ class Customize_Alpha_Color_Control extends WP_Customize_Control {
 	 * Render the control.
 	 */
 	public function render_content() {}
-    
-    /**
-     * Render the content template.
-     */
-    public function content_template() {
-        // Process the palette
+	
+	/**
+	 * Render the content template.
+	 */
+	public function content_template() {
+		// Process the palette.
 		if ( is_array( $this->palette ) ) {
 			$palette = implode( '|', $this->palette );
 		} else {
@@ -91,7 +103,7 @@ class Customize_Alpha_Color_Control extends WP_Customize_Control {
 		}
 
 		// Support passing show_opacity as string or boolean. Default to true.
-        $show_opacity = ( false === $this->show_opacity || 'false' === $this->show_opacity ) ? 'false' : 'true';
+		$show_opacity = ( false === $this->show_opacity || 'false' === $this->show_opacity ) ? 'false' : 'true';
 
 		// Begin the output. ?>
 		<# if ( data.label ) { #>
@@ -102,14 +114,14 @@ class Customize_Alpha_Color_Control extends WP_Customize_Control {
 		<# } #>
 		<div class="customize-control-content">
 			<label><span class="screen-reader-text">{{{ data.label }}}</span>
-            <input 
-                class="alpha-color-control" 
-                type="text" 
-                data-show-opacity="<?php echo $show_opacity; ?>" 
-                data-palette="<?php echo esc_attr( $palette ); ?>" 
-                data-default-color="{{ data.defaultValue }}" 
-                <?php $this->link(); ?>  
-            />
+			<input 
+				class="alpha-color-control" 
+				type="text" 
+				data-show-opacity="<?php echo wp_kses_data( $show_opacity ); ?>" 
+				data-palette="<?php echo esc_attr( $palette ); ?>" 
+				data-default-color="{{ data.defaultValue }}" 
+				<?php $this->link(); ?>  
+			/>
 			</label>
 		</div>
 		<?php
