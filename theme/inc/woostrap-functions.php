@@ -36,62 +36,6 @@ function storefront_do_shortcode( $tag, array $atts = array(), $content = null )
 }
 
 /**
- * Get the content background color
- * Accounts for the Storefront Designer and Storefront Powerpack content background option.
- *
- * @since  1.6.0
- * @return string the background color
- */
-function storefront_get_content_background_color() {
-	if ( class_exists( 'Storefront_Designer' ) ) {
-		$content_bg_color = get_theme_mod( 'sd_content_background_color' );
-		$content_frame    = get_theme_mod( 'sd_fixed_width' );
-	}
-
-	if ( class_exists( 'Storefront_Powerpack' ) ) {
-		$content_bg_color = get_theme_mod( 'sp_content_frame_background' );
-		$content_frame    = get_theme_mod( 'sp_content_frame' );
-	}
-
-	$bg_color = str_replace( '#', '', get_theme_mod( 'background_color' ) );
-
-	if ( class_exists( 'Storefront_Powerpack' ) || class_exists( 'Storefront_Designer' ) ) {
-		if ( $content_bg_color && ( 'true' === $content_frame || 'frame' === $content_frame ) ) {
-			$bg_color = str_replace( '#', '', $content_bg_color );
-		}
-	}
-
-	return '#' . $bg_color;
-}
-
-/**
- * Apply inline style to the Storefront header.
- *
- * @uses  get_header_image()
- * @since  2.0.0
- */
-function storefront_header_styles() {
-	$is_header_image = get_header_image();
-	$header_bg_image = '';
-
-	if ( $is_header_image ) {
-		$header_bg_image = 'url(' . esc_url( $is_header_image ) . ')';
-	}
-
-	$styles = array();
-
-	if ( '' !== $header_bg_image ) {
-		$styles['background-image'] = $header_bg_image;
-	}
-
-	$styles = apply_filters( 'storefront_header_styles', $styles );
-
-	foreach ( $styles as $style => $value ) {
-		echo esc_attr( $style . ': ' . $value . '; ' );
-	}
-}
-
-/**
  * Apply inline style to the Storefront homepage content.
  *
  * @uses  get_the_post_thumbnail_url()
@@ -125,7 +69,6 @@ function storefront_homepage_content_styles() {
  * @param  strong  $hex   hex color e.g. #111111.
  * @param  integer $steps factor by which to brighten/darken ranging from -255 (darken) to 255 (brighten).
  * @return string        brightened/darkened hex color
- * @since  1.0.0
  */
 function storefront_adjust_color_brightness( $hex, $steps ) {
 	// Steps should be between -255 and 255. Negative = darker, positive = lighter.
@@ -182,10 +125,37 @@ function storefront_sanitize_choices( $input, $setting ) {
  *
  * @param bool $checked Whether the checkbox is checked.
  * @return bool Whether the checkbox is checked.
- * @since  1.5.0
  */
 function woostrap_sanitize_checkbox( $checked ) {
 	return ( ( isset( $checked ) && true === $checked ) ? true : false );
+}
+
+/**
+ * Sanitize navbar text style.
+ * 
+ * @param string $value Should be 'dark' or 'light'.
+ */
+function woostrap_sanitize_navbar_text_style( $value ) {
+	if ( 'dark' === $value || 'light' === $value ) {
+		return $value;
+	}
+
+	return 'light';
+}
+
+/**
+ * Sanitize color. Allow hex style (#12abcd) or rgba function (rgba(1, 2, 3, 0.4))
+ * 
+ * @param string $color 
+ */
+function woostrap_sanitize_alpha_color( $color ) {
+	if ( sanitize_hex_color( $color ) ) {
+		return $color;
+	} else {
+		if ( preg_match( '/rgba\(\s*\d{1,3},\s*\d{1,3},\s*\d{1,3},\s*(0|1|0?\.\d+)\s*\)/', $color ) ) {
+			return $color;
+		}
+	}
 }
 
 /**
@@ -246,3 +216,27 @@ function woostrap_get_custom_logo( $html ) {
 }
 
 add_filter( 'get_custom_logo', 'woostrap_get_custom_logo' );
+
+/**
+ * Echo correct navbar style based on theme_mod
+ */
+function woostrap_navbar_styles() {
+	$bg_color = get_theme_mod( 'woostrap_navbar_background_color' );
+
+	if ( $bg_color ) {
+		echo 'style="background:' . $bg_color . ';"'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+}
+
+/**
+ * Echo correct navbar classes based on theme_mod
+ */
+function woostrap_navbar_classes() {
+	$text_style = get_theme_mod( 'woostrap_navbar_text_style' );
+
+	if ( 'light' === $text_style ) {
+		echo 'navbar-dark ';
+	} else {
+		echo 'navbar-light';
+	}
+}

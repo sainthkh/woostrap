@@ -1,4 +1,4 @@
-import { login } from '@woostrap/playwright-utils';
+import { login, clickPublish } from '@woostrap/playwright-utils';
 
 beforeAll( async () => {
 	await login( 'admin', 'password' );
@@ -22,11 +22,8 @@ describe( 'site identity', () => {
 		await page.click( '//button[text()="Select"]' );
 		await page.click( '//button[text()="Skip Cropping"]' );
 		await page.click( '#_customize-input-retina_logo' );
-		await page.click( '#save' );
-		await page.waitForResponse(
-			'http://localhost:8889/wp-admin/admin-ajax.php'
-		);
-		await page.click( 'a.customize-controls-close' );
+
+		await clickPublish();
 
 		const style = await page.getAttribute(
 			'a.custom-logo-link img',

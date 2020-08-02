@@ -1,6 +1,6 @@
 <?php
 /**
- * Storefront Customizer Class
+ * Woostrap Customizer Class
  *
  * @package  storefront
  * @since    2.0.0
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 
 	/**
-	 * The Storefront Customizer class
+	 * The Woostrap Customizer class
 	 */
 	class Woostrap_Customizer {
 
@@ -33,17 +33,16 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 		}
 
 		/**
-		 * Returns an array of the desired default Storefront Options
+		 * Returns an array of the desired default Woostrap Options
 		 *
 		 * @return array
 		 */
-		public function get_storefront_default_setting_values() {
+		public function get_woostrap_default_setting_values() {
 			return apply_filters(
-				'storefront_setting_default_values',
+				'woostrap_setting_default_values',
 				$args = array(
-					'storefront_header_background_color' => '#ffffff',
-					'storefront_header_text_color'       => '#404040',
-					'storefront_header_link_color'       => '#333333',
+					'woostrap_navbar_background_color'   => '#7952b3',
+					'woostrap_navbar_text_style'         => 'light',
 					'storefront_footer_background_color' => '#f0f0f0',
 					'storefront_footer_heading_color'    => '#333333',
 					'storefront_footer_text_color'       => '#6d6d6d',
@@ -54,12 +53,12 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 		}
 
 		/**
-		 * Adds a value to each Storefront setting if one isn't already present.
+		 * Adds a value to each Woostrap setting if one isn't already present.
 		 *
-		 * @uses get_storefront_default_setting_values()
+		 * @uses get_woostrap_default_setting_values()
 		 */
 		public function default_theme_mod_values() {
-			foreach ( $this->get_storefront_default_setting_values() as $mod => $val ) {
+			foreach ( $this->get_woostrap_default_setting_values() as $mod => $val ) {
 				add_filter( 'theme_mod_' . $mod, array( $this, 'get_theme_mod_value' ), 10 );
 			}
 		}
@@ -79,20 +78,20 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				return $value;
 			}
 
-			$values = $this->get_storefront_default_setting_values();
+			$values = $this->get_woostrap_default_setting_values();
 
 			return isset( $values[ $key ] ) ? $values[ $key ] : $value;
 		}
 
 		/**
 		 * Set Customizer setting defaults.
-		 * These defaults need to be applied separately as child themes can filter storefront_setting_default_values
+		 * These defaults need to be applied separately as child themes can filter woostrap_setting_default_values
 		 *
 		 * @param  array $wp_customize the Customizer object.
-		 * @uses   get_storefront_default_setting_values()
+		 * @uses   get_woostrap_default_setting_values()
 		 */
 		public function edit_default_customizer_settings( $wp_customize ) {
-			foreach ( $this->get_storefront_default_setting_values() as $mod => $val ) {
+			foreach ( $this->get_woostrap_default_setting_values() as $mod => $val ) {
 				$wp_customize->get_setting( $mod )->default = $val;
 			}
 		}
@@ -179,6 +178,12 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				)
 			);
 
+			require_once dirname( __FILE__ ) . '/class-woostrap-heading-control.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+			require_once dirname( __FILE__ ) . '/class-woostrap-separator-control.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+			require_once dirname( __FILE__ ) . '/class-customize-alpha-color-control.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+
+			$wp_customize->register_control_type( 'Customize_Alpha_Color_Control' );
+
 			$this->register_header_settings( $wp_customize );
 			$this->register_footer_settings( $wp_customize );
 		}
@@ -190,76 +195,106 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 		 */
 		private function register_header_settings( $wp_customize ) {
 			/**
-			 * Header Background
+			 * Navbar
 			 */
 			$wp_customize->add_setting(
-				'storefront_header_background_color',
+				'woostrap_header_heading_0',
 				array(
-					'default'           => apply_filters( 'storefront_default_header_background_color', '#2c2d33' ),
-					'sanitize_callback' => 'sanitize_hex_color',
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
 				)
 			);
 
 			$wp_customize->add_control(
-				new WP_Customize_Color_Control(
+				new Woostrap_Heading_Control(
 					$wp_customize,
-					'storefront_header_background_color',
+					'woostrap_header_heading_0',
 					array(
-						'label'    => __( 'Background color', 'woostrap' ),
 						'section'  => 'header_image',
-						'settings' => 'storefront_header_background_color',
-						'priority' => 15,
+						'label'    => __( 'Navbar', 'woostrap' ),
+						'priority' => 0,
 					)
 				)
 			);
 
 			/**
-			 * Header text color
+			 * Navbar Background Color
 			 */
 			$wp_customize->add_setting(
-				'storefront_header_text_color',
+				'woostrap_navbar_background_color',
 				array(
-					'default'           => apply_filters( 'storefront_default_header_text_color', '#9aa0a7' ),
-					'sanitize_callback' => 'sanitize_hex_color',
+					'default'           => apply_filters( 'woostrap_default_navbar_background_color', '#7952b3' ),
+					'sanitize_callback' => 'woostrap_sanitize_alpha_color',
 				)
 			);
 
 			$wp_customize->add_control(
-				new WP_Customize_Color_Control(
+				new Customize_Alpha_Color_Control(
 					$wp_customize,
-					'storefront_header_text_color',
+					'woostrap_navbar_background_color',
 					array(
-						'label'    => __( 'Text color', 'woostrap' ),
+						'label'         => __( 'Navbar Background Color', 'woostrap' ),
+						'section'       => 'header_image',
+						'settings'      => 'woostrap_navbar_background_color',
+						'show_opacity'  => true, // Optional.
+						'palette'       => array(
+							'rgb(150, 50, 220)', // RGB, RGBa, and hex values supported.
+							'rgba(50,50,50,0.8)',
+							'rgba( 255, 255, 255, 0.2 )', // Different spacing = no problem.
+							'#00CC99', // Mix of color types = no problem.
+						),
+						'priority'      => 5,
+					)
+				)
+			);
+
+			/**
+			 * Navbar Text class
+			 */
+			$wp_customize->add_setting(
+				'woostrap_navbar_text_style',
+				array(
+					'default'           => 'light',
+					'sanitize_callback' => 'woostrap_sanitize_navbar_text_style',
+				)
+			);
+
+			$wp_customize->add_control(
+				'woostrap_navbar_text_style',
+				array(
+					'type'    => 'radio',
+					'section' => 'header_image',
+					'label'   => __( 'Text Style', 'woostrap' ),
+					'choices' => array(
+						'light' => __( 'Light', 'woostrap' ),
+						'dark'  => __( 'Dark', 'woostrap' ),
+					),
+				)
+			);
+
+			/**
+			 * Hero
+			 */
+			$wp_customize->add_setting(
+				'woostrap_header_heading_1',
+				array(
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
+				)
+			);
+
+			$wp_customize->add_control(
+				new Woostrap_Heading_Control(
+					$wp_customize,
+					'woostrap_header_heading_1',
+					array(
 						'section'  => 'header_image',
-						'settings' => 'storefront_header_text_color',
+						'label'    => 'Hero',
 						'priority' => 20,
 					)
 				)
 			);
 
-			/**
-			 * Header link color
-			 */
-			$wp_customize->add_setting(
-				'storefront_header_link_color',
-				array(
-					'default'           => apply_filters( 'storefront_default_header_link_color', '#d5d9db' ),
-					'sanitize_callback' => 'sanitize_hex_color',
-				)
-			);
+			$wp_customize->get_control( 'header_image' )->priority = 25;
 
-			$wp_customize->add_control(
-				new WP_Customize_Color_Control(
-					$wp_customize,
-					'storefront_header_link_color',
-					array(
-						'label'    => __( 'Link color', 'woostrap' ),
-						'section'  => 'header_image',
-						'settings' => 'storefront_header_link_color',
-						'priority' => 30,
-					)
-				)
-			);
 		}
 
 		/**
@@ -379,15 +414,15 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 		}
 
 		/**
-		 * Get all of the Storefront theme mods.
+		 * Get all of the Woostrap theme mods.
 		 *
-		 * @return array $storefront_theme_mods The Storefront Theme Mods.
+		 * @return array $storefront_theme_mods The Woostrap Theme Mods.
 		 */
 		public function get_storefront_theme_mods() {
 			$storefront_theme_mods = array(
-				'background_color'            => storefront_get_content_background_color(),
+				'background_color'            => get_theme_mod( 'background_color' ),
 				'header_background_color'     => get_theme_mod( 'storefront_header_background_color' ),
-				'header_link_color'           => get_theme_mod( 'storefront_header_link_color' ),
+				'navbar_text_color'           => get_theme_mod( 'woostrap_navbar_text_color' ),
 				'header_text_color'           => get_theme_mod( 'storefront_header_text_color' ),
 				'footer_background_color'     => get_theme_mod( 'storefront_footer_background_color' ),
 				'footer_link_color'           => get_theme_mod( 'storefront_footer_link_color' ),
@@ -411,25 +446,23 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 
 			$styles = '
 			.main-navigation ul li a,
-			.site-title a,
 			ul.menu li a,
-			.site-branding h1 a,
 			button.menu-toggle,
 			button.menu-toggle:hover,
 			.handheld-navigation .dropdown-toggle {
-				color: ' . $storefront_theme_mods['header_link_color'] . ';
+				color: ' . $storefront_theme_mods['navbar_text_color'] . ';
 			}
 
 			button.menu-toggle,
 			button.menu-toggle:hover {
-				border-color: ' . $storefront_theme_mods['header_link_color'] . ';
+				border-color: ' . $storefront_theme_mods['navbar_text_color'] . ';
 			}
 
 			.main-navigation ul li a:hover,
 			.main-navigation ul li:hover > a,
 			.site-title a:hover,
 			.site-header ul.menu li.current-menu-item > a {
-				color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['header_link_color'], 65 ) . ';
+				color: ' . storefront_adjust_color_brightness( $storefront_theme_mods['navbar_text_color'], 65 ) . ';
 			}
 
 			table:not( .has-background ) th {
@@ -467,7 +500,7 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			button.menu-toggle:after,
 			button.menu-toggle:before,
 			button.menu-toggle span:before {
-				background-color: ' . $storefront_theme_mods['header_link_color'] . ';
+				background-color: ' . $storefront_theme_mods['navbar_text_color'] . ';
 			}
 
 			.pagination .page-numbers li .page-numbers.current {
@@ -488,7 +521,7 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			}
 
 			.site-footer .storefront-handheld-footer-bar a:not(.button):not(.components-button) {
-				color: ' . $storefront_theme_mods['header_link_color'] . ';
+				color: ' . $storefront_theme_mods['navbar_text_color'] . ';
 			}
 
 			.site-footer h1, .site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5, .site-footer h6, .site-footer .widget .widget-title, .site-footer .widget .widgettitle {

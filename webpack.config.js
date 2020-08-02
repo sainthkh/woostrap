@@ -13,7 +13,10 @@ module.exports = {
 	...base,
 	entry: {
 		front: path.resolve( __dirname, 'theme/assets/js/front.js' ),
-		customizer: path.resolve( __dirname, 'theme/assets/js/customizer.js' ),
+		'nux-customizer': path.resolve(
+			__dirname,
+			'theme/assets/js/nux-customizer.js'
+		),
 	},
 	module: {
 		rules: [

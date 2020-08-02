@@ -78,6 +78,7 @@
     "fs-extra": "9.0.1",
     "lerna": "3.22.1",
     "jest": "26.2.1",
+    "jest-circus": "26.2.2",
     "jest-playwright-preset": "1.2.1",
     "modularscale-sass": "3.0.10",
     "node-sass": "^4.14.0",

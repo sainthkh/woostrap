@@ -545,7 +545,7 @@ if ( ! class_exists( 'Storefront' ) ) :
 		public function print_embed_styles() {
 			wp_enqueue_style( 'source-sans-pro', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,700,900', array(), $storefront->version );
 			$accent_color     = get_theme_mod( 'storefront_accent_color' );
-			$background_color = storefront_get_content_background_color();
+			$background_color = get_theme_mod( 'background_color' );
 			?>
 			<style type="text/css">
 				.wp-embed {

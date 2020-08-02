@@ -1,1 +1,2 @@
 jest.setTimeout( 100000 );
+jest.retryTimes( 3 );

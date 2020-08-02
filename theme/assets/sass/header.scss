@@ -67,6 +67,11 @@
 	}
 }
 
+// color of magnifier when clicked.
+.navbar-dark .has-search .search-field:focus + .form-control-feedback {
+	color: $navbar-light-active-color;
+}
+
 // Credits to https://codepen.io/gungorbudak/pen/ooKNpz
 .has-search .form-control {
 	padding-left: 2.375rem;
@@ -86,14 +91,6 @@
 .shopping-cart {
 	position: relative;
 
-	a {
-		color: $navbar-light-active-color;
-
-		&:hover {
-			color: $navbar-light-hover-color;
-		}
-	}
-
 	.badge {
 		position: absolute;
 		top: -3px;
@@ -106,6 +103,46 @@
 
 .hero-area-title {
 	text-align: center;
+}
+
+@mixin navbar-dark-color {
+	color: $navbar-dark-active-color;
+
+	&:hover {
+		color: $navbar-dark-hover-color;
+	}
+}
+
+@mixin navbar-light-color {
+	color: $navbar-light-active-color;
+
+	&:hover {
+		color: $navbar-light-hover-color;
+	}
+}
+
+.navbar-dark {
+	.shopping-cart {
+		a {
+			@include navbar-dark-color();		
+		}
+	}
+
+	.has-search .form-control-feedback {
+		@include navbar-dark-color();
+	}
+}
+
+.navbar-light {
+	.shopping-cart {
+		a {
+			@include navbar-light-color();		
+		}
+	}
+
+	.has-search .form-control-feedback {
+		@include navbar-light-color();
+	}
 }
 
 @include media-breakpoint-up(md) {

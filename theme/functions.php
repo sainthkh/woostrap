@@ -28,7 +28,7 @@ $storefront = (object) array(
 	'customizer' => require 'inc/customizer/class-woostrap-customizer.php',
 );
 
-require 'inc/storefront-functions.php';
+require 'inc/woostrap-functions.php';
 require 'inc/storefront-template-hooks.php';
 require 'inc/storefront-template-functions.php';
 require 'inc/template-tags.php';

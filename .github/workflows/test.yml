@@ -24,12 +24,13 @@ jobs:
       with:
         path: node_modules
         key: ${{ runner.os }}-${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
+    - run: npm i
+      if: steps.npm-cache.outputs.cache-hit != 'true'
     - name: Cache browsers
       uses: actions/cache@v2
       with:
         path: /home/runner/.cache/ms-playwright/
         key: ${{ runner.os }}-${{ matrix.node-version }}-browsers-${{ hashFiles('package-lock.json') }}
-    - run: npm i
       if: steps.npm-cache.outputs.cache-hit != 'true'
     
     # vendor
@@ -50,7 +51,16 @@ jobs:
         path: |
           theme/style.css
           theme/asset/front.js
+          theme/asset/nux-customizer.js
+          theme/asset/nux-customizer.css
         key: ${{ runner.os }}-${{ matrix.node-version }}-${{ github.sha }}
+    
+    # Upload artifact for check.
+    - name: Upload built files
+      uses: actions/upload-artifact@v2
+      with:
+        name: built-css-file
+        path: theme/style.css
 
   e2e:
     runs-on: ubuntu-latest
@@ -83,6 +93,8 @@ jobs:
         path: |
           theme/style.css
           theme/asset/front.js
+          theme/asset/nux-customizer.js
+          theme/asset/nux-customizer.css
         key: ${{ runner.os }}-${{ matrix.node-version }}-${{ github.sha }}
     - name: Start server
       run: npx wp-env start
