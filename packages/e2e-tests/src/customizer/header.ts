@@ -96,14 +96,21 @@ describe( 'header', () => {
 		} );
 
 		it( 'button colors - light', async () => {
-			// No change. Just click out.
-			await page.click( 'a.customize-controls-close' );
+			// If light is not clicked, click it.
+			const checked = await page.$eval(
+				'#_customize-input-woostrap_navbar_text_style-radio-light',
+				( el: HTMLInputElement ) => el.checked
+			);
+
+			if ( ! checked ) {
+				await page.click(
+					'#_customize-input-woostrap_navbar_text_style-radio-light'
+				);
+			}
+
+			await clickPublish( checked );
 
 			await page.waitForSelector( 'nav.navbar' );
-
-			const classNames = await page.getAttribute( 'nav.navbar', 'class' );
-
-			expect( classNames ).toContain( 'navbar-light' );
 
 			const searchIconColor = await page.$eval(
 				'nav.navbar .fa-search',
@@ -130,10 +137,19 @@ describe( 'header', () => {
 		} );
 
 		it( 'button colors - dark', async () => {
-			await page.click(
-				'#_customize-input-woostrap_navbar_text_style-radio-dark'
+			// If dark is not clicked, click it.
+			const checked = await page.$eval(
+				'#_customize-input-woostrap_navbar_text_style-radio-dark',
+				( el: HTMLInputElement ) => el.checked
 			);
-			await clickPublish();
+
+			if ( ! checked ) {
+				await page.click(
+					'#_customize-input-woostrap_navbar_text_style-radio-dark'
+				);
+			}
+
+			await clickPublish( checked );
 
 			await page.waitForSelector( 'nav.navbar' );
 

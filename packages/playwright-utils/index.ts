@@ -28,10 +28,15 @@ export async function login(
 	}
 }
 
-export async function clickPublish(): Promise< void > {
-	await page.click( '#save' );
-	await page.waitForResponse(
-		'http://localhost:8889/wp-admin/admin-ajax.php'
-	);
+export async function clickPublish( force = false ): Promise< void > {
+	await page.click( '#save', {
+		force,
+	} );
+
+	if ( ! force ) {
+		await page.waitForResponse(
+			'http://localhost:8889/wp-admin/admin-ajax.php'
+		);
+	}
 	await page.click( 'a.customize-controls-close' );
 }
