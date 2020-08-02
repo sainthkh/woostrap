@@ -5,8 +5,9 @@ beforeAll( async () => {
 } );
 
 beforeEach( async () => {
-	await page.goto( 'http://localhost:8889/?reset-customize' );
-	await page.goto( 'http://localhost:8889/wp-admin/customize.php' );
+	await page.goto(
+		'http://localhost:8889/wp-admin/customize.php?reset-customize'
+	);
 	await page.click( '#accordion-section-header_image' );
 } );
 
