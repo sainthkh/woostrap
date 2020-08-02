@@ -101,6 +101,10 @@ describe( 'header', () => {
 
 			await page.waitForSelector( 'nav.navbar' );
 
+			const classNames = await page.getAttribute( 'nav.navbar', 'class' );
+
+			expect( classNames ).toContain( 'navbar-light' );
+
 			const searchIconColor = await page.$eval(
 				'nav.navbar .fa-search',
 				( el ) => window.getComputedStyle( el ).color
