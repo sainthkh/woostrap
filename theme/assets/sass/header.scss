@@ -145,6 +145,10 @@
 	}
 }
 
+.jumbotron {
+	background-color: transparent;
+}
+
 @include media-breakpoint-up(md) {
 
 	.site-branding {
