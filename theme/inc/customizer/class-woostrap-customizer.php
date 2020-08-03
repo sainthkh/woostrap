@@ -294,6 +294,9 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				)
 			);
 
+			/**
+			 * Hero Area Visibility
+			 */
 			$wp_customize->add_setting(
 				'woostrap_hero_area_visibility',
 				array(
@@ -312,8 +315,39 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				)
 			);
 
+			/**
+			 * Header area image
+			 */
 			$wp_customize->get_control( 'header_image' )->priority = 25;
 
+			/**
+			 * Header overlay Color
+			 */
+			$wp_customize->add_setting(
+				'woostrap_header_overlay_color',
+				array(
+					'default'           => 'rgba(0, 0, 0, 0.5)',
+					'sanitize_callback' => 'woostrap_sanitize_alpha_color',
+				)
+			);
+
+			$wp_customize->add_control(
+				new Customize_Alpha_Color_Control(
+					$wp_customize,
+					'woostrap_header_overlay_color',
+					array(
+						'label'         => __( 'Header Overlay Color', 'woostrap' ),
+						'section'       => 'header_image',
+						'settings'      => 'woostrap_header_overlay_color',
+						'show_opacity'  => true, // Optional.
+						'priority'      => 25,
+					)
+				)
+			);
+
+			/**
+			 * Hero area title text
+			 */
 			$wp_customize->add_setting( 
 				'woostrap_hero_area_title_text', 
 				array(
@@ -336,6 +370,9 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				) 
 			);
 		
+			/**
+			 * Hero area tagline text
+			 */
 			$wp_customize->add_setting( 
 				'hero_area_tagline_text', 
 				array(

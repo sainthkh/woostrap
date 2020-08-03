@@ -243,12 +243,20 @@ function woostrap_navbar_classes() {
 
 function woostrap_header_styles() {
 	if (has_header_image()) {
-		echo 'style="background-image: url(\'' . get_header_image() . '\')"';
+		echo 'style="background-image: url(\'' . get_header_image() . '\')"'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 
 function woostrap_header_classes() {
 	if (has_header_image()) {
 		echo 'has-header-image';
+	}
+}
+
+function woostrap_header_overlay_styles() {
+	$color = get_theme_mod('woostrap_header_overlay_color');
+
+	if ($color) {
+		echo 'style="background:' . $color . ';"'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }

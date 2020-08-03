@@ -28,6 +28,7 @@
 <?php if ( ! is_page_template( 'blank-page.php' ) && ! is_page_template( 'blank-page-with-container.php' ) ) : ?>
 
 	<header id="masthead" class="site-header <?php woostrap_header_classes(); ?>" <?php woostrap_header_styles(); ?> role="banner">
+		<div class="header-overlay" <?php woostrap_header_overlay_styles() ?>>
 		<nav class="navbar navbar-expand-md p-3 <?php woostrap_navbar_classes(); ?>" <?php woostrap_navbar_styles(); ?>>
 		<div class="container">
 			<div class="navbar-brand site-branding">
@@ -84,6 +85,7 @@
 			</div>
 		</div>
 		<?php endif; ?>
+		</div>
 	</header><!-- #masthead -->
 
 <?php endif; ?>

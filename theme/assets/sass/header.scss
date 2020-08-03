@@ -147,6 +147,7 @@
 
 .jumbotron {
 	background-color: transparent;
+	margin-bottom: 0;
 }
 
 @include media-breakpoint-up(md) {
