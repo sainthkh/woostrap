@@ -240,3 +240,15 @@ function woostrap_navbar_classes() {
 		echo 'navbar-light';
 	}
 }
+
+function woostrap_header_styles() {
+	if (has_header_image()) {
+		echo 'style="background-image: url(\'' . get_header_image() . '\')"';
+	}
+}
+
+function woostrap_header_classes() {
+	if (has_header_image()) {
+		echo 'has-header-image';
+	}
+}
