@@ -18,19 +18,17 @@ jobs:
         node-version: ${{ matrix.node-version }}
     
     # node_modules
-    - run: npm i
-    - name: Cache node_modules
+    - name: Cache dependencies
       uses: actions/cache@v2
       id: npm-cache
       with:
-        path: node_modules
+        path: |
+          node_modules
+          /home/runner/.cache/ms-playwright/
         key: ${{ runner.os }}-${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
     - run: ls /home/runner/.cache/ms-playwright/
-    - name: Cache browsers
-      uses: actions/cache@v2
-      with:
-        path: /home/runner/.cache/ms-playwright/**
-        key: ${{ runner.os }}-${{ matrix.node-version }}-browsers-${{ hashFiles('package-lock.json') }}
+    - run: npm i
+      if: steps.npm-cache.outputs.cache-hit != 'true'
     
     # vendor
     - name: Restore vendor
@@ -71,13 +69,20 @@ jobs:
     needs: build
     steps:
     - uses: actions/checkout@v2
-    - run: npm i
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      id: npm-cache
+      with:
+        path: |
+          node_modules
+          /home/runner/.cache/ms-playwright/
+        key: ${{ runner.os }}-${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
+    - run: ls /home/runner/.cache/ms-playwright/
     - name: Restore vendor
       uses: actions/cache@v2
       with: 
         path: vendor
         key: ${{ runner.os }}-${{ matrix.node-version }}-composer-${{ hashFiles('composer.lock') }}
-    - run: ls /home/runner/.cache/ms-playwright/
     - name: Restore built assets
       uses: actions/cache@v2
       with:
