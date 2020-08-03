@@ -18,13 +18,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
     
     # node_modules
-    - name: Restore node_modules
+    - run: npm i
+    - name: Cache node_modules
       uses: actions/cache@v2
       id: npm-cache
       with:
         path: node_modules
         key: ${{ runner.os }}-${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
-    - run: npm i
     - name: Cache browsers
       uses: actions/cache@v2
       with:
