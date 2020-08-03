@@ -254,6 +254,10 @@ function woostrap_header_classes() {
 }
 
 function woostrap_header_overlay_styles() {
+	if (get_theme_mod('woostrap_use_overlay') === false) {
+		return;
+	}
+
 	$color = get_theme_mod('woostrap_header_overlay_color');
 
 	if ($color) {

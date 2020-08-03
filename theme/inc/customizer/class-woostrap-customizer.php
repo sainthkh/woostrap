@@ -321,12 +321,33 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			$wp_customize->get_control( 'header_image' )->priority = 25;
 
 			/**
+			 * Hero Area Visibility
+			 */
+			$wp_customize->add_setting(
+				'woostrap_use_overlay',
+				array(
+					'default'           => false,
+					'sanitize_callback' => 'woostrap_sanitize_checkbox',
+				)
+			);
+
+			$wp_customize->add_control(
+				'woostrap_use_overlay',
+				array(
+					'type'        => 'checkbox',
+					'section'     => 'header_image',
+					'priority'    => 25,
+					'label'       => __( 'Use image overlay', 'woostrap' ),
+				)
+			);
+
+			/**
 			 * Header overlay Color
 			 */
 			$wp_customize->add_setting(
 				'woostrap_header_overlay_color',
 				array(
-					'default'           => 'rgba(0, 0, 0, 0.5)',
+					'default'           => 'rgba(0, 0, 0, 0.1)',
 					'sanitize_callback' => 'woostrap_sanitize_alpha_color',
 				)
 			);
