@@ -86,6 +86,7 @@ jobs:
       with:
         path: /home/runner/.cache/ms-playwright/
         key: ${{ runner.os }}-${{ matrix.node-version }}-browsers-${{ hashFiles('package-lock.json') }}
+    - run: ls /home/runner/.cache/ms-playwright/
     - name: Restore built assets
       uses: actions/cache@v2
       with:
