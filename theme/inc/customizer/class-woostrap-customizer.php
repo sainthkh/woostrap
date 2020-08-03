@@ -43,6 +43,7 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				$args = array(
 					'woostrap_navbar_background_color'   => '#7952b3',
 					'woostrap_navbar_text_style'         => 'light',
+					'woostrap_hero_area_visibility'      => true,
 					'storefront_footer_background_color' => '#f0f0f0',
 					'storefront_footer_heading_color'    => '#333333',
 					'storefront_footer_text_color'       => '#6d6d6d',
@@ -293,7 +294,69 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 				)
 			);
 
+			$wp_customize->add_setting(
+				'woostrap_hero_area_visibility',
+				array(
+					'default'           => true,
+					'sanitize_callback' => 'woostrap_sanitize_checkbox',
+				)
+			);
+
+			$wp_customize->add_control(
+				'woostrap_hero_area_visibility',
+				array(
+					'type'        => 'checkbox',
+					'section'     => 'header_image',
+					'priority'    => 20,
+					'label'       => __( 'Show hero area', 'woostrap' ),
+				)
+			);
+
 			$wp_customize->get_control( 'header_image' )->priority = 25;
+
+			$wp_customize->add_setting( 
+				'woostrap_hero_area_title_text', 
+				array(
+					'default' => __( 'WooCommerce + Bootstrap', 'woostrap' ),
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
+				) 
+			);
+
+			$wp_customize->add_control( 
+				new WP_Customize_Control(
+					$wp_customize, 
+					'woostrap_hero_area_title_text', 
+					array(
+						'label' => __( 'Title', 'woostrap' ),
+						'section'    => 'header_image',
+						'settings'   => 'woostrap_hero_area_title_text',
+						'type' => 'text',
+						'priority' => 25,
+					) 
+				) 
+			);
+		
+			$wp_customize->add_setting( 
+				'hero_area_tagline_text', 
+				array(
+					'default' => __( 'To customize the contents of this hero area and other elements of your site go to Dashboard - Appearance - Customize','woostrap' ),
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
+				) 
+			);
+
+			$wp_customize->add_control( 
+				new WP_Customize_Control(
+					$wp_customize, 
+					'hero_area_tagline_text', 
+					array(
+						'label' => __( 'Tagline', 'woostrap' ),
+						'section'    => 'header_image',
+						'settings'   => 'hero_area_tagline_text',
+						'type' => 'textarea',
+						'priority' => 25,
+					) 
+				)
+			);
 
 		}
 
