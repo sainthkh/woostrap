@@ -26,9 +26,9 @@ jobs:
           node_modules
           /home/runner/.cache/ms-playwright/
         key: ${{ runner.os }}-${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
-    - run: ls /home/runner/.cache/ms-playwright/
     - run: npm i
       if: steps.npm-cache.outputs.cache-hit != 'true'
+    - run: ls /home/runner/.cache/ms-playwright/
     
     # vendor
     - name: Restore vendor
