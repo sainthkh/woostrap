@@ -28,7 +28,7 @@ jobs:
     - name: Cache browsers
       uses: actions/cache@v2
       with:
-        path: /home/runner/.cache/ms-playwright/
+        path: /home/runner/.cache/ms-playwright/**/*.*
         key: ${{ runner.os }}-${{ matrix.node-version }}-browsers-${{ hashFiles('package-lock.json') }}
     
     # vendor
