@@ -71,21 +71,12 @@ jobs:
     needs: build
     steps:
     - uses: actions/checkout@v2
-    - name: Restore node_modules
-      uses: actions/cache@v2
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
+    - run: npm i
     - name: Restore vendor
       uses: actions/cache@v2
       with: 
         path: vendor
         key: ${{ runner.os }}-${{ matrix.node-version }}-composer-${{ hashFiles('composer.lock') }}
-    - name: Restore browsers
-      uses: actions/cache@v2
-      with:
-        path: /home/runner/.cache/ms-playwright/
-        key: ${{ runner.os }}-${{ matrix.node-version }}-browsers-${{ hashFiles('package-lock.json') }}
     - run: ls /home/runner/.cache/ms-playwright/
     - name: Restore built assets
       uses: actions/cache@v2
