@@ -25,6 +25,7 @@ jobs:
       with:
         path: node_modules
         key: ${{ runner.os }}-${{ matrix.node-version }}-npm-${{ hashFiles('package-lock.json') }}
+    - run: ls /home/runner/.cache/ms-playwright/
     - name: Cache browsers
       uses: actions/cache@v2
       with:
