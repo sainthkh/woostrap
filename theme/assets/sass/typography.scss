@@ -7,7 +7,7 @@ body,
 button,
 input,
 textarea {
-	color: #43454b;
+	color: $color-text;
 	font-family: "Source Sans Pro", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	line-height: 1.618;
 	text-rendering: optimizeLegibility;
@@ -29,7 +29,7 @@ h6 {
 	clear: both;
 	font-weight: 300;
 	margin: 0 0 0.5407911001em;
-	color: #131315;
+	color: $color-headline;
 }
 
 h1 a,

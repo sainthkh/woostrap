@@ -237,7 +237,7 @@ function woostrap_navbar_classes() {
 	if ( 'light' === $text_style ) {
 		echo 'navbar-dark ';
 	} else {
-		echo 'navbar-light';
+		echo 'navbar-light ';
 	}
 }
 
@@ -262,5 +262,15 @@ function woostrap_header_overlay_styles() {
 
 	if ($color) {
 		echo 'style="background:' . $color . ';"'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+}
+
+function woostrap_hero_area_classes() {
+	$text_style = get_theme_mod( 'woostrap_hero_area_text_style' );
+
+	if ( 'light' === $text_style ) {
+		echo 'hero-area-text-light ';
+	} else {
+		echo 'navbar-light-text-dark ';
 	}
 }

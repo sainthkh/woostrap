@@ -367,6 +367,31 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			);
 
 			/**
+			 * Hero Area Text class
+			 */
+			$wp_customize->add_setting(
+				'woostrap_hero_area_text_style',
+				array(
+					'default'           => 'dark',
+					'sanitize_callback' => 'woostrap_sanitize_navbar_text_style',
+				)
+			);
+
+			$wp_customize->add_control(
+				'woostrap_hero_area_text_style',
+				array(
+					'type'    => 'radio',
+					'section' => 'header_image',
+					'label'   => __( 'Text Style', 'woostrap' ),
+					'choices' => array(
+						'light' => __( 'Light', 'woostrap' ),
+						'dark'  => __( 'Dark', 'woostrap' ),
+					),
+					'priority' => 25,
+				)
+			);
+
+			/**
 			 * Hero area title text
 			 */
 			$wp_customize->add_setting( 

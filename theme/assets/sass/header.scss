@@ -150,6 +150,16 @@
 	margin-bottom: 0;
 }
 
+.hero-area-text-light {
+	h1 {
+		color: $color-headline-white;
+	}
+
+	p {
+		color: $color-text-white;
+	}
+}
+
 @include media-breakpoint-up(md) {
 
 	.site-branding {

@@ -62,7 +62,7 @@
 		</div>
 		</nav>
 		<?php if ( is_front_page() && get_theme_mod( 'woostrap_hero_area_visibility' ) ) : ?>
-		<div id="hero-area" class="jumbotron">
+		<div id="hero-area" class="jumbotron <?php woostrap_hero_area_classes() ?>">
 			<div class="container">
 				<h1 class="hero-area-title display-4">
 					<?php
