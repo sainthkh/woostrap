@@ -29,7 +29,14 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			add_action( 'customize_controls_print_styles', array( $this, 'customizer_custom_control_css' ) );
 			add_action( 'customize_register', array( $this, 'edit_default_customizer_settings' ), 99 );
 			add_action( 'enqueue_block_assets', array( $this, 'block_editor_customizer_css' ) );
+			add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_action( 'init', array( $this, 'default_theme_mod_values' ), 10 );
+		}
+
+		public function enqueue_scripts() {
+			global $storefront_version;
+			
+			wp_enqueue_script( 'woostrap-customize', get_template_directory_uri() . '/asset/customizer.js', array( 'jquery' ), $storefront_version, false );
 		}
 
 		/**
@@ -321,7 +328,7 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			$wp_customize->get_control( 'header_image' )->priority = 25;
 
 			/**
-			 * Hero Area Visibility
+			 * Use overlay
 			 */
 			$wp_customize->add_setting(
 				'woostrap_use_overlay',
@@ -362,6 +369,9 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 						'settings'      => 'woostrap_header_overlay_color',
 						'show_opacity'  => true, // Optional.
 						'priority'      => 25,
+						'active_callback' => function() use ( $wp_customize ) {
+							return ( true === $wp_customize->get_setting( 'woostrap_use_overlay' )->value() );
+						},
 					)
 				)
 			);
