@@ -51,6 +51,11 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 					'woostrap_navbar_background_color'   => '#7952b3',
 					'woostrap_navbar_text_style'         => 'light',
 					'woostrap_hero_area_visibility'      => true,
+					'woostrap_use_overlay'               => false,
+					'woostrap_header_overlay_color'      => 'rgba(0, 0, 0, 0.1)',
+					'woostrap_hero_area_text_style'      => 'dark',
+					'woostrap_hero_area_title_text'      => __( 'WooCommerce + Bootstrap', 'woostrap' ),
+					'woostrap_hero_area_tagline_text'    => __( 'To customize the contents of this hero area and other elements of your site go to Dashboard - Appearance - Customize','woostrap' ),
 					'storefront_footer_background_color' => '#f0f0f0',
 					'storefront_footer_heading_color'    => '#333333',
 					'storefront_footer_text_color'       => '#6d6d6d',
@@ -430,7 +435,7 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			 * Hero area tagline text
 			 */
 			$wp_customize->add_setting( 
-				'hero_area_tagline_text', 
+				'woostrap_hero_area_tagline_text', 
 				array(
 					'default' => __( 'To customize the contents of this hero area and other elements of your site go to Dashboard - Appearance - Customize','woostrap' ),
 					'sanitize_callback' => 'wp_filter_nohtml_kses',
@@ -440,11 +445,11 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 			$wp_customize->add_control( 
 				new WP_Customize_Control(
 					$wp_customize, 
-					'hero_area_tagline_text', 
+					'woostrap_hero_area_tagline_text', 
 					array(
 						'label' => __( 'Tagline', 'woostrap' ),
 						'section'    => 'header_image',
-						'settings'   => 'hero_area_tagline_text',
+						'settings'   => 'woostrap_hero_area_tagline_text',
 						'type' => 'textarea',
 						'priority' => 25,
 					) 
@@ -874,4 +879,6 @@ if ( ! class_exists( 'Woostrap_Customizer' ) ) :
 
 endif;
 
-return new Woostrap_Customizer();
+$woostrap_customizer = new Woostrap_Customizer();
+
+return $woostrap_customizer;

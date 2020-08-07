@@ -40,3 +40,16 @@ export async function clickPublish( force = false ): Promise< void > {
 	}
 	await page.click( 'a.customize-controls-close' );
 }
+
+declare const custDefault: Record< string, string | boolean >;
+declare const wp: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+
+export async function resetCustomizer(): Promise< void > {
+	await page.$eval( 'body', () => {
+		Object.keys( custDefault ).forEach( ( key ) => {
+			wp.customize( key, function ( setting ) {
+				setting.set( custDefault[ key ] );
+			} );
+		} );
+	} );
+}

@@ -1,13 +1,16 @@
-import { login, clickPublish } from '@woostrap/playwright-utils';
+import {
+	login,
+	clickPublish,
+	resetCustomizer,
+} from '@woostrap/playwright-utils';
 
 beforeAll( async () => {
 	await login( 'admin', 'password' );
 } );
 
 beforeEach( async () => {
-	await page.goto(
-		'http://localhost:8889/wp-admin/customize.php?reset-customize'
-	);
+	await page.goto( 'http://localhost:8889/wp-admin/customize.php' );
+	await resetCustomizer();
 	await page.click( '#accordion-section-header_image' );
 } );
 
@@ -96,19 +99,7 @@ describe( 'header', () => {
 		} );
 
 		it( 'button colors - light', async () => {
-			// If light is not clicked, click it.
-			const checked = await page.$eval(
-				'#_customize-input-woostrap_navbar_text_style-radio-light',
-				( el: HTMLInputElement ) => el.checked
-			);
-
-			if ( ! checked ) {
-				await page.click(
-					'#_customize-input-woostrap_navbar_text_style-radio-light'
-				);
-			}
-
-			await clickPublish( checked );
+			await clickPublish();
 
 			await page.waitForSelector( 'nav.navbar' );
 
@@ -137,19 +128,11 @@ describe( 'header', () => {
 		} );
 
 		it( 'button colors - dark', async () => {
-			// If dark is not clicked, click it.
-			const checked = await page.$eval(
-				'#_customize-input-woostrap_navbar_text_style-radio-dark',
-				( el: HTMLInputElement ) => el.checked
+			await page.click(
+				'#_customize-input-woostrap_navbar_text_style-radio-dark'
 			);
 
-			if ( ! checked ) {
-				await page.click(
-					'#_customize-input-woostrap_navbar_text_style-radio-dark'
-				);
-			}
-
-			await clickPublish( checked );
+			await clickPublish();
 
 			await page.waitForSelector( 'nav.navbar' );
 

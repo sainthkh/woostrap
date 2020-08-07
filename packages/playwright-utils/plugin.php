@@ -57,3 +57,11 @@ function e2e_util_login() {
 		}
 	}
 }
+
+add_action('customize_controls_enqueue_scripts', 'customizer_defaults', 20);
+
+function customizer_defaults() {
+	global $woostrap_customizer;
+
+	wp_localize_script('woostrap-customize', 'custDefault', $woostrap_customizer->get_woostrap_default_setting_values());
+}
