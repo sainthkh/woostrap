@@ -101,6 +101,7 @@ jobs:
     - name: Install Plugins
       run: npm run test-e2e:install
     - run: npm run list-plugins
+    - run: npm run logs
     - run: npm run test-e2e:headless
 
   lint:

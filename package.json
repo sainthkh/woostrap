@@ -20,6 +20,7 @@
     "lint:php:wpcs": "npm run wp-env run composer run-script lint:wpcs",
     "lint:php:wpcs:fix": "npm run wp-env run composer run-script lint:wpcs:fix",
     "lint:php:parallel": "npm run wp-env run composer run-script lint:php",
+    "logs": "npx wp-env logs --debug",
     "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map",
     "setup:data": "npx wp-env run cli bash wp-content/plugins/test-data/env/script.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
