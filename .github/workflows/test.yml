@@ -101,7 +101,7 @@ jobs:
     - name: Install Plugins
       run: npm run test-e2e:install
     - run: npm run list-plugins
-    - run: npm run logs
+    - run: wp-env run cli ls wp-content/plugins/playwright-utils
     - run: npm run test-e2e:headless
 
   lint:
