@@ -12,7 +12,7 @@
     "install:composer": "npm run wp-env run composer install",
     "install:woocommerce": "wp-env run cli wp plugin install woocommerce --activate --force",
     "install:plugins": "npm run install:woocommerce",
-    "list-plugins": "wp-env run cli wp plugin list",
+    "list-plugins": "wp-env run tests-cli wp plugin list",
     "lint:scss": "wp-scripts lint-style theme/assets/sass/**/*.scss",
     "lint:scss:fix": "wp-scripts lint-style theme/assets/sass/**/*.scss --fix",
     "lint:js": "wp-scripts lint-js theme/assets/js/**/*.js scripts/**/*.js",
