@@ -24,13 +24,6 @@ add_action( 'storefront_footer', 'storefront_footer_widgets', 10 );
 add_action( 'storefront_footer', 'storefront_credit', 20 );
 
 /**
- * Homepage
- *
- * @see  storefront_homepage_content()
- */
-add_action( 'homepage', 'storefront_homepage_content', 10 );
-
-/**
  * Posts
  *
  * @see  storefront_post_header()
