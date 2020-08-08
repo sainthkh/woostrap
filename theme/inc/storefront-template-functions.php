@@ -516,24 +516,6 @@ if ( ! function_exists( 'storefront_posted_on' ) ) {
 	}
 }
 
-if ( ! function_exists( 'storefront_homepage_content' ) ) {
-	/**
-	 * Display homepage content
-	 * Hooked into the `homepage` action in the homepage template
-	 *
-	 * @since  1.0.0
-	 * @return  void
-	 */
-	function storefront_homepage_content() {
-		while ( have_posts() ) {
-			the_post();
-
-			get_template_part( 'content', 'homepage' );
-
-		} // end of the loop.
-	}
-}
-
 if ( ! function_exists( 'storefront_get_sidebar' ) ) {
 	/**
 	 * Display storefront sidebar
